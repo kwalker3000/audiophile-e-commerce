@@ -7,7 +7,9 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "test": "jest __tests__/ --watch --coverage"
+    "test": "jest __tests__/ --watch --coverage",
+    "sass-dev": "sass --watch --update --style=expanded styles/:styles/",
+    "sass-prod": "sass --no-source-map --style=compressed styles/scss:styles/css"
   },
   "dependencies": {
     "next": "12.1.6",
