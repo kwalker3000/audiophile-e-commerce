@@ -1,0 +1,7 @@
+@use '../util/util';
+
+.footer {
+    background-color: util.$off-black;
+    
+    
+}

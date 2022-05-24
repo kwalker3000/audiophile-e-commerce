@@ -1,0 +1,81 @@
+@use '../util/util';
+
+.head_level-1,
+.head_level-2,
+.head_level-3,
+.head_level-4,
+.head_level-5,
+.head_level-6 {
+    font-family: util.$font-stack;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.overline,
+.sub-title,
+.p {
+    font-family: util.$font-stack;
+}
+
+
+.head_level-1 {
+    font-size: 3.5rem;
+    line-height: 1.04em;
+    letter-spacing: 0.036em;
+}
+
+.head_level-2 {
+    font-size: 2.5rem;
+    line-height: 1.1em;
+    letter-spacing: 0.04em;
+}
+
+.head_level-3 {
+    font-size: 2rem;
+    line-height: 1.125em;
+    letter-spacing: 0.04em;
+}
+
+.head_level-4 {
+    font-size: 1.75rem;
+    line-height: 1.36em;
+    letter-spacing: 0.07em;
+}
+
+.head_level-5 {
+    font-size: 1.5rem;
+    line-height: 1.375em;
+    letter-spacing: 0.071em;
+}
+
+.head_level-6 {
+    font-size: 1.125rem;
+    line-height: 1.333em;
+    letter-spacing: 0.072em;
+}
+
+.overline {
+    font-size: 0.875rem;
+    line-height: 1.357em;
+    letter-spacing: 0.714em;
+}
+
+.sub-title {
+    font-size: 1.231rem;
+    font-weight: 700;
+    line-height: 1.923em;
+    letter-spacing:  0.076em;
+}
+
+.p {
+    font-size: 0.938rem;
+    font-weight: 500;
+    line-height: 1.667em;
+}
+
+
+.link-text {
+    font-size: 0.813rem;
+    font-weight: 700;
+    letter-spacing: 0.153em;
+}
