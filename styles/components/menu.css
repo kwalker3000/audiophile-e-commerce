@@ -1,0 +1,20 @@
+.menu {
+  display: grid;
+  grid-template-rows: 5.25rem auto 4.25rem auto 4.25rem auto 2.25rem;
+  grid-template-columns: 1.5rem 1fr 1.5rem;
+  grid-template-areas: ". . ." ". head ." ". . ." ". speak ." ". . ." ". ear ." ". . .";
+}
+
+.menu__item-1 {
+  grid-area: head;
+}
+
+.menu__item-2 {
+  grid-area: speak;
+}
+
+.menu__item-3 {
+  grid-area: ear;
+}
+
+/*# sourceMappingURL=menu.css.map */

@@ -2,24 +2,28 @@
 import React from 'react'
 import Link from 'next/link'
 
-export const Navbar = ({className}) => {
+export const FooterNav = ({className}) => {
     let pages = [       
         {
+            id: 0,
             name: 'home',
             address: '/'
         },
         
         {
+            id: 1,
             name: 'headphones',
             address: '/headphones'
         },
 
         {
+            id: 2,
             name: 'speakers',
             address: '/speakers'
         },
 
         {
+            id: 3,
             name: 'earphones',
             address: '/earphones'
         }
@@ -27,13 +31,13 @@ export const Navbar = ({className}) => {
     
     let links = pages.map(page => (
         <li
-          className={
-              `${page.name == 'earphones' ? 'margin-reset' : ''} nav__item`
-          }>
+          className=
+            {
+                `${page.name == 'earphones' ? 'margin-reset' : ''} footer-nav__item`
+            }
+        >
           <Link href={page.address}>
-          <a
-            className={'nav__link link-text link link_active'}
-          >
+          <a className={'link-text link link_active'}>
             {page.name}
           </a>
           </Link>
@@ -42,9 +46,9 @@ export const Navbar = ({className}) => {
 
     return (
         <nav
-          className={`${className} nav`}>
+          className={`${className} footer-nav`}>
           <ul
-            className={'nav__list'}
+            className={'footer-nav__list'}
           >
             {links}
           </ul>

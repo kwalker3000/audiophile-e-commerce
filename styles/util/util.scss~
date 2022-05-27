@@ -7,3 +7,13 @@ $off-black: #101010;
 $white: #fff;
 $off-white: #fafafa;
 $font-stack: 'Manrope', sans-serif;
+
+
+.margin-reset {
+    margin: 0;
+}
+
+.outline-x {
+    border-top: solid 4px $dark-orange;
+    width: 100px
+}

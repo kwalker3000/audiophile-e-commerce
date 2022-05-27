@@ -7,8 +7,12 @@
   width: 100px;
 }
 
+.op {
+  opacity: 0.5;
+}
+
 .link {
-  color: #fff;
+  color: inherit;
   text-decoration: none;
 }
 

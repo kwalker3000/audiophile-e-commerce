@@ -7,8 +7,13 @@
   width: 100px;
 }
 
+.op {
+  opacity: 0.5;
+}
+
 .footer {
   background-color: #101010;
+  color: #fff;
   text-align: center;
   display: flex;
   flex-direction: column;

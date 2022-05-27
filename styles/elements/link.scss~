@@ -1,0 +1,31 @@
+
+@use '../util/util';
+
+.link {
+    color: util.$white;
+    text-decoration: none;
+}
+
+.link-text {
+    font-size: 0.813rem;
+    font-weight: 700;
+    letter-spacing: 0.153em;
+    text-transform: uppercase;
+}
+
+.link_twitter {
+    padding: 0 1em;
+}
+
+.link_active:hover {
+    color: util.$dark-orange;
+}
+
+.link-social {
+    fill: util.$white;
+}
+
+.link-social_active:hover {
+    cursor: pointer;
+    fill: util.$dark-orange;
+}

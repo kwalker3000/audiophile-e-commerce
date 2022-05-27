@@ -1,2 +1,5 @@
 
-@import '../footer'
+@import '../footer';
+@import '../nav';
+@import '../menu';
+@import '../category';

@@ -9,12 +9,14 @@
     font-family: util.$font-stack;
     font-weight: 700;
     text-transform: uppercase;
+    margin: 0;
 }
 
 .overline,
 .sub-title,
 .p {
     font-family: util.$font-stack;
+    margin: 0;
 }
 
 
@@ -74,8 +76,3 @@
 }
 
 
-.link-text {
-    font-size: 0.813rem;
-    font-weight: 700;
-    letter-spacing: 0.153em;
-}

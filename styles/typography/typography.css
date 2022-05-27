@@ -7,6 +7,10 @@
   width: 100px;
 }
 
+.op {
+  opacity: 0.5;
+}
+
 .head_level-1,
 .head_level-2,
 .head_level-3,
@@ -69,7 +73,7 @@
 }
 
 .sub-title {
-  font-size: 1.231rem;
+  font-size: 0.8125rem;
   font-weight: 700;
   line-height: 1.923em;
   letter-spacing: 0.076em;

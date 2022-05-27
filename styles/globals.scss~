@@ -1,5 +1,8 @@
-html {
+html, body {
     font-family: 'Manrope', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 @import 'typography/typography';
@@ -8,3 +11,4 @@ html {
 @import 'components/components.exports/components.exports';
 
 
+@import 'util/util';
