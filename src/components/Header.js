@@ -1,10 +1,26 @@
+import React from 'react'
 
-import React from 'react';
+import { Logo } from './Logo'
+import { MobileNav } from './MobileNav'
+import { PrimaryNav } from './PrimaryNav'
+import { Cart } from './Cart'
 
-import {HeaderNav} from './HeaderNav';
 
 export const Header = () => {
     return (
-	<HeaderNav />
+        <header className="header">
+          <div className="header__logo">
+            <Logo />
+          </div>
+          <div className="header-mob__nav">
+            <MobileNav />
+          </div>
+          <div className="header-desk__nav">
+            <PrimaryNav />
+	  </div>
+          <div className="header__cart">
+            <Cart/>
+          </div>
+        </header> 
     )
 }

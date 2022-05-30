@@ -32,13 +32,19 @@
   position: relative;
 }
 
+.category__content:hover .category__sub-title {
+  opacity: 1;
+  color: #d87d4a;
+}
+
 .category-img {
   position: absolute;
 }
 
 .img-wrapper_category {
   position: absolute;
-  width: 145px;
+  /* height: 100%; */
+  width: 132px;
   bottom: 85px;
 }
 

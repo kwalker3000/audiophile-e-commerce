@@ -1,0 +1,23 @@
+html, body {
+    font-family: 'Manrope', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.page {
+    display: grid;
+    grid-template-rows: auto auto;
+}
+
+.page__footer {
+    grid-row: 1 / 2;
+}
+
+@import 'typography/typography';
+
+@import 'elements/elements.exports/elements.exports';
+@import 'components/components.exports/components.exports';
+
+
+@import 'util/util';

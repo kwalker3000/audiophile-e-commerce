@@ -1,0 +1,66 @@
+
+@use '../util/util';
+
+.header {
+    background-color: util.$black;
+    padding: 2.1rem 0 util.$btm-header-spacing; 
+
+    /* display: flex;
+       justify-content: space-between;
+       align-items: flex-end; */
+
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    align-items: flex-end;
+}
+
+
+.header-desk__nav {
+    display: none;
+}
+
+.header-mob__nav {
+    order: -1;
+    align-self: center;
+}
+
+.header__cart {
+    justify-self: end;
+}
+
+.header__logo {
+    justify-self: center;
+    min-width: 145px;
+}
+
+@media (min-width: util.$tablet) {
+    .header {
+	grid-template-columns: 60px 1fr 3fr;
+	
+    }
+}
+
+@media (min-width: util.$desktop) {
+
+    .header {
+	grid-template-columns: 1fr 1fr 1fr;
+    }
+
+    .header-desk__nav {
+	display: block;
+	align-self: center;
+    }
+
+    .header-mob__nav {
+	display: none;
+    }
+
+    .header__logo {
+	justify-self: initial;
+    }
+
+    .header__cart {
+	align-self: flex-start;
+    }
+}
+    

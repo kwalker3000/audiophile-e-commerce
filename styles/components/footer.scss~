@@ -3,6 +3,7 @@
 
 .footer {
     background-color: util.$off-black;
+    color: util.$white;
     text-align: center;
 
     display: flex;

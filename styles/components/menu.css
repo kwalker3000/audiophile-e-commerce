@@ -1,5 +1,6 @@
 .menu {
   display: grid;
+  width: 100%;
   grid-template-rows: 5.25rem auto 4.25rem auto 4.25rem auto 2.25rem;
   grid-template-columns: 1.5rem 1fr 1.5rem;
   grid-template-areas: ". . ." ". head ." ". . ." ". speak ." ". . ." ". ear ." ". . .";
@@ -15,6 +16,14 @@
 
 .menu__item-3 {
   grid-area: ear;
+}
+
+@media (min-width: 685px) {
+  .menu {
+    grid-template-rows: 6.75rem 1fr 4.15rem;
+    grid-template-columns: 2.5rem repeat(2, auto 0.75rem) auto 2.5rem;
+    grid-template-areas: ". . . . . . ." ". head . speak . ear ." ". . . . . . .";
+  }
 }
 
 /*# sourceMappingURL=menu.css.map */

@@ -17,3 +17,8 @@ $font-stack: 'Manrope', sans-serif;
     border-top: solid 4px $dark-orange;
     width: 100px
 }
+
+.op {
+    opacity: 0.5;
+}
+
