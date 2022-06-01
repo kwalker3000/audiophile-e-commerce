@@ -4,9 +4,12 @@
 
 
 .mobile-nav__menu {
+    width: 100%;
     position: absolute;
-    margin-top: util.$btm-header-spacing; 
-    
+    right: 0;
+    transform: translateY(2rem);
+
+    z-index: 1;
 }
 
 .burger {
@@ -15,3 +18,4 @@
     cursor: pointer;
     padding: 0;
 }
+

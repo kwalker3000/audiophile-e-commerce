@@ -1,5 +1,6 @@
 
 @use '../util/util';
+@use '../typography/typography' as font;
 
 .title {
     font-size: 0.9375rem;
@@ -81,4 +82,12 @@
   100% {
       left: 10px;
   }
+}
+
+.sub-title {
+    @include font.sub-title;
+}
+
+.op {
+    @include util.op;
 }

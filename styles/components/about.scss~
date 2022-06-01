@@ -1,0 +1,8 @@
+
+@use '../typography/typography' as font;
+
+p {
+
+    @include font.size-4;
+}
+//

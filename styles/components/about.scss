@@ -1,0 +1,112 @@
+
+@use '../typography/typography' as font;
+@use '../util/util';
+
+.head_level-2 {
+   @include font.h4; 
+   letter-spacing: 0.036em;
+   @media (min-width: util.$tablet) {
+       @include font.h2;
+   }
+}
+
+.paragraph {
+    @include font.body;
+}
+
+
+
+.about__text {
+    text-align: center;
+}
+
+    .about__head {
+	margin-top: 1.429em;
+	margin-bottom: 2rem;
+    }
+
+
+@media (min-width: util.$tablet) {
+
+    .about__text {
+	margin: 0 3rem;
+    }
+
+}
+
+
+@media (min-width: util.$desktop) {
+
+    .about {
+	display: flex;
+    }
+
+	.about__img {
+		order: 2;
+		width: 55%;
+	}
+
+
+	.about__text {
+	    text-align: inherit;
+	    margin-left: 0;
+	    margin-right: 7.813rem;
+	    width: 45%;
+
+	    align-self: center;
+	}
+
+	.about__head {
+	    margin-top: 0; 
+	}
+
+	
+
+}
+
+
+
+
+
+
+
+.hghlt {
+   color: util.$dark-orange; 
+}
+
+@mixin img-wrapper_about {
+    @include util.img-radius;
+}
+
+.about__img {
+    @include img-wrapper_about;
+}
+
+.img-wrapper_about-tab {
+    display: none;
+}
+
+.img-wrapper_about-des {
+    display: none;
+}
+
+@media (min-width: util.$tablet) {
+
+    .img-wrapper_about-mob {
+	display: none;
+    }
+    .img-wrapper_about-tab {
+	display: block;
+    }
+}
+
+@media (min-width: util.$desktop) {
+
+    .img-wrapper_about-tab {
+	display: none;
+    }
+    .img-wrapper_about-des {
+	display: block;
+    }
+}
+

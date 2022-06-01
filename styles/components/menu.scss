@@ -1,9 +1,14 @@
 
+@use '../util/util';
+
 .menu {
+    background-color: util.$white;
+    border-radius: util.$radius;
+
     display: grid;
     width: 100%;
     grid-template-rows: 5.25rem auto 4.25rem auto 4.25rem auto 2.25rem;
-    grid-template-columns: 1.5rem 1fr 1.5rem;
+    @include util.g-col-sp-mob;
 
     grid-template-areas:
 	". . ."
@@ -27,7 +32,7 @@
     grid-area: ear;
 }
 
-@media (min-width: 685px) {
+@media (min-width: util.$tablet) {
 
     .menu {
 	grid-template-rows: 6.75rem 1fr 4.15rem;

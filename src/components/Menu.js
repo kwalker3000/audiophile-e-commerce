@@ -29,7 +29,7 @@ export const Menu = ({ className }) => {
   ]
 
   return (
-    <div className={`${className} menu`}>
+    <div className={`menu`}>
       {categories.map((category) => (
         <Category
           className={`menu__item-${category.id}`}

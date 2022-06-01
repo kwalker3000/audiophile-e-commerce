@@ -17,16 +17,16 @@ $tablet: 695px;
 $desktop: 980px;
 
 
-.margin-reset {
+@mixin margin-reset {
     margin: 0;
 }
 
-.outline-x {
+@mixin outline-x {
     border-top: solid 4px $dark-orange;
     width: 100px
 }
 
-.op {
+@mixin op {
     opacity: 0.5;
 }
 

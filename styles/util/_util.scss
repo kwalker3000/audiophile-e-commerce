@@ -1,0 +1,56 @@
+
+// colors
+$dark-orange: #d87d4a;
+$peach: #fbaf85;
+$gray: #f1f1f1;
+$black: #000;
+$off-black: #101010;
+$white: #fff;
+$off-white: #fafafa;
+$font-stack: 'Manrope', sans-serif;
+
+// margins
+$btm-header-spacing: 1.75rem;
+
+// device sizes
+$tablet: 685px;
+$desktop: 980px;
+
+// misc
+$radius: 8px;
+
+@mixin margin-reset {
+    margin: 0;
+}
+
+@mixin outline-x {
+    border-top: solid 4px $dark-orange;
+    width: 100px
+}
+
+@mixin op {
+    opacity: 0.5;
+}
+
+@mixin img-radius {
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+@mixin extension {
+    padding-left: 100vw;
+    padding-right: 100vw;
+    margin-left: -100vw;    
+    margin-right: -100vw;
+}
+
+
+@mixin g-col-sp-mob {
+    grid-template-columns: 1.5rem 1fr 1.5rem;
+    @media (min-width: $tablet) {
+	grid-template-columns: 2.5rem 1fr 2.5rem;
+    }
+    @media (min-width: $desktop) {
+	grid-template-columns: 10.312rem 1fr 10.312rem;
+    }
+}

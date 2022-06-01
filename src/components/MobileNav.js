@@ -20,7 +20,9 @@ export const MobileNav = () => {
             toggleMenu={toggleMenu}
             isMenuOpen={isMenuOpen}/>
           {isMenuOpen
-             ? <Menu className="mobile-nav__menu"/>
+           ? <div className="mobile-nav__menu">
+               <Menu />
+             </div>
              : ""}
         </div>
     )

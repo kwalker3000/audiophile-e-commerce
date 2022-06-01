@@ -1,9 +1,21 @@
 .menu {
+  background-color: #fff;
+  border-radius: 8px;
   display: grid;
   width: 100%;
   grid-template-rows: 5.25rem auto 4.25rem auto 4.25rem auto 2.25rem;
   grid-template-columns: 1.5rem 1fr 1.5rem;
   grid-template-areas: ". . ." ". head ." ". . ." ". speak ." ". . ." ". ear ." ". . .";
+}
+@media (min-width: 685px) {
+  .menu {
+    grid-template-columns: 2.5rem 1fr 2.5rem;
+  }
+}
+@media (min-width: 980px) {
+  .menu {
+    grid-template-columns: 10.312rem 1fr 10.312rem;
+  }
 }
 
 .menu__item-1 {

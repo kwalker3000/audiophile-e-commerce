@@ -9,6 +9,8 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+
+    @include util.extension;
 }
 
     .footer__logo {

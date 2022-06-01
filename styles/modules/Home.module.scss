@@ -1,0 +1,72 @@
+
+@use '../util/util';
+
+.page {
+    display: grid;
+    grid-template-rows: repeat(3, auto);
+    @include util.g-col-sp-mob;
+
+    grid-template-areas:
+	". header ."
+	"main main main"
+	". footer ."
+	
+
+}
+
+.main {
+    display: grid;
+    grid-template-rows:
+	repeat(2, auto) 2rem repeat(2, auto 1.5rem)
+	auto 4rem auto 4rem;
+    @include util.g-col-sp-mob;
+
+    grid-template-areas:
+	". hero  ."
+	". p-nav ."
+	". . ."
+	". ft-1 ."
+	". . ."
+	". ft-2 ."
+	". . ."
+	". ft-3 ."
+	". . ."
+	". about ."
+	". . ."
+}
+
+.page__main {
+    grid-area: main;
+}
+
+.page__header {
+    grid-area: header;
+}
+
+.main__hero {
+    grid-area: hero;
+}
+
+.main__product-nav {
+    grid-area: p-nav;
+}
+
+.main__feature-1 {
+    grid-area: header;
+}
+
+.main__feature-2 {
+    grid-area: ft-2;
+}
+
+.main__feature-3 {
+    grid-area: ft-3;
+}
+
+.main__about {
+    grid-area: about;
+}
+
+.page__footer {
+    grid-area: footer;
+}

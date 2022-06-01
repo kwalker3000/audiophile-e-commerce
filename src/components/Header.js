@@ -8,7 +8,7 @@ import { Cart } from './Cart'
 
 export const Header = () => {
     return (
-        <header className="header">
+        <div className="header">
           <div className="header__logo">
             <Logo />
           </div>
@@ -21,6 +21,6 @@ export const Header = () => {
           <div className="header__cart">
             <Cart/>
           </div>
-        </header> 
+        </div> 
     )
 }

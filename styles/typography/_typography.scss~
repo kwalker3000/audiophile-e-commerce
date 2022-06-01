@@ -76,3 +76,8 @@
 }
 
 
+@mixin size-4 {
+    font-size: 1.75rem;
+    line-height: 1.36em;
+    letter-spacing: 0.07em;
+}

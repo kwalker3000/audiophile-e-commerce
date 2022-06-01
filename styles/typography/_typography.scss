@@ -1,0 +1,80 @@
+@use '../util/util';
+
+@mixin shared-head-styling {
+    font-family: util.$font-stack;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin: 0;
+}
+
+@mixin shared-sm-text {
+    font-family: util.$font-stack;
+    margin: 0;
+}
+
+
+@mixin h1 {
+    @include shared-head-styling;
+    font-size: 3.5rem;
+    line-height: 1.04em;
+    letter-spacing: 0.036em;
+}
+
+@mixin h2 {
+    @include shared-head-styling;
+    font-size: 2.5rem;
+    line-height: 1.1em;
+    letter-spacing: 0.04em;
+}
+
+@mixin h3 {
+    @include shared-head-styling;
+    font-size: 2rem;
+    line-height: 1.125em;
+    letter-spacing: 0.04em;
+}
+
+@mixin h4 {
+    @include shared-head-styling;
+    font-size: 1.75rem;
+    line-height: 1.36em;
+    letter-spacing: 0.07em;
+}
+
+@mixin h5 {
+    @include shared-head-styling;
+    font-size: 1.5rem;
+    line-height: 1.375em;
+    letter-spacing: 0.071em;
+}
+
+@mixin h6 {
+    @include shared-head-styling;
+    font-size: 1.125rem;
+    line-height: 1.333em;
+    letter-spacing: 0.072em;
+}
+
+@mixin overline {
+    @include shared-sm-text;
+    font-size: 0.875rem;
+    line-height: 1.357em;
+    letter-spacing: 0.714em;
+}
+
+@mixin sub-title {
+    @include shared-sm-text;
+    font-size: 0.8125rem;
+    font-weight: 700;
+    line-height: 1.923em;
+    letter-spacing:  0.076em;
+}
+
+@mixin body {
+    @include shared-sm-text;
+    font-size: 0.938rem;
+    font-weight: 500;
+    line-height: 1.667em;
+}
+
+

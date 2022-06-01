@@ -1,19 +1,9 @@
-.margin-reset {
-  margin: 0;
-}
-
-.outline-x {
-  border-top: solid 4px #d87d4a;
-  width: 100px;
-}
-
-.op {
-  opacity: 0.5;
-}
-
 .mobile-nav__menu {
+  width: 100%;
   position: absolute;
-  margin-top: 1.75rem;
+  right: 0;
+  transform: translateY(2rem);
+  z-index: 1;
 }
 
 .burger {
