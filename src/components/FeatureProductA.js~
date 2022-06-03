@@ -1,0 +1,37 @@
+
+import React from 'react';
+import Image from 'next/image';
+
+import { Button } from './Button';
+
+import zx9 from '../../public/assets/home/mobile/image-speaker-zx9.png';
+import pattern from '../../public/assets/home/desktop/pattern-circles.svg';
+
+export const FeatureProductA = () => {
+    return (
+        <div className="ft-prod-a bkg-img">
+          <div className="ft-prod-a__img img-wrapper_prod-a">
+            <Image
+              src={zx9}
+              alt="zx9 speaker model"
+              layout="responsive"/>
+          </div>
+          <div className="ft-prod-a__text text-wrapper">
+            <h2 className="ft-prod-a__head head_level-2">
+              zx9 speaker
+            </h2>
+            <p className="ft-prod-a__body paragraph">
+              Upgrade to premium speakers that are phenomenally built to
+              deliver truly remarkable sound.
+            </p>
+          </div>
+          <div className="ft-prod-a__btn">
+            <Button
+              bk="#000"
+              bkhvr="#4C4C4C"
+              clr="#FFF"
+              clrhvr="#FFF"/>            
+          </div>
+        </div>
+    )
+}

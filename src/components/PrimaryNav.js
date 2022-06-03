@@ -32,7 +32,7 @@ export const PrimaryNav = () => {
     <li
       key={page.id}
       className={
-            `${page.name == 'earphones' ? 'margin-reset' : ''}  nav__item`}
+            `${page.name == 'earphones' ? 'earphones' : ''}  nav__item`}
     >
       <Link href={page.address}>
         <a className={'link-text link link_active'}>

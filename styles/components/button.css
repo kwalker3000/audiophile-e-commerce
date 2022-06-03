@@ -1,0 +1,17 @@
+.btn {
+  all: unset;
+  padding: 0.72rem 1.89rem;
+  cursor: pointer;
+}
+
+.btn-text {
+  font-family: "Manrope", sans-serif;
+  margin: 0;
+  font-size: 0.8125rem;
+  font-weight: 700;
+  line-height: 1.923em;
+  letter-spacing: 0.076em;
+  text-transform: uppercase;
+}
+
+/*# sourceMappingURL=button.css.map */

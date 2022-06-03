@@ -6,4 +6,6 @@
 @import '../menu';
 @import '../category';
 @import '../cart';
-@import '../about';
+#ft-prod-a {@import '../ft-prod-a';};
+#about {@import '../about';};
+@import '../button';

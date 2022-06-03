@@ -9,7 +9,7 @@
     grid-template-columns: 2.5rem 1fr 2.5rem;
   }
 }
-@media (min-width: 980px) {
+@media (min-width: 1325px) {
   .page {
     grid-template-columns: 10.312rem 1fr 10.312rem;
   }
@@ -17,55 +17,77 @@
 
 .main {
   display: grid;
-  grid-template-rows: repeat(2, auto) 2rem repeat(2, auto 1.5rem) auto 4rem auto 4rem;
+  grid-template-rows: repeat(2, auto) 2rem auto 4rem auto 4rem;
   grid-template-columns: 1.5rem 1fr 1.5rem;
-  grid-template-areas: ". hero  ." ". p-nav ." ". . ." ". ft-1 ." ". . ." ". ft-2 ." ". . ." ". ft-3 ." ". . ." ". about ." ". . .";
+  grid-template-areas: ". hero  ." ". p-nav ." ". . ." "ft ft ft" ". . ." ". about ." ". . .";
 }
 @media (min-width: 685px) {
   .main {
     grid-template-columns: 2.5rem 1fr 2.5rem;
   }
 }
-@media (min-width: 980px) {
+@media (min-width: 1325px) {
   .main {
     grid-template-columns: 10.312rem 1fr 10.312rem;
   }
 }
 
-.page__main {
+.ftProd {
+  display: grid;
+  grid-auto-rows: auto;
+  grid-template-columns: 1.5rem 1fr 1.5rem;
+  grid-row-gap: 1.5rem;
+  grid-template-areas: ". ft-1 ." ". ft-2 ." ". ft-3 .";
+}
+@media (min-width: 685px) {
+  .ftProd {
+    grid-template-columns: 2.5rem 1fr 2.5rem;
+  }
+}
+@media (min-width: 1325px) {
+  .ftProd {
+    grid-template-columns: 10.312rem 1fr 10.312rem;
+  }
+}
+
+.pageMain {
   grid-area: main;
 }
 
-.page__header {
+.pageHeader {
   grid-area: header;
 }
 
-.main__hero {
+.pageFooter {
+  grid-area: footer;
+}
+
+.mainHero {
   grid-area: hero;
 }
 
-.main__product-nav {
+.mainProductNav {
   grid-area: p-nav;
 }
 
-.main__feature-1 {
-  grid-area: header;
+.mainFtProd {
+  grid-area: ft;
 }
 
-.main__feature-2 {
-  grid-area: ft-2;
-}
-
-.main__feature-3 {
-  grid-area: ft-3;
-}
-
-.main__about {
+.mainAbout {
   grid-area: about;
 }
 
-.page__footer {
-  grid-area: footer;
+.ftProdA {
+  grid-area: ft-1;
+}
+
+.ftProdB {
+  grid-area: ft-2;
+}
+
+.ftProdC {
+  grid-area: ft-3;
 }
 
 /*# sourceMappingURL=Home.module.css.map */

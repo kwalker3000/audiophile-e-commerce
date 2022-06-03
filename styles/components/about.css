@@ -42,7 +42,7 @@
     margin: 0 3rem;
   }
 }
-@media (min-width: 980px) {
+@media (min-width: 1150px) {
   .about {
     display: flex;
   }
@@ -90,7 +90,7 @@
     display: block;
   }
 }
-@media (min-width: 980px) {
+@media (min-width: 1150px) {
   .img-wrapper_about-tab {
     display: none;
   }

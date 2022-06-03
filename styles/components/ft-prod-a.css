@@ -1,0 +1,135 @@
+.head_level-2 {
+  font-family: "Manrope", sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin: 0;
+  font-size: 2.25rem;
+  line-height: 1.11;
+  letter-spacing: 0.036;
+}
+@media (min-width: 685px) {
+  .head_level-2 {
+    font-family: "Manrope", sans-serif;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin: 0;
+    font-size: 3.5rem;
+    line-height: 1.04em;
+    letter-spacing: 0.036em;
+  }
+}
+
+.paragraph {
+  font-family: "Manrope", sans-serif;
+  margin: 0;
+  font-size: 0.938rem;
+  font-weight: 500;
+  line-height: 1.667em;
+  opacity: 0.75;
+}
+
+.ft-prod-a {
+  background-color: #d87d4a;
+  border-radius: 8px;
+  padding: 3.438rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.ft-prod-a__img {
+  margin-bottom: 2rem;
+}
+
+.ft-prod-a__head {
+  margin-bottom: 1.5rem;
+  padding: 0 3rem;
+}
+
+.ft-prod-a__body {
+  margin-bottom: 1.75rem;
+}
+
+.ft-prod-a__btn {
+  position: relative;
+}
+
+.img-wrapper_prod-a {
+  min-height: 207px;
+  min-width: 172px;
+}
+@media (min-width: 685px) {
+  .img-wrapper_prod-a {
+    min-width: 197px;
+  }
+}
+@media (min-width: 1150px) {
+  .img-wrapper_prod-a {
+    width: 410px;
+  }
+}
+
+.text-wrapper {
+  color: #FFF;
+  text-align: center;
+  max-width: min-content;
+}
+
+.bkg-img {
+  width: 559px;
+  position: absolute;
+  transform: translateY(-175px);
+}
+@media (min-width: 685px) {
+  .bkg-img {
+    width: 915px;
+    transform: translateY(-317px);
+  }
+}
+@media (min-width: 1150px) {
+  .bkg-img {
+    width: 985px;
+    left: -176px;
+    bottom: -677px;
+  }
+}
+
+@media (min-width: 685px) {
+  .ft-prod-a {
+    padding: 3.25rem 7.625rem 4rem;
+  }
+
+  .ft-prod-a__img {
+    margin-bottom: 4rem;
+  }
+
+  .ft-prod-a__body {
+    margin-bottom: 2.5rem;
+  }
+}
+@media (min-width: 1150px) {
+  .ft-prod-a {
+    flex-direction: initial;
+    padding: 6rem 7.343rem 0;
+    justify-content: space-between;
+    align-items: initial;
+  }
+
+  .text-wrapper {
+    text-align: left;
+  }
+
+  .ft-prod-a__head {
+    padding: 0;
+    margin-top: 1rem;
+  }
+
+  .ft-prod-a__img {
+    margin: 0;
+    margin-bottom: -1rem;
+  }
+}
+
+/*# sourceMappingURL=ft-prod-a.css.map */

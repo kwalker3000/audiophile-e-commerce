@@ -36,7 +36,7 @@
     grid-template-columns: 60px 1fr 3fr;
   }
 }
-@media (min-width: 980px) {
+@media (min-width: 1150px) {
   .header {
     grid-template-columns: 1fr 1fr 1fr;
   }

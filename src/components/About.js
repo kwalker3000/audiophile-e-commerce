@@ -11,7 +11,9 @@ export const About = () => {
 
     let img;
     return (
-        <div className="about">
+        <div id="about">
+        <div
+          className="about">
 
           <div className="about__img img-wrapper_about-mob">
             <Image
@@ -49,5 +51,6 @@ export const About = () => {
             </p>
           </div>
         </div>
+	</div>
     )
 }

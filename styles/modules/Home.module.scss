@@ -16,57 +16,67 @@
 
 .main {
     display: grid;
-    grid-template-rows:
-	repeat(2, auto) 2rem repeat(2, auto 1.5rem)
-	auto 4rem auto 4rem;
+    grid-template-rows: repeat(2, auto) 2rem auto 4rem auto 4rem;
     @include util.g-col-sp-mob;
 
     grid-template-areas:
 	". hero  ."
 	". p-nav ."
 	". . ."
-	". ft-1 ."
-	". . ."
-	". ft-2 ."
-	". . ."
-	". ft-3 ."
+	"ft ft ft"
 	". . ."
 	". about ."
 	". . ."
 }
 
-.page__main {
+.ftProd {
+   display: grid;
+    grid-auto-rows: auto;
+    @include util.g-col-sp-mob;
+    grid-row-gap: 1.5rem;
+
+    grid-template-areas:
+	". ft-1 ."
+	". ft-2 ."
+	". ft-3 ."
+}
+
+.pageMain {
     grid-area: main;
 }
 
-.page__header {
+.pageHeader {
     grid-area: header;
 }
 
-.main__hero {
+.pageFooter {
+    grid-area: footer;
+}
+
+.mainHero {
     grid-area: hero;
 }
 
-.main__product-nav {
+.mainProductNav {
     grid-area: p-nav;
 }
 
-.main__feature-1 {
-    grid-area: header;
+.mainFtProd {
+   grid-area: ft; 
 }
 
-.main__feature-2 {
-    grid-area: ft-2;
-}
-
-.main__feature-3 {
-    grid-area: ft-3;
-}
-
-.main__about {
+.mainAbout {
     grid-area: about;
 }
 
-.page__footer {
-    grid-area: footer;
+.ftProdA {
+    grid-area: ft-1;
+}
+
+.ftProdB {
+    grid-area: ft-2;
+}
+
+.ftProdC {
+    grid-area: ft-3;
 }

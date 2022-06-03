@@ -14,7 +14,7 @@ $btm-header-spacing: 1.75rem;
 
 // device sizes
 $tablet: 685px;
-$desktop: 980px;
+$desktop: 1150px;
 
 // misc
 $radius: 8px;
@@ -50,7 +50,7 @@ $radius: 8px;
     @media (min-width: $tablet) {
 	grid-template-columns: 2.5rem 1fr 2.5rem;
     }
-    @media (min-width: $desktop) {
+    @media (min-width: 1325px) {
 	grid-template-columns: 10.312rem 1fr 10.312rem;
     }
 }
