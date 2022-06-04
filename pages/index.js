@@ -8,6 +8,7 @@ import { Menu } from '../src/components/Menu';
 import { About } from '../src/components/About';
 import { FeatureProductA } from '../src/components/FeatureProductA';
 import { FeatureProductB } from '../src/components/FeatureProductB';
+import { FeatureProductC } from '../src/components/FeatureProductC';
 
 export default function Home() {
   return (
@@ -29,6 +30,7 @@ export default function Home() {
             <FeatureProductB />
           </div>
           <div className={`${styles.ftProdC}`}>
+            <FeatureProductC />
           </div>
         </section>
         <section className={styles.mainAbout}>

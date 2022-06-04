@@ -1,0 +1,82 @@
+
+@use '../util/util';
+@use '../typography/typography' as font;
+
+.head_level-2 {
+    @include font.h4;
+}
+
+.btn {
+    border: 1px solid #000;
+}
+
+.content-wrapper {
+    background-color:  util.$gray;
+    padding: 2.563rem 3.5rem 2.563rem 7%;
+}
+
+.ft-prod-c__head {
+    margin-bottom: 2rem;
+}
+
+.ft-prod-c__img {
+    margin-bottom: 1.5rem;
+}
+
+
+@media (min-width: util.$tablet) {
+
+    .ft-prod-c {
+	display: flex;
+	justify-content: space-between;
+    }
+
+    .ft-prod-c__img {
+	margin-bottom: 0;
+	margin-right: 0.70rem;
+    }
+
+    .ft-prod-c__btn {
+	align-self: flex-start;
+    }
+
+    .content-wrapper {
+	padding: 0;
+	padding-left: 7%;
+
+	display: flex;
+	flex-direction: column;
+	align-items:  flex-start;
+	justify-content: center;
+    }
+
+    .img-wrapper_prod-c,
+    .content-wrapper {
+	width: 49.2%;
+    }
+}
+
+@media (min-width: util.$desktop) {
+
+    .ft-prod-c__head,
+    .ft-prod-c__btn {
+	margin-left: 14.2%;
+    }
+
+    .content-wrapper {
+	padding: 0;
+    }
+
+    .ft-prod-c__img {
+	margin-right: 1.7rem;
+    }
+}
+
+
+
+
+
+.img-wrapper_prod-c,
+.content-wrapper {
+    @include util.img-radius;
+}

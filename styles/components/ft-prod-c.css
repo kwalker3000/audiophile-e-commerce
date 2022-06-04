@@ -1,0 +1,77 @@
+.head_level-2 {
+  font-family: "Manrope", sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin: 0;
+  font-size: 1.75rem;
+  line-height: 1.36em;
+  letter-spacing: 0.07em;
+}
+
+.btn {
+  border: 1px solid #000;
+}
+
+.content-wrapper {
+  background-color: #f1f1f1;
+  padding: 2.563rem 3.5rem 2.563rem 7%;
+}
+
+.ft-prod-c__head {
+  margin-bottom: 2rem;
+}
+
+.ft-prod-c__img {
+  margin-bottom: 1.5rem;
+}
+
+@media (min-width: 685px) {
+  .ft-prod-c {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .ft-prod-c__img {
+    margin-bottom: 0;
+    margin-right: 0.7rem;
+  }
+
+  .ft-prod-c__btn {
+    align-self: flex-start;
+  }
+
+  .content-wrapper {
+    padding: 0;
+    padding-left: 7%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+  }
+
+  .img-wrapper_prod-c,
+.content-wrapper {
+    width: 49.2%;
+  }
+}
+@media (min-width: 1150px) {
+  .ft-prod-c__head,
+.ft-prod-c__btn {
+    margin-left: 14.2%;
+  }
+
+  .content-wrapper {
+    padding: 0;
+  }
+
+  .ft-prod-c__img {
+    margin-right: 1.7rem;
+  }
+}
+.img-wrapper_prod-c,
+.content-wrapper {
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+/*# sourceMappingURL=ft-prod-c.css.map */

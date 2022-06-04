@@ -35,5 +35,3 @@ export const FeatureProductB = () => {
         </div>
     ) 
 }
-
-//mobImg, tabImg, desImg, descr, defaultImg

@@ -13,7 +13,7 @@ export const Img = ({mobImg, tabImg, desImg, descr, defaultImg}) => {
             if (window.innerWidth > 1149) {
                 setImageSrc(prevImg => desImg || defaultImg);
             }
-            else if (window.innerWidth < 1149
+            else if (window.innerWidth < 1150
                      && window.innerWidth > 684) {
                 setImageSrc(prevImg => tabImg || defaultImg);
             }
