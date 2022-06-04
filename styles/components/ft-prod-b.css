@@ -1,0 +1,35 @@
+.head_level-2 {
+  font-family: "Manrope", sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin: 0;
+  font-size: 1.75rem;
+  line-height: 1.36em;
+  letter-spacing: 0.07em;
+}
+
+.btn {
+  border: 1px solid #000;
+}
+
+.ft-prod-b {
+  position: relative;
+}
+
+.ft-prod-b__content {
+  position: absolute;
+  top: 28%;
+  left: 7%;
+  padding-bottom: 1rem;
+}
+
+.ft-prod-b__head {
+  margin-bottom: 1.75rem;
+}
+
+.img-wrapper_prod-b {
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+/*# sourceMappingURL=ft-prod-b.css.map */

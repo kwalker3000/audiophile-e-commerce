@@ -28,7 +28,7 @@ export const FeatureProductA = () => {
               defaultImg={zx9T}
               descr="zx9 speaker model"/>
           </div>
-          <div className="ft-prod-a__text text-wrapper">
+          <div className="ft-prod-a__content content-wrapper">
             <h2 className="ft-prod-a__head head_level-2">
               zx9 speaker
             </h2>

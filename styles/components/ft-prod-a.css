@@ -71,7 +71,7 @@
   }
 }
 
-.text-wrapper {
+.content-wrapper {
   color: #FFF;
   text-align: center;
   max-width: min-content;
@@ -117,13 +117,13 @@
     align-items: initial;
   }
 
-  .text-wrapper {
+  .content-wrapper {
     text-align: left;
   }
 
   .ft-prod-a__head {
     padding: 0;
-    margin-top: 1rem;
+    margin-top: 2rem;
   }
 
   .ft-prod-a__img {

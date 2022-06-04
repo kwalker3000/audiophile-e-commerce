@@ -7,6 +7,7 @@ import { Footer } from '../src/components/Footer';
 import { Menu } from '../src/components/Menu';
 import { About } from '../src/components/About';
 import { FeatureProductA } from '../src/components/FeatureProductA';
+import { FeatureProductB } from '../src/components/FeatureProductB';
 
 export default function Home() {
   return (
@@ -25,6 +26,7 @@ export default function Home() {
             <FeatureProductA />
           </div>
           <div className={`${styles.ftProdB}`}>
+            <FeatureProductB />
           </div>
           <div className={`${styles.ftProdC}`}>
           </div>
