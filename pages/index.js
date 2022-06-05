@@ -26,6 +26,9 @@ export default function Home() {
         <section className={`${styles.mainHero}`}>
           <Hero />
         </section>
+        <section className={`${styles.mainProductNav}`}>
+          <Menu />
+        </section>
         <section className={`${styles.mainFtProd} ${styles.ftProd}`}>
           <div className={`${styles.ftProdA}`}>
             <FeatureProductA />
