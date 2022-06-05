@@ -5,9 +5,9 @@ import Image from 'next/image';
 import { Img } from './Img';
 import { Button } from './Button';
 
-import zx7M from '../../public/assets/home/mobile/image-speaker-zx7.jpg'
-import zx7T from '../../public/assets/home/tablet/image-speaker-zx7.jpg'
-import zx7D from '../../public/assets/home/desktop/image-speaker-zx7.jpg'
+import zx7M from '../../public/assets/home/mobile/image-speaker-zx7.jpg';
+import zx7T from '../../public/assets/home/tablet/image-speaker-zx7.jpg';
+import zx7D from '../../public/assets/home/desktop/image-speaker-zx7.jpg';
 
 export const FeatureProductB = () => {
     return (

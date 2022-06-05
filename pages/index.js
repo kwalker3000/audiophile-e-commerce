@@ -3,12 +3,13 @@ import Image from 'next/image';
 import styles from '../styles/modules/Home.module.css';
 
 import { Header } from '../src/components/Header';
-import { Footer } from '../src/components/Footer';
+import { Hero } from '../src/components/Hero';
 import { Menu } from '../src/components/Menu';
-import { About } from '../src/components/About';
 import { FeatureProductA } from '../src/components/FeatureProductA';
 import { FeatureProductB } from '../src/components/FeatureProductB';
 import { FeatureProductC } from '../src/components/FeatureProductC';
+import { About } from '../src/components/About';
+import { Footer } from '../src/components/Footer';
 
 export default function Home() {
   return (
@@ -22,6 +23,9 @@ export default function Home() {
         <Header />
       </header>
       <main className={`${styles.pageMain} ${styles.main}`}>
+        <section className={`${styles.mainHero}`}>
+          <Hero />
+        </section>
         <section className={`${styles.mainFtProd} ${styles.ftProd}`}>
           <div className={`${styles.ftProdA}`}>
             <FeatureProductA />

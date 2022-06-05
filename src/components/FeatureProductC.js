@@ -5,9 +5,9 @@ import Image from 'next/image';
 import { Img } from './Img';
 import { Button } from './Button';
 
-import yx1M from '../../public/assets/home/mobile/image-earphones-yx1.jpg'
-import yx1T from '../../public/assets/home/tablet/image-earphones-yx1.jpg'
-import yx1D from '../../public/assets/home/desktop/image-earphones-yx1.jpg'
+import yx1M from '../../public/assets/home/mobile/image-earphones-yx1.jpg';
+import yx1T from '../../public/assets/home/tablet/image-earphones-yx1.jpg';
+import yx1D from '../../public/assets/home/desktop/image-earphones-yx1.jpg';
 
 export const FeatureProductC = () => {
     return (

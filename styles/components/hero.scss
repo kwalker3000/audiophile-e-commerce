@@ -1,0 +1,105 @@
+
+@use '../util/util';
+@use '../typography/typography' as font;
+
+.paragraph {
+    @include font.body; 
+    opacity: 0.75;
+}
+
+.overline {
+    @include font.overline;
+    opacity: 0.5;
+}
+
+.head_level-1 {
+    @include font.h2;
+    font-size: 2.25rem;
+    letter-spacing: 0.036em;
+    line-height: 1.11em;
+    @media (min-width: 440px) {
+	@include font.h1;
+    }
+}
+
+.hero {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    width: 100%;
+}
+
+    .hero__content {
+	position: absolute;
+	max-width: 400px;
+	bottom: 19%;
+	@media (min-width: 520px) {
+	    bottom: 30%;
+	}
+
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+    }
+
+	.text-wrapper_hero {
+	    color: #FFF;
+	    text-align: center;
+	    padding: 0 1.5rem;
+	    display: flex;
+	    flex-direction: column;
+	}
+
+	    .hero__overline {
+		margin-bottom: 1rem;
+	    }
+
+	    .hero__head {
+		margin-bottom: 1.5rem;
+	    }
+
+	    .hero__body {
+		margin-bottom: 1.75rem;
+		@media (min-width: util.$tablet) {
+		    margin-bottom: 2.5rem;
+		}
+
+		max-width: 365px;
+		align-self: center;
+	    }
+
+.img-wrapper_hero {
+    width: 100%;
+}
+
+@media (min-width: util.$desktop) {
+
+    .hero {
+    }
+
+    .hero__body {
+	align-self: initial;
+    }
+
+    .text-wrapper_hero {
+	text-align: left;
+	padding: 0;
+	align-items: flex-start;
+
+    }
+
+    .hero__content {
+	align-items: flex-start;
+	left: 3.5%;
+	bottom: 16%;
+	@media (min-width: 1325px) {
+	    left: 12.5%;
+	    bottom: 21%;
+	}
+	@media (min-width: 1440px) {
+	    left: 11.5%;
+	}
+    }
+}

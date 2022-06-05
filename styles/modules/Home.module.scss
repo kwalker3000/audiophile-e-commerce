@@ -21,7 +21,7 @@
     @include util.g-col-sp-mob;
 
     grid-template-areas:
-	". hero  ."
+	"hero hero  hero"
 	". p-nav ."
 	". . ."
 	"ft ft ft"
@@ -48,6 +48,8 @@
 
 .pageHeader {
     grid-area: header;
+    position: relative;
+    z-index: 1;
 }
 
 .pageFooter {
@@ -56,6 +58,14 @@
 
 .mainHero {
     grid-area: hero;
+
+    margin-top: -6rem;
+    position: relative;
+    z-index: 0;
+    @media (min-width: util.$desktop) {
+	margin-top: -4rem;
+    }
+
 }
 
 .mainProductNav {
