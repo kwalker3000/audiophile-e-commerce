@@ -21,7 +21,7 @@
   grid-template-rows: repeat(2, auto) 2rem auto 4rem auto 4rem;
   grid-template-rows: auto 2rem auto 4rem auto 4rem auto 4rem;
   grid-template-columns: 1.5rem 1fr 1.5rem;
-  grid-template-areas: "hero hero  hero" ". . ." ". p-nav ." ". . ." "ft ft ft" ". . ." ". about ." ". . .";
+  grid-template-areas: "hero hero  hero" "ovr ovr ovr" ". p-nav ." ". . ." "ft ft ft" ". . ." ". about ." ". . .";
 }
 @media (min-width: 685px) {
   .main {
@@ -64,7 +64,7 @@
 .pageHeader {
   grid-area: header;
   position: relative;
-  z-index: 1;
+  z-index: 2;
 }
 
 .pageFooter {

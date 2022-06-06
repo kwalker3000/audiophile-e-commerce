@@ -804,4 +804,15 @@ html, body {
   text-transform: uppercase;
 }
 
+.overlay {
+  background-color: #000;
+  opacity: 0.65;
+  position: absolute;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  z-index: 1;
+  display: none;
+}
+
 /*# sourceMappingURL=globals.css.map */
