@@ -5,13 +5,13 @@ import Image from 'next/image'
 import arrow from '../../public/assets/shared/desktop/icon-arrow-right.svg'
 
 export const Category = ({className, src, name}) => {
-  const [isActive, setIsActive] = React.useState(false)
+  const [isHover, setIsHover] = React.useState(false)
   return (
     <Link href={`/${name}`}>
       <a
         className={`link ${className}`}
-        onMouseEnter={() => setIsActive(true)}
-        onMouseLeave={() => setIsActive(false)}
+        onMouseEnter={() => setIsHover(true)}
+        onMouseLeave={() => setIsHover(false)}
       >
         <div className="category__content">
           <div className="img-wrapper_category">
@@ -27,7 +27,7 @@ export const Category = ({className, src, name}) => {
           <div className="wrapper_p">
             <p className="category__sub-title sub-title op">Shop</p>
             <div
-              className={`${isActive ? 'arrow_active' : ''} img-wrapper_arrow`}
+              className={`${isHover ? 'arrow_active' : ''} img-wrapper_arrow`}
             >
               <Image src={arrow} alt="" />
             </div>

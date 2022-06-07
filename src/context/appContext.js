@@ -20,7 +20,7 @@ export const AppWrapper = ({ children }) => {
 
 } 
 
-// export {AppContext, AppWrapper};
+export {AppContext};
 
 export const useAppContext = () => {
     return useContext(AppContext);

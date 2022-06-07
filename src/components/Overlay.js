@@ -9,6 +9,7 @@ export const Overlay = () => {
     return (
         <div
           className="overlay"
-        style={{display: display}}></div>
+          style={{display: display}} data-testid='overlay'>
+        </div>
     )
 }

@@ -1,14 +1,25 @@
 
 import React from 'react';
+import { AppWrapper, AppContext } from '../../src/context/appContext';
 import { MobileNav } from '../../src/components/MobileNav';
 
 import {render, screen} from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import '@testing-library/jest-dom';
 
-test('Should menu component', async () => {
+test("<MobileNav /> renders <Menu /> when button is clicked", async () => {
+    // let state = {
+    //     isMenuOpen: false
+    // }
+
+    render
+    (
+      <AppWrapper value="" >
+        <MobileNav />
+      </AppWrapper>
+    );
+
     const user = userEvent.setup()
-    render(<MobileNav />)
 
     await user.click(screen.getByRole('button', {name: 'open main menu'}))
     let menu = screen.queryByText('headphones')
@@ -18,4 +29,5 @@ test('Should menu component', async () => {
     menu = screen.queryByText('headphones')
     expect(menu).not.toBeInTheDocument()
 
-})
+
+});
