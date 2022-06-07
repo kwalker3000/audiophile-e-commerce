@@ -98,11 +98,6 @@
   .footer {
     text-align: left;
     align-items: flex-start;
-    /* padding: 0 2.5rem; */
-  }
-
-  .footer__nav {
-    /* display: flex; */
   }
 
   .footer__logo {
@@ -121,9 +116,6 @@
   }
 }
 @media (min-width: 1150px) {
-  /* .footer {
-     padding: 0 10.31rem;
-     } */
   .footer__head {
     display: flex;
     justify-content: space-between;
@@ -148,6 +140,11 @@
     margin-top: -5.5rem;
   }
 }
+.outline-x {
+  border-top: solid 4px #d87d4a;
+  width: 100px;
+}
+
 .mobile-nav__menu {
   width: 100%;
   position: absolute;

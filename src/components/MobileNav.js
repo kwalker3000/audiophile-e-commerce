@@ -10,11 +10,6 @@ import burger from '../../public/assets/shared/tablet/icon-hamburger.svg'
 
 export const MobileNav = () => {
     const { isMenuOpen } = useAppContext();
-    // const [isMenuOpen, setIsMenuOpen] = useState(false)
-
-    // const toggleMenu = () => {
-    //     setIsMenuOpen(!isMenuOpen)
-    // }
     return (
         <div
           className={`mobile-nav`}>

@@ -10,8 +10,6 @@ export const AppWrapper = ({ children }) => {
         setIsMenuOpen(!isMenuOpen)
     }
 
-    // cart function
-
     return (
         <AppContext.Provider value={{toggleMenu, isMenuOpen}}>
           {children}

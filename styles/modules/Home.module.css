@@ -18,8 +18,7 @@
 
 .main {
   display: grid;
-  grid-template-rows: repeat(2, auto) 2rem auto 4rem auto 4rem;
-  grid-template-rows: auto 2rem auto 4rem auto 4rem auto 4rem;
+  grid-template-rows: auto 2rem auto 4rem auto 7.5rem auto 7.5rem;
   grid-template-columns: 1.5rem 1fr 1.5rem;
   grid-template-areas: "hero hero  hero" "ovr ovr ovr" ". p-nav ." ". . ." "ft ft ft" ". . ." ". about ." ". . .";
 }
@@ -35,7 +34,7 @@
 }
 @media (min-width: 1150px) {
   .main {
-    grid-template-rows: auto 4rem auto 7rem auto 4rem auto 4rem;
+    grid-template-rows: auto 4rem auto 7rem auto 10.5rem auto 10.5rem;
   }
 }
 
@@ -54,6 +53,11 @@
 @media (min-width: 1325px) {
   .ftProd {
     grid-template-columns: 10.312rem 1fr 10.312rem;
+  }
+}
+@media (min-width: 1150px) {
+  .ftProd {
+    grid-row-gap: 3rem;
   }
 }
 
