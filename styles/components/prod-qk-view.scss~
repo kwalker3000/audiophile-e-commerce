@@ -1,0 +1,45 @@
+
+@use '../util/util';
+@use '../typography/typography' as font;
+
+.overline {
+    @include font.overline;
+    color: util.$dark-orange;
+}
+
+.head_level-2 {
+    @include font.h4;
+    letter-spacing: 0.036em;
+}
+
+.paragraph {
+    @include font.body;
+}
+
+
+.prod-qk-view__img {
+    margin-bottom: 2rem;
+}
+
+.prod-qk-view__overline {
+    margin-bottom: 1.5rem;
+}
+
+.prod-qk-view__head {
+    margin-bottom: 1.5rem;
+}
+
+.prod-qk-view__body {
+    margin-bottom: 1.5rem;
+}
+
+
+.content-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items:  center;
+}
+
+.text-wrapper {
+    text-align: center;
+}

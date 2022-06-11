@@ -56,3 +56,11 @@
 
    
 }
+
+
+@media (min-width: util.$tablet) {
+
+    .menu {
+	grid-column-gap: 1.8rem;
+    }
+}

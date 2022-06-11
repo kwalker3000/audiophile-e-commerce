@@ -5,7 +5,18 @@ import Image from 'next/image';
 
 import placeholderImg from '../../public/vercel.svg';
 
-export const Img = ({mobImg, tabImg, desImg, descr, defaultImg}) => {
+export const Img = (
+    {
+        mobImg,
+        tabImg,
+        desImg,
+        descr,
+        defaultImg,
+        remote
+    }) => {
+        
+    let isRemote = remote || false
+
     const [imageSrc, setImageSrc] = useState(placeholderImg);
 
     useEffect(() => {
@@ -33,15 +44,17 @@ export const Img = ({mobImg, tabImg, desImg, descr, defaultImg}) => {
         <Image
 	  src={imageSrc}
 	  alt={descr}
-	  layout="responsive"/>
+          width={isRemote ? '100%' : ""}
+          height={isRemote ? '100%' : ""}
+            layout={isRemote ? "fill" : "responsive"}/>
     )
 }
 
 
             Img.propTypes = {
-                defaultImg: PropTypes.object.isRequired,
+                defaultImg: PropTypes.oneOfType([PropTypes.string, PropTypes.object]).isRequired,
                 descr: PropTypes.string.isRequired,
-                mobImg: PropTypes.object,
-                tabImg: PropTypes.object,
-                desImg: PropTypes.object
+                mobImg: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
+                tabImg: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
+                desImg: PropTypes.oneOfType([PropTypes.string, PropTypes.object])
             }

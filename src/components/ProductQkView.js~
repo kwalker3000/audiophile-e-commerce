@@ -1,0 +1,67 @@
+
+import React, { useEffect } from 'react';
+
+import { Img } from './Img';
+import { Button } from './Button';
+//import data from '../../copyData.json';
+
+import xx99M from '../../public/assets/product-xx99-mark-two-headphones/mobile/image-category-page-preview.jpg';
+import xx99T from '../../public/assets/product-xx99-mark-two-headphones/tablet/image-category-page-preview.jpg';
+import xx99D from '../../public/assets/product-xx99-mark-two-headphones/desktop/image-category-page-preview.jpg';
+
+
+export const ProductQkView = ({data}) => {
+
+   // let x = data.json();
+
+    let products = []
+
+    useEffect(() => {
+        
+    })
+
+    console.log(data.image) 
+
+    return (
+        <div id="prod-qk-view">
+          <div className="prod-qk-view">
+
+            <div className="prod-qk-view__img img-wrapper">
+	      <Img
+                remote={true}
+		mobImg={xx99M}
+		tabImg={xx99T}
+		desImg={xx99D}
+		defaultImg={xx99T}
+		descr="the xx99 mark two headphones"/>
+	    </div>
+
+            <div className="prod-qk-view__content content-wrapper">
+              <div className="prod-qk-view__text text-wrapper">
+                <p className="prod-qk-view__overline overline">
+                  new product
+                </p>
+                <h2 className="prod-qk-view__head head_level-2">
+                  XX99 Mark II Headphones
+                </h2>
+                <p className="prod-qk-view__body paragraph">
+                  The new XX99 Mark II headphones is the pinnacle of
+                  pristine audio. It redefines your premium headphone
+                  experience by reproducing the balanced depth and
+                  precision of studio-quality sound.
+                </p>
+              </div>
+
+              <div className="prod-qk-view__btn">
+                <Button
+                  bk="#D87D4A"
+                  bkhvr="#FBAF85"
+                  clr="#FFF"
+                  clrhvr="#FFF"/>
+              </div>
+            </div>
+
+          </div>
+        </div>
+    )
+}

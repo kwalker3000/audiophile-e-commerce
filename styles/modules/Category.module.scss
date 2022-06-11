@@ -1,0 +1,97 @@
+
+@use '../util/util';
+
+.page {
+    max-width: 1440px;
+    display: grid;
+    grid-template-rows: repeat(3, auto);
+    @include util.g-col-sp-mob;
+
+    grid-template-areas:
+	". header ."
+	"main main main"
+	". footer .";
+
+}
+
+
+
+.pageHeader {
+    grid-area: header;
+    position: relative;
+    z-index: 2;
+}
+
+.pageMain {
+    grid-area: main;
+}
+
+.pageFooter {
+    grid-area: footer;
+}
+
+
+
+.main {
+    display: grid;
+    $top-gap: calc(10.75rem - util.$menu-top-padding);
+    $btm-gap: calc(7.5rem - util.$menu-bottom-padding);
+    grid-template-rows: auto 4rem auto $top-gap auto $btm-gap auto 7.5rem;
+    @include util.g-col-sp-mob;
+
+    grid-template-areas:
+    "head head head"
+	". . ."
+	". qk ."
+	". . ."
+	". menu ."
+	". . ."
+	". about ."
+	". . .";
+
+
+	@media (min-width: util.$desktop) {
+
+	$top-gap: calc(15rem - util.$menu-top-padding);
+	$btm-gap: calc(10rem - util.$menu-bottom-padding);
+	grid-template-rows:
+	    auto 10rem auto $top-gap auto $btm-gap auto 10rem;
+    }
+}
+
+
+.mainHeadline {
+    grid-area: head;
+}
+
+.mainQkView {
+    grid-area: qk;
+}
+
+.mainMenu {
+    grid-area: menu;
+}
+
+.mainAbout {
+    grid-area: about;
+}
+
+
+
+.ProductQkView {
+    display: grid;
+    grid-rows: auto;
+    grid-row-gap: 7.5rem;
+    @media (min-width: util.$desktop) {
+	grid-row-gap: 10rem;
+
+    }
+}
+
+@media (min-width: util.$desktop) {
+
+   // flip image and text positions 
+    .ProductQkView > div:nth-child(even) > div > div:nth-child(2) {
+	order: -1;
+    }
+}

@@ -47,5 +47,10 @@
     grid-template-areas: ". . ." "head speak ear" ". . .";
   }
 }
+@media (min-width: 685px) {
+  .menu {
+    grid-column-gap: 1.8rem;
+  }
+}
 
 /*# sourceMappingURL=menu.css.map */

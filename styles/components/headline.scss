@@ -1,0 +1,24 @@
+
+@use '../util/util';
+@use '../typography/typography' as font;
+
+.head_level-1 {
+    @include font.h4;
+    @media (min-width: util.$tablet) {
+	@include font.h2;
+    }
+}
+
+.headline__head {
+    color: util.$white;
+}
+
+.headline {
+    border-top: 1px solid rgba(255, 255, 255, 0.104);
+    background-color: util.$black;
+    text-align: center;
+    padding: 2rem 0;
+    @media (min-width: util.$tablet) {
+	padding: 6.563rem;
+    }
+}
