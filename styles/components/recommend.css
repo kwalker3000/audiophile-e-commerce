@@ -1,0 +1,78 @@
+.head_level-2 {
+  font-family: "Manrope", sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin: 0;
+  font-size: 1.5rem;
+  line-height: 1.375em;
+  letter-spacing: 0.071em;
+  letter-spacing: 0.036em;
+  line-height: 1.5em;
+}
+
+.head_level-3 {
+  font-family: "Manrope", sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin: 0;
+  font-size: 1.5rem;
+  line-height: 1.375em;
+  letter-spacing: 0.071em;
+}
+
+.img-wrapper {
+  border-radius: 8px;
+  overflow: hidden;
+  position: relative;
+  padding-bottom: 36.7%;
+}
+
+.recommend,
+.recommend__body {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+.recommend__head {
+  margin-bottom: 2.5rem;
+}
+
+.recommend__img {
+  margin-bottom: 2rem;
+}
+
+.recommend__subtitle {
+  margin-bottom: 2rem;
+}
+
+.recommend__product {
+  margin-bottom: 3.5rem;
+}
+
+@media (min-width: 685px) {
+  .recommend__body {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-column-gap: 0.7rem;
+  }
+
+  .recommend__product {
+    margin: 0;
+  }
+
+  .img-wrapper {
+    padding-bottom: 142.6%;
+  }
+}
+@media (min-width: 1150px) {
+  .recommend__body {
+    grid-column-gap: 1.8rem;
+  }
+
+  .img-wrapper {
+    padding-bottom: 90.86%;
+  }
+}
+
+/*# sourceMappingURL=recommend.css.map */

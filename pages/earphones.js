@@ -1,4 +1,6 @@
 
+import { useEffect } from 'react';
+import { useAppContext } from '../src/context/appContext';
 import Head from 'next/head';
 import styles from '../styles/modules/Category.module.css';
 
@@ -10,8 +12,16 @@ import { Menu } from '../src/components/Menu';
 import { About } from '../src/components/About';
 import { Footer } from '../src/components/Footer';
 
+import { Overlay } from '../src/components/Overlay';
 
 export default function Earphones({data}) {
+    const { addProducts } = useAppContext();
+
+    data = data.sort((a, b) => b.new - a.new)
+
+    useEffect(() => {
+        addProducts(data);
+    }, [])
 
     return (
         <div className={styles.page}>
@@ -30,6 +40,7 @@ export default function Earphones({data}) {
             <section className={styles.mainHeadline}>
               <Headline title="earphones"/>
             </section>
+              <Overlay />
 	    <section
               className={`${styles.ProductQkView} ${styles.mainQkView}`}>
 		<ProductQkView data={data}/>
@@ -48,7 +59,7 @@ export default function Earphones({data}) {
     )
 } 
 
-export const getStaticProps = async () => {
+export const getServerSideProps = async () => {
 
   const client = await MongoClient.connect(process.env.MONGODB_URI);
 

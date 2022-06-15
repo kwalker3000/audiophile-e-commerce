@@ -1,6 +1,7 @@
 
 import React from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 
 import { Button } from './Button';
 import { Img } from './Img'
@@ -31,17 +32,19 @@ export const Hero = () => {
                   XX99 Mark II Headphones
                 </h1>
                 <p className="hero__body paragraph">
-                  Experience natural, lifelike audio and exceptional build
+                  Experience natural, life like audio and exceptional build
                   quality made for the passionate music enthusiast.
                 </p>
               </div>
-              <div className="hero__btn">
-                <Button
-                  bk="#D87D4A"
-                  bkhvr="#FBAF85"
-                  clr="#FFF"
-                  clrhvr="#FFF"/>
-              </div>
+	      <Link href="/headphones/xx99-mark-two-headphones">
+		<a className="hero__btn link">
+		    <Button
+		    bk="#D87D4A"
+		    bkhvr="#FBAF85"
+		    clr="#FFF"
+		    clrhvr="#FFF"/>
+		</a>
+	      </Link>
             </div>
           </div>
         </div>

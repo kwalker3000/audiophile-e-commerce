@@ -1,0 +1,30 @@
+
+@use '../util/util';
+@use '../typography/typography' as font;
+
+
+.decrement,
+.increment {
+    cursor:  pointer;
+    border: none;
+    background-color: unset;
+}
+
+.decrement {
+    opacity: 0.25;
+}
+
+
+.counter {
+    background-color:  util.$gray;
+    padding: 0.72rem calc(2.45rem - 1.312rem);
+
+    display: flex;
+    justify-content: space-around;
+}
+
+.count {
+    @include font.sub-title; 
+    padding: 0 1.312rem;
+}
+

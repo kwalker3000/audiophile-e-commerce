@@ -44,9 +44,7 @@ export const Img = (
         <Image
 	  src={imageSrc}
 	  alt={descr}
-          width={isRemote ? '100%' : ""}
-          height={isRemote ? '100%' : ""}
-            layout={isRemote ? "fill" : "responsive"}/>
+          layout={isRemote ? "fill" : "responsive"}/>
     )
 }
 

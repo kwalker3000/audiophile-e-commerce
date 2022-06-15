@@ -15,6 +15,11 @@
     grid-template-columns: 10.312rem 1fr 10.312rem;
   }
 }
+@media (min-width: 1150px) {
+  .page {
+    overflow-x: unset;
+  }
+}
 
 .pageHeader {
   grid-area: header;

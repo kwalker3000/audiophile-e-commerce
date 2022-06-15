@@ -1,6 +1,7 @@
 
 import React from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 
 import { Img } from './Img';
 import { Button } from './Button';
@@ -25,13 +26,15 @@ export const FeatureProductC = () => {
 		<h2 className="ft-prod-c__head head_level-2">
 		    yx1 earphones
 		</h2>
-              <div className="ft-prod-c__btn">
-		<Button
-		    bk="transparent"
-		    bkhvr="#000"
-		    clr="#000"
-		    clrhvr="#FFF"/>
-	      </div>
+	      <Link href="/earphones/yx1-earphones">
+		<a className="ft-prod-c__btn link">
+		    <Button
+			bk="transparent"
+			bkhvr="#000"
+			clr="#000"
+			clrhvr="#FFF"/>
+		</a>
+	      </Link>
             </div>
           </div>
         </div>

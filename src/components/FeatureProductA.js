@@ -1,6 +1,7 @@
 
 import React, { useEffect, useState } from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 
 import { Button } from './Button';
 import { Img } from './Img'
@@ -36,14 +37,15 @@ export const FeatureProductA = () => {
               Upgrade to premium speakers that are phenomenally built to
               deliver truly remarkable sound.
             </p>
-	    <div className="ft-prod-a__btn">
-		<Button
-		    bk="#000"
-		    bkhvr="#4C4C4C"
-		    clr="#FFF"
-		    clrhvr="#FFF"/>            
-	    </div>
-
+	    <Link href="/speakers/zx9-speaker">
+		<a className="ft-prod-a__btn link">
+		    <Button
+			bk="#000"
+			bkhvr="#4C4C4C"
+			clr="#FFF"
+			clrhvr="#FFF"/>            
+		</a>
+	    </Link>
           </div>
 	</div>
 	</div>

@@ -2,7 +2,14 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 
-export const Button = ({bk, bkhvr, clr, clrhvr}) => {
+export const Button = (
+    {
+        bk,
+        bkhvr,
+        clr,
+        clrhvr,
+        txt
+    }) => {
     const [isHover, setIsHover] = useState(false)
     let background = isHover ? bkhvr : bk;
     let color = isHover ? clrhvr : clr;
@@ -12,7 +19,7 @@ export const Button = ({bk, bkhvr, clr, clrhvr}) => {
           className="btn btn-text"
           onMouseEnter={() => setIsHover(!isHover)}
           onMouseLeave={() => setIsHover(!isHover)}>
-          see product
+          {txt ? txt : "see product"}
         </button>
     )
 }

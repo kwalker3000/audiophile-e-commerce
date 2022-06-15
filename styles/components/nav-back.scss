@@ -1,0 +1,21 @@
+
+@use '../util/util';
+
+.btn_back {
+    padding: 0;
+    opacity: 0.5;
+}
+
+.btn_back:hover {
+    color: util.$dark-orange;
+    opacity: 1;
+}
+
+.nav-back {
+    height: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+

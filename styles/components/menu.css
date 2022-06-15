@@ -37,17 +37,12 @@
 @media (min-width: 685px) {
   .menu {
     grid-template-rows: 6.75rem 1fr 4.15rem;
-    /* grid-template-columns: 2.5rem repeat(2, auto 0.75rem) auto 2.5rem; */
     grid-template-columns: repeat(3, 1fr);
     grid-column-gap: 0.7rem;
-    /* grid-template-areas:
-       ". . . . . . ."
-       ". head . speak . ear ."
-       ". . . . . . ."; */
     grid-template-areas: ". . ." "head speak ear" ". . .";
   }
 }
-@media (min-width: 685px) {
+@media (min-width: 1150px) {
   .menu {
     grid-column-gap: 1.8rem;
   }

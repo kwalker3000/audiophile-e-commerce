@@ -1,8 +1,10 @@
 import '../styles/globals.css'
 
-import { AppWrapper } from '../src/context/appContext'
+import useScrollRestoration from '../src/hooks/useScrollRestoration';
+import { AppWrapper } from '../src/context/appContext';
 
-function MyApp({ Component, pageProps }) {
+function MyApp({ Component, pageProps, router }) {
+    useScrollRestoration(router);
     return (
 
         <AppWrapper>

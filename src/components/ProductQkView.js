@@ -1,11 +1,13 @@
 
 import React, { useEffect } from 'react';
+import Link from 'next/link';
 
 import { Img } from './Img';
 import { Button } from './Button';
 
 export const ProductQkView = ({data}) => {
 
+    const { category, slug } = data;
        return (
         data.map(product => (
 	    <div id="prod-qk-view"
@@ -37,13 +39,15 @@ export const ProductQkView = ({data}) => {
 		    </p>
 		</div>
 
-		<div className="prod-qk-view__btn">
-		    <Button
-		    bk="#D87D4A"
-		    bkhvr="#FBAF85"
-		    clr="#FFF"
-		    clrhvr="#FFF"/>
-		</div>
+                  <Link href={`/${product.category}/${product.slug}`} >
+		    <a className="prod-qk-view__btn link">
+			<Button
+			bk="#D87D4A"
+			bkhvr="#FBAF85"
+			clr="#FFF"
+			clrhvr="#FFF"/>
+		    </a>
+                  </Link>
 		</div>
 
 	    </div>

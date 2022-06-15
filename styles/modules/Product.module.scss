@@ -1,0 +1,110 @@
+
+@use '../util/util';
+
+.page {
+    max-width: 1440px;
+    overflow-x: hidden;
+    display: grid;
+    grid-template-rows: repeat(3, auto);
+    @include util.g-col-sp-mob;
+
+    grid-template-areas:
+	". header ."
+	"main main main"
+	". footer .";
+
+    @media (min-width: util.$desktop) {
+	overflow-x: unset;
+    }
+
+}
+
+
+
+.pageHeader {
+    grid-area: header;
+    position: relative;
+    z-index: 2;
+}
+
+.pageMain {
+    grid-area: main;
+}
+
+.pageFooter {
+    grid-area: footer;
+}
+
+
+
+.main {
+    display: grid;
+    $top-gap: calc(10.75rem - util.$menu-top-padding);
+    $btm-gap: calc(7.5rem - util.$menu-bottom-padding);
+    grid-template-rows:
+	4rem repeat(2, auto 5.5rem) auto 7.5rem auto $top-gap auto $btm-gap auto 7.5rem;
+    @include util.g-col-sp-mob;
+
+    grid-template-areas:
+	". nvB ."
+	". ov ."
+	". . ."
+	". cont ."
+	". . ."
+	". gal ."
+	". . ."
+	". rec ."
+	". . ."
+	". menu ."
+	". . ."
+	". about ."
+	". . .";
+
+    @media (min-width: util.$tablet) {
+	$top-gap: calc(10.75rem - util.$menu-top-padding);
+	$btm-gap: calc(7.5rem - util.$menu-bottom-padding);
+	grid-template-rows:
+	    5rem repeat(3, auto 7.5rem) auto $top-gap auto $btm-gap auto 7.5rem;
+
+    }
+    
+    @media (min-width: util.$tablet) {
+	$top-gap: calc(15rem - util.$menu-top-padding);
+	$btm-gap: calc(10rem - util.$menu-bottom-padding);
+	grid-template-rows:
+	    10rem repeat(3, auto 10rem) auto $top-gap auto $btm-gap auto 10rem;
+
+    }
+   
+}
+
+.mainNavBack {
+    grid-area: nvB;
+}
+
+.mainProdOvView {
+    grid-area: ov;
+}
+
+.mainProdContent {
+    grid-area: cont;
+}
+
+.mainProdGallery {
+    grid-area: gal;
+}
+
+.mainRecommend {
+    grid-area: rec;
+}
+
+.mainMenu {
+    grid-area: menu;
+}
+
+.mainAbout {
+    grid-area: about;
+}
+
+
+

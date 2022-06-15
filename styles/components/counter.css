@@ -1,0 +1,30 @@
+.decrement,
+.increment {
+  cursor: pointer;
+  border: none;
+  background-color: unset;
+}
+
+.decrement {
+  opacity: 0.25;
+}
+
+.counter {
+  background-color: #f1f1f1;
+  padding: 0.72rem 1.138rem;
+  display: flex;
+  justify-content: space-around;
+}
+
+.count {
+  font-family: "Manrope", sans-serif;
+  margin: 0;
+  font-size: 0.8125rem;
+  font-weight: 700;
+  line-height: 1.923em;
+  letter-spacing: 0.076em;
+  text-transform: uppercase;
+  padding: 0 1.312rem;
+}
+
+/*# sourceMappingURL=counter.css.map */

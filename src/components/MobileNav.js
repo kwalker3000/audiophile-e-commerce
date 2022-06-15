@@ -1,6 +1,6 @@
 
-import React, {useState} from 'react'
 import { useAppContext } from '../context/appContext';
+import React, {useState} from 'react'
 import Image from 'next/image'
 
 import { Menu } from './Menu'

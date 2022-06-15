@@ -1,0 +1,22 @@
+
+import React from 'react';
+
+export const ProductContent = ({features}) => {
+    
+    let paragraph = features.split('\n')
+
+    return (
+        <div id="features">
+          <div className="features">
+            <div className="features"></div>
+            <h3 className="features__head head_level-3">features</h3>
+            <p className="features__body paragraph">
+              {paragraph[0]}
+            </p>
+            <p className="paragraph">
+              {paragraph[2]}
+            </p>
+          </div>
+        </div>
+    )
+}

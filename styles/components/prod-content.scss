@@ -1,0 +1,87 @@
+
+@use '../util/util';
+@use '../typography/typography' as font;
+
+
+.head_level-3 {
+    @include font.h5;
+    letter-spacing: 0.036em;
+    line-height: 1.5em;
+    @media (min-width: util.$tablet) {
+	@include font.h3;
+    }
+}
+
+.paragraph {
+    @include font.body;
+}
+
+.quantity {
+    @include font.body;
+    color:  util.$dark-orange;
+    font-weight: 700;
+    opacity: 1;
+
+    margin-right: 1.5rem;
+}
+
+.prod-content__head {
+    margin-bottom: 1.5rem;
+}
+
+.prod-content__body {
+    margin-bottom: 1.5rem;
+}
+
+.prod-content__feat-wrapper {
+    margin-bottom: 5.5rem;
+}
+
+.prod-content__list > .prod-content__body {
+    margin: 0 0 0.5rem;
+}
+
+@media (min-width: util.$tablet) {
+    
+    .in-box-wrapper {
+	display: flex;
+	justify-content:  space-between;
+    }
+
+    // match prod-ov-view
+    .prod-content__head {
+	width: 40.72%;
+    }
+
+    .prod-content__list {
+	width: 49.28%;
+    }
+    /////////////////////
+
+}
+
+@media (min-width: util.$desktop) {
+
+    .prod-content__feat-wrapper {
+	margin: 0;
+    }
+
+    .prod-content {
+	display: flex;
+	justify-content:  space-between;
+    }
+
+    .feat-wrapper {
+	width: 57.21%;
+    }
+
+    .in-box-wrapper {
+	width: 31.53%;
+	flex-direction: column;
+    }
+
+    .prod-content__head,
+    .prod-content__list {
+	width: 100%;
+    }
+}
