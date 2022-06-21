@@ -1,12 +1,12 @@
 
 import React, {useState} from 'react'
-import { useAppContext } from '../context/appContext';
+//import { useAppContext } from '../context/appContext';
 import Image from 'next/image'
 
 import burger from '../../public/assets/shared/tablet/icon-hamburger.svg'
 
-export const Burger = () => {
-    const { toggleMenu, isMenuOpen } = useAppContext()
+export const Burger = ({toggleMenu, isMenuOpen}) => {
+    //const { toggleMenu, isMenuOpen } = useAppContext()
     
     return (
 	  <button

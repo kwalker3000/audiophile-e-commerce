@@ -54,3 +54,21 @@ describe('Img', () => {
   })
 
 })
+
+describe('image layout', () => {
+
+    afterEach(cleanup);
+
+    it('renders -fill- layout', () => {
+        render(
+          <Img
+            defaultImg={mockImg}
+            descr="some text"
+            remote={true}/>)
+
+    let image = screen.getByAltText('some text');
+    expect(image).toBeInTheDocument();
+
+    })
+})
+

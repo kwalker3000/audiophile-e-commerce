@@ -9,15 +9,17 @@ import { Burger } from './Burger'
 import burger from '../../public/assets/shared/tablet/icon-hamburger.svg'
 
 export const MobileNav = () => {
-    const { isMenuOpen } = useAppContext();
+    const { isMenuOpen, toggleMenu } = useAppContext();
     return (
         <div
           className={`mobile-nav`}>
           <Burger
+            toggleMenu={toggleMenu}
+            isMenuOpen={isMenuOpen}
           />
           {isMenuOpen
            ? <div className="mobile-nav__menu">
-               <Menu />
+		 <Menu toggleMenu={toggleMenu}/>
              </div>
              : ""}
         </div>

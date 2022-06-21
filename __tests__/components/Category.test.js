@@ -1,53 +1,81 @@
 
 import React from 'react';
+import { AppContext, useAppContext, AppWrapper } from 
+'../../src/context/appContext';
 import { Category } from '../../src/components/Category';
 
 import { render, screen, cleanup } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import '@testing-library/jest-dom';
 
-import Image from 'next/image'
-import mockImg from '../../public/assets/favicon-32x32.png'
-
-// describe('updates class attribute', () => {
+import Image from 'next/image';
+import mockImg from '../../public/assets/favicon-32x32.png';
 
 
-//     it('should add className on mouse enter', async () => {
-//     const user = userEvent.setup()
-//     let {container} = render(<Category src={mockImg} />)
+describe('update attribute based on hover status', () => {
 
-// 	await user.hover(screen.getByRole('link'))
-// 	let activeArrow = container.getElementsByClassName('arrow_active');
+    afterEach(cleanup);
 
-// 	expect(activeArrow[0]).toBeInTheDocument()
+    it('on hover', async () => {
+	const user = userEvent.setup();
+	let {container} = render(<Category src={mockImg} />);
+	
+	await user.hover(screen.getByRole('link'));
+	let activeArrow = container.getElementsByClassName('arrow_active');
 
-//     })
+	expect(activeArrow[0]).toBeInTheDocument();
 
-//     it('should remove className on mouse leave', async () => {
-// 	await user.unhover(screen.getByRole('link'))
-// 	activeArrow = container.getElementsByClassName('arrow_active');
+    })
 
-// 	expect(activeArrow[0]).toBeUndefined()
+    it('on unhover', async () => {
+	const user = userEvent.setup();
+	let {container} = render(<Category src={mockImg} />);
 
-//     })
-// })    
+        // test complained about coverage with unhover event only 
+	await user.hover(screen.getByRole('link'));
+	await user.unhover(screen.getByRole('link'));
 
-test('should update class attribute based on hover status', async () => {
+	let activeArrow = container.getElementsByClassName('arrow_active');
 
-    const user = userEvent.setup()
-    let {container} = render(<Category src={mockImg} />)
+	expect(activeArrow[0]).toBeUndefined();
 
-    // mouse enter
-    await user.hover(screen.getByRole('link'))
-    let activeArrow = container.getElementsByClassName('arrow_active');
-
-    expect(activeArrow[0]).toBeInTheDocument()
-
-    // mouse leave
-    await user.unhover(screen.getByRole('link'))
-    activeArrow = container.getElementsByClassName('arrow_active');
-
-    expect(activeArrow[0]).toBeUndefined()
-
+    })
 })
 
+
+describe('<Category/>', () => {
+
+    let text = 'shop';
+    afterEach(cleanup);
+    
+    it('should mount', () => {
+	render(<Category src={mockImg} />);
+
+	let value = screen.getByText(text);
+	expect(value).toBeInTheDocument();
+    })
+    
+    it('should unmount', async () => {
+        let state = {
+            isMenuOpen: true,
+            toggleMenu() {
+                this.isMenuOpen = false;
+            }
+        };
+	const user = userEvent.setup();
+	render
+        (
+            <Category src={mockImg}/>
+        );
+
+	let mountedValue = screen.getByText(text);
+	await user.click(screen.queryByRole('link', {
+	    name: 'earphones'
+	}));
+	let unmountedValue = screen.findByText(text).length;
+
+	expect(mountedValue).toBeInTheDocument()
+        expect(unmountedValue).toBeUndefined;
+    })
+
+})

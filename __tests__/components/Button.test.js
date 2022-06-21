@@ -26,3 +26,35 @@ test('should update styling of component based on hover status',
 
          expect(val1).not.toEqual(val2)
      })
+
+describe('Button', () => {
+
+    afterEach(cleanup);
+
+    it('renders button text through prop', () => {
+        let input = 'hello world';
+        render(<Button
+                 bk="#FFF"
+                 bkhvr="#000"
+                 clr="#000"
+                 clrhvr="#FFF"
+                 txt={input} />)
+
+	let btnTxt = screen.getByRole('button').textContent;
+
+	expect(btnTxt).toEqual(input)
+    })
+
+    it('renders default button text', () => {
+        let defaultTxt = 'see product';
+        render(<Button
+                 bk="#FFF"
+                 bkhvr="#000"
+                 clr="#000"
+                 clrhvr="#FFF" />)
+
+        let btnTxt = screen.getByRole('button').textContent;
+
+        expect(btnTxt).toEqual(defaultTxt)
+    })
+})

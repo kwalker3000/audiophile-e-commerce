@@ -115,5 +115,17 @@
     margin-bottom: 2.938rem;
   }
 }
+.out-of-stock {
+  font-family: "Manrope", sans-serif;
+  margin: 0;
+  font-size: 0.938rem;
+  font-weight: 500;
+  line-height: 1.667em;
+  opacity: 0.5;
+  font-size: 1.125rem;
+  opacity: 0.85;
+  color: red;
+  width: 300px;
+}
 
 /*# sourceMappingURL=prod-ov-view.css.map */

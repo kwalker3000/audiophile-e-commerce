@@ -1,6 +1,8 @@
 
 import React from 'react';
-import Image from 'next/image'
+import Image from 'next/image';
+
+import { Img } from './Img';
 
 import modelWithHeadsMob from '../../public/assets/shared/mobile/image-best-gear.jpg';
 import modelWithHeadsTab from '../../public/assets/shared/tablet/image-best-gear.jpg';
@@ -16,23 +18,14 @@ export const About = () => {
           className="about">
 
           <div className="about__img img-wrapper_about-mob">
-            <Image
-              src={modelWithHeadsMob}
-              alt="close-up photo of male model wearing headphones"
-              layout="responsive"/>
-	  </div>
-          <div className="about__img img-wrapper_about-tab">
-            <Image
-              src={modelWithHeadsTab}
-              alt="close-up photo of male model wearing headphones"
-              layout="responsive"/>
-	  </div>
-          <div className="about__img img-wrapper_about-des">
-            <Image
-              src={modelWithHeadsDes}
-              alt="close-up photo of male model wearing headphones"
-              layout="responsive"/>
-	  </div>
+	    <Img
+		remote={false}
+		mobImg={modelWithHeadsMob}
+		tabImg={modelWithHeadsTab}
+		desImg={modelWithHeadsDes}
+		defaultImg={modelWithHeadsTab}
+		descr="close-up photo of male model wearing headphones"/>
+          </div>
 
           <div className="about__text">
             <h2 className="about__head head_level-2">

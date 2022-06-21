@@ -10,7 +10,9 @@
     background-color: unset;
 }
 
-.decrement {
+.decrement:disabled,
+.increment:disabled {
+    cursor: not-allowed;
     opacity: 0.25;
 }
 

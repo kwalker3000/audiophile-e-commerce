@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { AppWrapper, AppContext } from '../../src/context/appContext';
+import { AppContext } from '../../src/context/appContext';
 import { Overlay } from '../../src/components/Overlay';
 
 import { render, screen, cleanup } from '@testing-library/react';
@@ -28,7 +28,7 @@ describe("<Overlay />", () => {
         let overlay = screen.getByTestId('overlay');
 	expect(overlay).toHaveStyle('display: none');
 
-    state.isMenuOpen = true;
+	state.isMenuOpen = true;
     })
 
 

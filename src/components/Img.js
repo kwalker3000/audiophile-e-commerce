@@ -15,7 +15,8 @@ export const Img = (
         remote
     }) => {
         
-    let isRemote = remote || false
+        let isRemote = remote || false;
+        let layout = isRemote ? 'fill' : 'responsive';
 
     const [imageSrc, setImageSrc] = useState(placeholderImg);
 
@@ -44,7 +45,7 @@ export const Img = (
         <Image
 	  src={imageSrc}
 	  alt={descr}
-          layout={isRemote ? "fill" : "responsive"}/>
+          layout={layout}/>
     )
 }
 
@@ -54,5 +55,6 @@ export const Img = (
                 descr: PropTypes.string.isRequired,
                 mobImg: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
                 tabImg: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
-                desImg: PropTypes.oneOfType([PropTypes.string, PropTypes.object])
+                desImg: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
+                remote: PropTypes.bool
             }

@@ -40,14 +40,20 @@ export const ProductOvView = ({product}) => {
                 </p>
               </div>
 
-              <div className="prod-ov-view__btn-container btn-container">
-                <div className="prod-ov-view__count">
-                  <Counter />
-                </div>
-                <div className="prod-ov-view__cart">
-                  <AddCart/>
-                </div>
-              </div>
+               {product.stock > 0
+                 ? <div className="prod-ov-view__btn-container btn-container">
+		     <div className="prod-ov-view__count">
+                       <Counter stock={product.stock} />
+                     </div>
+                     <div className="prod-ov-view__cart">
+                       <AddCart/>
+                     </div>
+                   </div>
+                 : <div className="out-of-stock">
+                     <p>We're sorry, the item is currently out of stock.
+                     </p>
+                   </div>
+               }
 
             </div>
           </div>

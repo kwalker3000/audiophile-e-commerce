@@ -1,0 +1,7 @@
+
+replace unit test with integration test or use mock :
+
+<Header />
+<Menu />
+<Recommend />
+<ProductQkTest />
