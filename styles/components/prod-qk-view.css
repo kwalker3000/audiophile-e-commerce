@@ -1,3 +1,13 @@
+.btn {
+  background-color: #d87d4a;
+  color: #fff;
+}
+
+.btn_active:hover,
+.btn_active:focus {
+  background-color: #fbaf85;
+}
+
 .overline {
   font-family: "Manrope", sans-serif;
   margin: 0;
@@ -37,7 +47,7 @@
   font-size: 0.938rem;
   font-weight: 500;
   line-height: 1.667em;
-  opacity: 0.5;
+  opacity: 0.55;
 }
 
 .prod-qk-view__img {

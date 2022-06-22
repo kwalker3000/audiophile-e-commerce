@@ -3,10 +3,14 @@ import React from 'react';
 
 import { Button } from './Button';
 
-export const AddCart = () => {
+export const AddCart = ({addCart, product}) => {
 
     return (
-        <div id="add-cart">
+        <div
+	    id="add-cart"
+	    onClick={() => addCart(product)}
+	    onKeyPress={() => addCart(product)}
+	    tabIndex={0}>
           <div className="add-cart">
             <div className="add-cart__btn">
               <Button
@@ -14,7 +18,7 @@ export const AddCart = () => {
                 bkhvr="#FBAF85"
                 clr="#FFF"
                 clrhvr="#FFF"
-                txt="add to cart"/>
+                  txt="add to cart"/>
             </div>
           </div>
         </div>

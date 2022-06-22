@@ -2,6 +2,16 @@
 @use '../util/util';
 @use '../typography/typography' as font;
 
+.btn {
+    background-color: util.$black;
+    color: util.$white;
+}
+
+.btn_active:hover,
+.btn_active:focus {
+    background-color: #4C4C4C;
+}
+
 .head_level-2 {
     @include font.shared-head-styling; 
     font-size: 2.25rem;
@@ -44,7 +54,8 @@
 }
 
 .ft-prod-a__btn {
-    position: relative;
+    //position: relative;
+    align-self: center;
 }
 
 .img-wrapper_prod-a {
@@ -63,6 +74,9 @@
     color: #FFF;
     text-align: center;
     max-width: min-content;
+
+    display: flex;
+    flex-direction: column;
 }
 
 
@@ -121,5 +135,9 @@
     .ft-prod-a__img {
 	margin: 0;
 	margin-bottom: -1rem;
+    }
+
+    .ft-prod-a__btn {
+	align-self: flex-start;
     }
 }

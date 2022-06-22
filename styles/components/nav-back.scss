@@ -3,10 +3,11 @@
 
 .btn_back {
     padding: 0;
-    opacity: 0.5;
+    opacity: 0.55;
 }
 
-.btn_back:hover {
+.btn_back:hover,
+.btn_back:focus {
     color: util.$dark-orange;
     opacity: 1;
 }

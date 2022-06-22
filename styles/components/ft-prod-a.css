@@ -1,3 +1,13 @@
+.btn {
+  background-color: #000;
+  color: #fff;
+}
+
+.btn_active:hover,
+.btn_active:focus {
+  background-color: #4C4C4C;
+}
+
 .head_level-2 {
   font-family: "Manrope", sans-serif;
   font-weight: 700;
@@ -25,7 +35,7 @@
   font-size: 0.938rem;
   font-weight: 500;
   line-height: 1.667em;
-  opacity: 0.5;
+  opacity: 0.55;
   opacity: 0.75;
 }
 
@@ -54,7 +64,7 @@
 }
 
 .ft-prod-a__btn {
-  position: relative;
+  align-self: center;
 }
 
 .img-wrapper_prod-a {
@@ -76,6 +86,8 @@
   color: #FFF;
   text-align: center;
   max-width: min-content;
+  display: flex;
+  flex-direction: column;
 }
 
 .bkg-img {
@@ -130,6 +142,10 @@
   .ft-prod-a__img {
     margin: 0;
     margin-bottom: -1rem;
+  }
+
+  .ft-prod-a__btn {
+    align-self: flex-start;
   }
 }
 

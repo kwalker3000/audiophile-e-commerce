@@ -78,31 +78,3 @@
     @include img-wrapper_about;
 }
 
-.img-wrapper_about-tab {
-    display: none;
-}
-
-.img-wrapper_about-des {
-    display: none;
-}
-
-@media (min-width: util.$tablet) {
-
-    .img-wrapper_about-mob {
-	display: none;
-    }
-    .img-wrapper_about-tab {
-	display: block;
-    }
-}
-
-@media (min-width: util.$desktop) {
-
-    .img-wrapper_about-tab {
-	display: none;
-    }
-    .img-wrapper_about-des {
-	display: block;
-    }
-}
-

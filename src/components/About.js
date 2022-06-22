@@ -17,7 +17,7 @@ export const About = () => {
         <div
           className="about">
 
-          <div className="about__img img-wrapper_about-mob">
+          <div className="about__img">
 	    <Img
 		remote={false}
 		mobImg={modelWithHeadsMob}

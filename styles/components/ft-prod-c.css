@@ -1,3 +1,14 @@
+.btn {
+  background-color: transparent;
+  color: #000;
+}
+
+.btn_active:hover,
+.btn_active:focus {
+  background-color: #000;
+  color: #fff;
+}
+
 .head_level-2 {
   font-family: "Manrope", sans-serif;
   font-weight: 700;
@@ -23,6 +34,10 @@
 
 .ft-prod-c__img {
   margin-bottom: 1.5rem;
+}
+
+.ft-prod-c__btn {
+  width: fit-content;
 }
 
 @media (min-width: 685px) {

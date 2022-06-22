@@ -4,7 +4,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 import { Img } from './Img';
-import { Button } from './Button';
+import { LinkBtn } from './LinkBtn';
 
 import yx1M from '../../public/assets/home/mobile/image-earphones-yx1.jpg';
 import yx1T from '../../public/assets/home/tablet/image-earphones-yx1.jpg';
@@ -26,15 +26,9 @@ export const FeatureProductC = () => {
 		<h2 className="ft-prod-c__head head_level-2">
 		    yx1 earphones
 		</h2>
-	      <Link href="/earphones/yx1-earphones">
-		<a className="ft-prod-c__btn link">
-		    <Button
-			bk="transparent"
-			bkhvr="#000"
-			clr="#000"
-			clrhvr="#FFF"/>
-		</a>
-	      </Link>
+              <div className="ft-prod-c__btn">
+                <LinkBtn />
+	      </div>
             </div>
           </div>
         </div>

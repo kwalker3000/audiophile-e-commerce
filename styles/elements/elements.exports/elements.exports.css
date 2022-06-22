@@ -14,7 +14,8 @@
   padding: 0 1em;
 }
 
-.link_active:hover {
+.link_active:hover,
+.link_active:focus {
   color: #d87d4a;
 }
 
@@ -22,7 +23,8 @@
   fill: #fff;
 }
 
-.link-social_active:hover {
+.link-social_active:hover,
+.link-social_active:focus {
   cursor: pointer;
   fill: #d87d4a;
 }

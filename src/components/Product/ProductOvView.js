@@ -1,5 +1,6 @@
 
 import React from 'react';
+import { useAppContext } from '../../../src/context/appContext';
 
 import { Img } from '../Img';
 import { AddCart } from '../AddCart';
@@ -7,6 +8,7 @@ import { Counter } from '../Counter';
 
 
 export const ProductOvView = ({product}) => {
+    let { addCart } = useAppContext();
 
     return (
         <div id="prod-ov-view">
@@ -46,7 +48,9 @@ export const ProductOvView = ({product}) => {
                        <Counter stock={product.stock} />
                      </div>
                      <div className="prod-ov-view__cart">
-                       <AddCart/>
+                       <AddCart
+                         addCart={addCart}
+                         product={product}/>
                      </div>
                    </div>
                  : <div className="out-of-stock">

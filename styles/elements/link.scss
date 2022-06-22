@@ -17,7 +17,8 @@
     padding: 0 1em;
 }
 
-.link_active:hover {
+.link_active:hover,
+.link_active:focus {
     color: util.$dark-orange;
 }
 
@@ -25,7 +26,9 @@
     fill: util.$white;
 }
 
-.link-social_active:hover {
+.link-social_active:hover,
+.link-social_active:focus {
     cursor: pointer;
     fill: util.$dark-orange;
 }
+

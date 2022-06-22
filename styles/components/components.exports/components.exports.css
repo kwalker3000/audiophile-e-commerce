@@ -263,7 +263,8 @@
   position: relative;
 }
 
-.category__content:hover .category__sub-title {
+.category__content:hover .category__sub-title,
+.category__content:focus .category__sub-title {
   opacity: 1;
   color: #d87d4a;
 }
@@ -346,13 +347,21 @@
   z-index: 1;
 }
 
+#hero .btn {
+  background-color: #d87d4a;
+  color: #fff;
+}
+#hero .btn_active:hover,
+#hero .btn_active:focus {
+  background-color: #fbaf85;
+}
 #hero .paragraph {
   font-family: "Manrope", sans-serif;
   margin: 0;
   font-size: 0.938rem;
   font-weight: 500;
   line-height: 1.667em;
-  opacity: 0.5;
+  opacity: 0.55;
   opacity: 0.75;
 }
 #hero .overline {
@@ -495,6 +504,14 @@
   }
 }
 
+#ft-prod-a .btn {
+  background-color: #000;
+  color: #fff;
+}
+#ft-prod-a .btn_active:hover,
+#ft-prod-a .btn_active:focus {
+  background-color: #4C4C4C;
+}
 #ft-prod-a .head_level-2 {
   font-family: "Manrope", sans-serif;
   font-weight: 700;
@@ -521,7 +538,7 @@
   font-size: 0.938rem;
   font-weight: 500;
   line-height: 1.667em;
-  opacity: 0.5;
+  opacity: 0.55;
   opacity: 0.75;
 }
 #ft-prod-a .ft-prod-a {
@@ -545,7 +562,7 @@
   margin-bottom: 1.75rem;
 }
 #ft-prod-a .ft-prod-a__btn {
-  position: relative;
+  align-self: center;
 }
 #ft-prod-a .img-wrapper_prod-a {
   min-height: 207px;
@@ -565,6 +582,8 @@
   color: #FFF;
   text-align: center;
   max-width: min-content;
+  display: flex;
+  flex-direction: column;
 }
 #ft-prod-a .bkg-img {
   width: 559px;
@@ -613,8 +632,20 @@
     margin: 0;
     margin-bottom: -1rem;
   }
+  #ft-prod-a .ft-prod-a__btn {
+    align-self: flex-start;
+  }
 }
 
+#ft-prod-b .btn {
+  background-color: transparent;
+  color: #000;
+}
+#ft-prod-b .btn_active:hover,
+#ft-prod-b .btn_active:focus {
+  background-color: #000;
+  color: #fff;
+}
 #ft-prod-b .head_level-2 {
   font-family: "Manrope", sans-serif;
   font-weight: 700;
@@ -639,11 +670,23 @@
 #ft-prod-b .ft-prod-b__head {
   margin-bottom: 1.75rem;
 }
+#ft-prod-b .ft-prod-b__btn {
+  width: fit-content;
+}
 #ft-prod-b .img-wrapper_prod-b {
   border-radius: 8px;
   overflow: hidden;
 }
 
+#ft-prod-c .btn {
+  background-color: transparent;
+  color: #000;
+}
+#ft-prod-c .btn_active:hover,
+#ft-prod-c .btn_active:focus {
+  background-color: #000;
+  color: #fff;
+}
 #ft-prod-c .head_level-2 {
   font-family: "Manrope", sans-serif;
   font-weight: 700;
@@ -665,6 +708,9 @@
 }
 #ft-prod-c .ft-prod-c__img {
   margin-bottom: 1.5rem;
+}
+#ft-prod-c .ft-prod-c__btn {
+  width: fit-content;
 }
 @media (min-width: 685px) {
   #ft-prod-c .ft-prod-c {
@@ -736,7 +782,7 @@
   font-size: 0.938rem;
   font-weight: 500;
   line-height: 1.667em;
-  opacity: 0.5;
+  opacity: 0.55;
 }
 #about .about__text {
   text-align: center;
@@ -776,29 +822,15 @@
   border-radius: 8px;
   overflow: hidden;
 }
-#about .img-wrapper_about-tab {
-  display: none;
-}
-#about .img-wrapper_about-des {
-  display: none;
-}
-@media (min-width: 685px) {
-  #about .img-wrapper_about-mob {
-    display: none;
-  }
-  #about .img-wrapper_about-tab {
-    display: block;
-  }
-}
-@media (min-width: 1150px) {
-  #about .img-wrapper_about-tab {
-    display: none;
-  }
-  #about .img-wrapper_about-des {
-    display: block;
-  }
-}
 
+#prod-qk-view .btn {
+  background-color: #d87d4a;
+  color: #fff;
+}
+#prod-qk-view .btn_active:hover,
+#prod-qk-view .btn_active:focus {
+  background-color: #fbaf85;
+}
 #prod-qk-view .overline {
   font-family: "Manrope", sans-serif;
   margin: 0;
@@ -836,7 +868,7 @@
   font-size: 0.938rem;
   font-weight: 500;
   line-height: 1.667em;
-  opacity: 0.5;
+  opacity: 0.55;
 }
 #prod-qk-view .prod-qk-view__img {
   margin-bottom: 2rem;
@@ -947,7 +979,7 @@
   font-size: 0.938rem;
   font-weight: 500;
   line-height: 1.667em;
-  opacity: 0.5;
+  opacity: 0.55;
 }
 #prod-ov-view .price {
   font-size: 1.125rem;
@@ -1020,7 +1052,7 @@
   font-size: 0.938rem;
   font-weight: 500;
   line-height: 1.667em;
-  opacity: 0.5;
+  opacity: 0.55;
   font-size: 1.125rem;
   opacity: 0.85;
   color: red;
@@ -1055,7 +1087,7 @@
   font-size: 0.938rem;
   font-weight: 500;
   line-height: 1.667em;
-  opacity: 0.5;
+  opacity: 0.55;
 }
 #prod-content .quantity {
   font-family: "Manrope", sans-serif;
@@ -1063,7 +1095,7 @@
   font-size: 0.938rem;
   font-weight: 500;
   line-height: 1.667em;
-  opacity: 0.5;
+  opacity: 0.55;
   color: #d87d4a;
   font-weight: 700;
   opacity: 1;
@@ -1156,6 +1188,14 @@
   }
 }
 
+#recommend .btn {
+  background-color: #d87d4a;
+  color: #fff;
+}
+#recommend .btn_active:hover,
+#recommend .btn_active:focus {
+  background-color: #fbaf85;
+}
 #recommend .head_level-2 {
   font-family: "Manrope", sans-serif;
   font-weight: 700;
@@ -1222,8 +1262,12 @@
   }
 }
 
-.btn {
+.btn_reset {
   all: unset;
+}
+
+.btn {
+  display: block;
   padding: 0.72rem 1.89rem;
   cursor: pointer;
 }
@@ -1240,10 +1284,11 @@
 
 .btn_back {
   padding: 0;
-  opacity: 0.5;
+  opacity: 0.55;
 }
 
-.btn_back:hover {
+.btn_back:hover,
+.btn_back:focus {
   color: #d87d4a;
   opacity: 1;
 }

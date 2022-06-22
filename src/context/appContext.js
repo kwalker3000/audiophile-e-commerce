@@ -5,13 +5,37 @@ const AppContext = createContext();
 
 export const AppWrapper = ({ children }) => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
-    //const [isEmpty, setIsEmpty] = useState(true);
-    //const [products, setProducts] = useState();
+    const [cart, setCart] = useState([])
     // cart array
 
-    const toggleMenu = () => {
+    let toggleMenu = () => {
         setIsMenuOpen(!isMenuOpen);
     }
+
+    let addCart = (product, size = 1) => {
+        console.log(product)
+        let inCart = cart.find(item => item.id == product._id);
+        if (inCart) {
+            setCart(prevCart => prevCart.map(item => {
+                if(item.id == product._id) {
+                    return {...item, count: item.count+1}
+                }
+                return item
+            }))
+        }
+        else {
+            setCart(prevCart => [...prevCart, {
+                name: product.name,
+                price: product.price,
+                img: product.image.mobile,
+                count: 1,
+                id: product._id
+            }]) 
+        }
+
+    }
+    //let removeCart
+    //let emptyCart
 
     // const addProducts = (category) => {
     // 	if(!products) {
@@ -23,9 +47,10 @@ export const AppWrapper = ({ children }) => {
     // 	    setProducts(preSet => [...preSet, ...category])
     // 	}
     // }
+    console.log(cart)
 
     return (
-        <AppContext.Provider value={{toggleMenu, isMenuOpen}}>
+        <AppContext.Provider value={{toggleMenu, isMenuOpen, addCart}}>
           {children}
         </AppContext.Provider>
     );

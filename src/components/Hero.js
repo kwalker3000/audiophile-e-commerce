@@ -4,6 +4,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 import { Button } from './Button';
+import { LinkBtn } from './LinkBtn';
 import { Img } from './Img'
 
 import heroM from '../../public/assets/home/mobile/image-hero.jpg';
@@ -36,15 +37,10 @@ export const Hero = () => {
                   quality made for the passionate music enthusiast.
                 </p>
               </div>
-	      <Link href="/headphones/xx99-mark-two-headphones">
-		<a className="hero__btn link">
-		    <Button
-		    bk="#D87D4A"
-		    bkhvr="#FBAF85"
-		    clr="#FFF"
-		    clrhvr="#FFF"/>
-		</a>
-	      </Link>
+              <div className="hero__btn">
+                <LinkBtn />
+
+	      </div>
             </div>
           </div>
         </div>

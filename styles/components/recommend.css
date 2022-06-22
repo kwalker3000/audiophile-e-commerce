@@ -1,3 +1,13 @@
+.btn {
+  background-color: #d87d4a;
+  color: #fff;
+}
+
+.btn_active:hover,
+.btn_active:focus {
+  background-color: #fbaf85;
+}
+
 .head_level-2 {
   font-family: "Manrope", sans-serif;
   font-weight: 700;

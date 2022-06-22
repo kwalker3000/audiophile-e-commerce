@@ -1,5 +1,9 @@
-.btn {
+.btn_reset {
   all: unset;
+}
+
+.btn {
+  display: block;
   padding: 0.72rem 1.89rem;
   cursor: pointer;
 }

@@ -3,7 +3,7 @@ import React, { useEffect } from 'react';
 import Link from 'next/link';
 
 import { Img } from './Img';
-import { Button } from './Button';
+import { LinkBtn } from './LinkBtn';
 
 export const ProductQkView = ({data}) => {
 
@@ -39,15 +39,9 @@ export const ProductQkView = ({data}) => {
 		    </p>
 		</div>
 
-                  <Link href={`/${product.category}/${product.slug}`} >
-		    <a className="prod-qk-view__btn link">
-			<Button
-			bk="#D87D4A"
-			bkhvr="#FBAF85"
-			clr="#FFF"
-			clrhvr="#FFF"/>
-		    </a>
-                  </Link>
+                  <div className="prod-qk-view__btn">
+                    <LinkBtn />
+		  </div>
 		</div>
 
 	    </div>

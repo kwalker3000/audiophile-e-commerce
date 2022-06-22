@@ -15,13 +15,8 @@ import { Footer } from '../src/components/Footer';
 import { Overlay } from '../src/components/Overlay';
 
 export default function Headphones({data}) {
-    const { addProducts } = useAppContext();
 
     data = data.sort((a, b) => b.new - a.new)
-
-    useEffect(() => {
-        addProducts(data);
-    }, [])
 
     return (
         <div className={styles.page}>

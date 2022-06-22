@@ -1,6 +1,5 @@
 
 import { useEffect } from 'react';
-import { useAppContext } from '../src/context/appContext';
 import Head from 'next/head';
 import styles from '../styles/modules/Category.module.css';
 
@@ -15,13 +14,8 @@ import { Footer } from '../src/components/Footer';
 import { Overlay } from '../src/components/Overlay';
 
 export default function Speakers({data}) {
-    const { addProducts } = useAppContext();
 
     data = data.sort((a, b) => b.new - a.new)
-
-    useEffect(() => {
-        addProducts(data);
-    }, [])
 
     return (
         <div className={styles.page}>

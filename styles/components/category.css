@@ -19,7 +19,8 @@
   position: relative;
 }
 
-.category__content:hover .category__sub-title {
+.category__content:hover .category__sub-title,
+.category__content:focus .category__sub-title {
   opacity: 1;
   color: #d87d4a;
 }

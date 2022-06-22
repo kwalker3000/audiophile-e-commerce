@@ -26,7 +26,7 @@
   font-size: 0.938rem;
   font-weight: 500;
   line-height: 1.667em;
-  opacity: 0.5;
+  opacity: 0.55;
 }
 
 .about__text {
@@ -72,33 +72,6 @@
 .about__img {
   border-radius: 8px;
   overflow: hidden;
-}
-
-.img-wrapper_about-tab {
-  display: none;
-}
-
-.img-wrapper_about-des {
-  display: none;
-}
-
-@media (min-width: 685px) {
-  .img-wrapper_about-mob {
-    display: none;
-  }
-
-  .img-wrapper_about-tab {
-    display: block;
-  }
-}
-@media (min-width: 1150px) {
-  .img-wrapper_about-tab {
-    display: none;
-  }
-
-  .img-wrapper_about-des {
-    display: block;
-  }
 }
 
 /*# sourceMappingURL=about.css.map */

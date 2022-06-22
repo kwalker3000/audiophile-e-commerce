@@ -4,6 +4,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 import { Button } from './Button';
+import { LinkBtn } from './LinkBtn';
 import { Img } from './Img'
 
 import zx9M from '../../public/assets/home/mobile/image-speaker-zx9.png';
@@ -37,15 +38,9 @@ export const FeatureProductA = () => {
               Upgrade to premium speakers that are phenomenally built to
               deliver truly remarkable sound.
             </p>
-	    <Link href="/speakers/zx9-speaker">
-		<a className="ft-prod-a__btn link">
-		    <Button
-			bk="#000"
-			bkhvr="#4C4C4C"
-			clr="#FFF"
-			clrhvr="#FFF"/>            
-		</a>
-	    </Link>
+            <div className="ft-prod-a__btn">
+              <LinkBtn />
+	    </div>
           </div>
 	</div>
 	</div>

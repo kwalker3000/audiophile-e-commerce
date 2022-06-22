@@ -25,7 +25,8 @@
     position: relative;
 }
 
-.category__content:hover {
+.category__content:hover,
+.category__content:focus {
     .category__sub-title {
 	opacity: 1;
 	color: util.$dark-orange;
