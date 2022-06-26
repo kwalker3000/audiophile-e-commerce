@@ -10,7 +10,6 @@ export const Counter = (
         index,
         adjustment
     }) => {
-        console.log(index)
 
         adjustment = adjustment || 0
 

@@ -59,6 +59,26 @@ body {
   background-color: #fbaf85;
 }
 
+.btn-light {
+  background-color: #f1f1f1;
+  color: #000;
+  border: 1px solid #000;
+  position: relative;
+  right: 8%;
+}
+
+.btn-light_active:hover,
+.btn-light_active:focus {
+  background-color: #000;
+  color: #fff;
+}
+
+.btn-wrapper {
+  display: flex;
+  width: 100%;
+  justify-content: flex-end;
+}
+
 .header {
   background-color: #000;
   padding: 2.1rem 0 1.75rem;
@@ -462,6 +482,8 @@ body {
   font-weight: 500;
   line-height: 1.667em;
   opacity: 0.55;
+  text-transform: uppercase;
+  font-weight: 700;
 }
 #cart .btn_cart {
   padding: 0;
@@ -481,6 +503,7 @@ body {
   background-color: #fff;
   padding: 1.75rem;
   max-width: 375px;
+  min-width: 257px;
   position: absolute;
   right: 0;
   left: 0;
@@ -498,6 +521,10 @@ body {
 }
 #cart .dropdown__item {
   margin-bottom: 1.5rem;
+}
+#cart .btn-update {
+  display: flex;
+  justify-content: flex-end;
 }
 #cart .title {
   display: flex;
@@ -521,6 +548,18 @@ body {
   width: 64px;
   height: 64px;
 }
+#cart .tail-wrapper {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+#cart .tail-wrapper > p {
+  margin-bottom: 1.5rem;
+}
+#cart .tail-wrapper > a {
+  width: 100%;
+}
+
 #hero .btn {
   background-color: #d87d4a;
   color: #fff;
@@ -1458,6 +1497,7 @@ body {
   line-height: 1.923em;
   letter-spacing: 0.076em;
   text-transform: uppercase;
+  text-align: center;
 }
 
 .btn_back {

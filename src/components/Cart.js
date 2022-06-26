@@ -7,10 +7,11 @@ import { useAppContext } from '../context/appContext';
 import { Img } from './Img';
 import { Counter } from './Counter';
 import { UpdateCart } from './UpdateCart';
+import { LinkBtn } from './LinkBtn';
 
 import icon from '../../public/assets/shared/desktop/icon-cart.svg';
 
-export const Cart = ({toggleCart, isCartOpen}) => {
+export const Cart = ({toggleCart, isCartOpen, renderCart}) => {
     let { cart, updateCart, emptyCart } = useAppContext();
 
     const [isUpdateCart, setIsUpdateCart] = useState(false);
@@ -22,10 +23,17 @@ export const Cart = ({toggleCart, isCartOpen}) => {
         let arr = new Array(cart.length).fill(0);
         setOrderSize(arr)
         
-    }, [cart])
+    }, [cart, isUpdateCart])
+
+    let getTotalCost = () => {
+        let total = 0;
+        cart.forEach(item => total += item.price * item.count);
+        return total.toLocaleString('en-US');
+    }
 
     let handleDropDown = () => {
         toggleCart();
+        setIsUpdateCart(false)
     }
 
     let adjustedSize = (adjustment, index) => {
@@ -48,7 +56,10 @@ export const Cart = ({toggleCart, isCartOpen}) => {
         }
     }
 
-    console.log(orderSize)
+    let resetCart = () => {
+        handleDropDown();
+        emptyCart();
+    }
 
     let cartItems = cart.map((item, index) => (
         <div
@@ -100,20 +111,31 @@ export const Cart = ({toggleCart, isCartOpen}) => {
               <h2 className="cart__head head_level-2">cart</h2>
               <button
                 className="btn btn-text btn_cart btn_reset"
-                onClick={() => emptyCart()}>Remove all</button>
+                onClick={() => resetCart()}>Remove all</button>
             </div>
             <div>
               {cartItems}
             </div>
-            <div>
+            <div className="">
               {isUpdateCart
                ? <UpdateCart
                    orderSize={orderSize}
-                   updateCart={updateCart}/> : <div><p></p><p></p></div>}</div>
-            <button></button>
+                   updateCart={updateCart}
+                   handleDropDown={handleDropDown}
+                   renderCart={renderCart}/>
+               : <div
+                   className="dropdown__tail tail-wrapper">
+                   <p className="paragraph">Total</p>
+                   <p className="head_level-3">$ {getTotalCost()}</p>
+                   <LinkBtn
+                     path="/checkout"
+                     text="checkout"/>
+		</div>}
+            </div>
           </div>
         }
 
 	</div>
     ) 
 }
+

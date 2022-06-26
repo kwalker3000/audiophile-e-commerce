@@ -7,7 +7,7 @@ import { AddCart } from '../AddCart';
 import { Counter } from '../Counter';
 
 
-export const ProductOvView = ({product}) => {
+export const ProductOvView = ({product, renderCart}) => {
     const [orderSize, setOrderSize] = useState(1);
 
     let { addCart, stockWarn, resetWarn } = useAppContext();
@@ -79,7 +79,8 @@ export const ProductOvView = ({product}) => {
                          addCart={addCart}
                          product={product}
                          size={orderSize}
-                         updateOrderSize={updateOrderSize}/>
+                         updateOrderSize={updateOrderSize}
+                         renderCart={renderCart}/>
                      </div>
                    </div>
                  : <div className="out-of-stock">

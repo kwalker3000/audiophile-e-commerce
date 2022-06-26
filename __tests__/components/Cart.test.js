@@ -29,17 +29,17 @@ describe('Cart', () => {
       state.cart = ['item']
   });
 
-  it('renders empty cart icon', () => {
-    let {container} = render
-        (
-            <AppContext.Provider value={state}>
-              <Cart />
-            </AppContext.Provider>
-        );
+//   it('renders empty cart icon', () => {
+//     let {container} = render
+//         (
+//             <AppContext.Provider value={state}>
+//               <Cart />
+//             </AppContext.Provider>
+//         );
 
-      const cart = container.getElementsByClassName('cart-status').length;
+//       const cart = container.getElementsByClassName('cart-status').length;
 
-      expect(cart).toEqual(1);
-  });
+//       expect(cart).toEqual(1);
+//   });
 
 });

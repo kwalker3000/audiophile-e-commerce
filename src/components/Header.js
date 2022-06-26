@@ -8,16 +8,25 @@ import { Overlay } from './Overlay'
 
 
 
-export const Header = ({render}) => {
+export const Header = ({isCartUpdate, renderCart}) => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
-    const [isCartOpen, setIsCartOpen] = useState(false);
+    const [isCartOpen, setIsCartOpen] = useState(isCartUpdate || false);
 
     let toggleCart = () => {
 	setIsCartOpen(!isCartOpen)
+	if(isCartUpdate) {
+	  renderCart();   
+        }
     }
     let toggleMenu = () => {
 	setIsMenuOpen(!isMenuOpen)
     }
+
+    useEffect(() => {
+	if (isCartUpdate) {
+	    setIsCartOpen(true)
+	}
+    }, [isCartUpdate])
 
     return (
         <>

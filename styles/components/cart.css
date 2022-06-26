@@ -47,6 +47,8 @@
   font-weight: 500;
   line-height: 1.667em;
   opacity: 0.55;
+  text-transform: uppercase;
+  font-weight: 700;
 }
 
 .btn_cart {
@@ -70,6 +72,7 @@
   background-color: #fff;
   padding: 1.75rem;
   max-width: 375px;
+  min-width: 257px;
   position: absolute;
   right: 0;
   left: 0;
@@ -89,6 +92,11 @@
 
 .dropdown__item {
   margin-bottom: 1.5rem;
+}
+
+.btn-update {
+  display: flex;
+  justify-content: flex-end;
 }
 
 .title {
@@ -116,6 +124,20 @@
   position: relative;
   width: 64px;
   height: 64px;
+}
+
+.tail-wrapper {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.tail-wrapper > p {
+  margin-bottom: 1.5rem;
+}
+
+.tail-wrapper > a {
+  width: 100%;
 }
 
 /*# sourceMappingURL=cart.css.map */

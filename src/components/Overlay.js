@@ -1,7 +1,5 @@
 
 import React, {useState} from 'react'
-import { useAppContext } from '../context/appContext';
-
 
 export const Overlay = ({isMenuOpen, isCartOpen}) => {
 

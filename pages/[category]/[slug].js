@@ -1,7 +1,7 @@
 
 import Head from 'next/head';
 import { useRouter } from 'next/router';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 import styles from '../../styles/modules/Product.module.css';
 
@@ -22,7 +22,13 @@ import { useAppContext } from '../../src/context/appContext';
 
 export default function Product({data}) {
 
-    let { isCartOpen } = useAppContext();
+    const [isCartUpdate, setIsCartUpdate] = useState(false);
+
+    let { cart } = useAppContext();
+
+    let renderCart = () => {
+        setIsCartUpdate(!isCartUpdate)
+    }
 
     const router = useRouter();
     const {category, slug} = router.query;
@@ -40,7 +46,9 @@ export default function Product({data}) {
 	</Head>
 
           <header className={styles.pageHeader}>
-            <Header />
+            <Header
+              isCartUpdate={isCartUpdate}
+              renderCart={renderCart}/>
           </header>
 
           <main className={`${styles.pageMain} ${styles.main}`}>
@@ -49,7 +57,9 @@ export default function Product({data}) {
             </section>
 
             <section className={styles.mainProdOvView}>
-              <ProductOvView product={product}/>
+              <ProductOvView
+                product={product}
+                renderCart={renderCart}/>
             </section>
             <section className={styles.mainProdContent}>
               <ProductContent

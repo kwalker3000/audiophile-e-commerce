@@ -1,6 +1,5 @@
 
 import React from 'react';
-import { AppContext } from '../../src/context/appContext';
 import { Overlay } from '../../src/components/Overlay';
 
 import { render, screen, cleanup } from '@testing-library/react';
@@ -8,19 +7,13 @@ import '@testing-library/jest-dom';
 
 
 describe("<Overlay />", () => {
-    let state = {
-        isMenuOpen: false
-    };
+
+    let isMenuOpen = false;
 
     afterEach(cleanup)
 
     beforeEach(() => {
-	render
-        (
-            <AppContext.Provider value={state}>
-              <Overlay />
-            </AppContext.Provider>
-        )
+	render (<Overlay isMenuOpen={isMenuOpen} />)
     })
 
     it("updates the display attribute to 'none'", () => {
@@ -28,7 +21,7 @@ describe("<Overlay />", () => {
         let overlay = screen.getByTestId('overlay');
 	expect(overlay).toHaveStyle('display: none');
 
-	state.isMenuOpen = true;
+	isMenuOpen = true;
     })
 
 

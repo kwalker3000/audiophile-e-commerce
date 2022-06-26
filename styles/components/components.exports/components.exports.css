@@ -401,6 +401,8 @@
   font-weight: 500;
   line-height: 1.667em;
   opacity: 0.55;
+  text-transform: uppercase;
+  font-weight: 700;
 }
 #cart .btn_cart {
   padding: 0;
@@ -420,6 +422,7 @@
   background-color: #fff;
   padding: 1.75rem;
   max-width: 375px;
+  min-width: 257px;
   position: absolute;
   right: 0;
   left: 0;
@@ -437,6 +440,10 @@
 }
 #cart .dropdown__item {
   margin-bottom: 1.5rem;
+}
+#cart .btn-update {
+  display: flex;
+  justify-content: flex-end;
 }
 #cart .title {
   display: flex;
@@ -460,6 +467,18 @@
   width: 64px;
   height: 64px;
 }
+#cart .tail-wrapper {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+#cart .tail-wrapper > p {
+  margin-bottom: 1.5rem;
+}
+#cart .tail-wrapper > a {
+  width: 100%;
+}
+
 #hero .btn {
   background-color: #d87d4a;
   color: #fff;
@@ -1397,6 +1416,7 @@
   line-height: 1.923em;
   letter-spacing: 0.076em;
   text-transform: uppercase;
+  text-align: center;
 }
 
 .btn_back {

@@ -20,8 +20,6 @@ export const AppWrapper = ({ children }) => {
         if (inCart) {
             setCart(prevCart => prevCart.map(item => {
                 if (item.id == product._id) {
-                    console.log(item.count + size)
-                    console.log(product.limit)
                     if ((item.count + size) > item.limit) {
                         console.log('over limit!!')
                         setStockWarn(true)
@@ -53,7 +51,6 @@ export const AppWrapper = ({ children }) => {
     }
 
     let emptyCart = () => setCart([])
-    console.log(cart)
 
     return (
         <AppContext.Provider value={
