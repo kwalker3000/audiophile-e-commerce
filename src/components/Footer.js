@@ -29,8 +29,6 @@ export const Footer = ({ className }) => {
 
       <div className="footer__tail">
         <div className="footer__copyright">
-          {' '}
-          {/* change name please! */}
           <p className="footer__text p">Copyright 2021. All Rights Reserved</p>
         </div>
 
