@@ -83,11 +83,11 @@ export const ProductOvView = ({ product, renderCart }) => {
             <div className="out-of-stock">
               {stockWarn ? (
                 <p>
-                  We're sorry, but your order is over the allowable limit,
+                  We&apos;re sorry, but your order is over the allowable limit,
                   please contact support for assistance. Thank you.
                 </p>
               ) : (
-                <p>We're sorry, the item is currently out of stock.</p>
+                <p>We&apos;re sorry, the item is currently out of stock.</p>
               )}
             </div>
           )}
