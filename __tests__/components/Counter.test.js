@@ -1,17 +1,16 @@
+import { render, screen, cleanup } from '@testing-library/react'
+import userEvent from '@testing-library/user-event'
+import '@testing-library/jest-dom'
 
-import { render, screen, cleanup } from '@testing-library/react';
-import userEvent from '@testing-library/user-event';
-import '@testing-library/jest-dom';
-
-import { Counter } from '../../src/components/Counter';
+import { Counter } from '../../src/components/Counter'
 
 describe('Counter', () => {
   it('renders Counter component', () => {
-      render(<Counter className={{counter: "counter", count: "count"}}/>);
+    render(<Counter className={{ counter: 'counter', count: 'count' }} />)
 
-      const txt = screen.getByText('+');
+    const txt = screen.getByText('+')
 
-      expect(txt).toBeInTheDocument();
+    expect(txt).toBeInTheDocument()
   })
 })
 
@@ -30,7 +29,7 @@ describe('Counter', () => {
 //                 break;
 //             }
 //         }
-        
+
 //     }
 
 //     afterEach(cleanup);

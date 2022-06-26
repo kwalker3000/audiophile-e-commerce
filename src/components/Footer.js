@@ -1,10 +1,8 @@
-
 import React from 'react'
 
 import { PrimaryNav } from './PrimaryNav'
 import { Logo } from './Logo'
 import { Social } from './Social'
-
 
 export const Footer = ({ className }) => {
   return (
@@ -13,11 +11,11 @@ export const Footer = ({ className }) => {
 
       <div className="footer__head">
         <div className="footer__logo">
-            <Logo />
-	</div>
+          <Logo />
+        </div>
         <div className="footer__nav">
-	    <PrimaryNav />
-	</div>
+          <PrimaryNav />
+        </div>
       </div>
 
       <div className="footer__body">

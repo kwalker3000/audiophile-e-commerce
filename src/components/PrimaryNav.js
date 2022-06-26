@@ -31,22 +31,17 @@ export const PrimaryNav = () => {
   let links = pages.map((page) => (
     <li
       key={page.id}
-      className={
-            `${page.name == 'earphones' ? 'earphones' : ''}  nav__item`}
+      className={`${page.name == 'earphones' ? 'earphones' : ''}  nav__item`}
     >
       <Link href={page.address}>
-        <a className={'link-text link link_active'}>
-          {page.name}
-        </a>
+        <a className={'link-text link link_active'}>{page.name}</a>
       </Link>
     </li>
   ))
 
   return (
     <nav className={`nav`}>
-      <ul className={'nav__list'}>
-        {links}
-      </ul>
+      <ul className={'nav__list'}>{links}</ul>
     </nav>
   )
 }

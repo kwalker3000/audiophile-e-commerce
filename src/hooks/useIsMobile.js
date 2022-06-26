@@ -1,6 +1,4 @@
-
-import React, {useState, useEffect, useRef} from 'react';
-
+import React, { useState, useEffect, useRef } from 'react'
 
 // export const useIsMobile = () => {
 //     const [isMobile, setIsMobile] = useState(false)
@@ -22,18 +20,18 @@ import React, {useState, useEffect, useRef} from 'react';
 // }
 
 export const useIsMobile = () => {
-    const screenSize = useRef();
+  const screenSize = useRef()
 
-    useEffect(() => {
-        window.addEventListener('resize', () => {
-            screenSize.current = window.innerWidth;
-        });
-        return () => {
-            window.removeEventListener('resize', () => {
-                screenSize.current = window.innerWidth;
-            })
-        }
-    }, []);
-    
-    return screenSize.current <= 980
+  useEffect(() => {
+    window.addEventListener('resize', () => {
+      screenSize.current = window.innerWidth
+    })
+    return () => {
+      window.removeEventListener('resize', () => {
+        screenSize.current = window.innerWidth
+      })
+    }
+  }, [])
+
+  return screenSize.current <= 980
 }

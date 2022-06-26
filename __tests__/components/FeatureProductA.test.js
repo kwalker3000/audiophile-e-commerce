@@ -1,15 +1,14 @@
+import { render, screen, cleanup } from '@testing-library/react'
+import '@testing-library/jest-dom'
 
-import { render, screen, cleanup } from '@testing-library/react';
-import '@testing-library/jest-dom';
-
-import { FeatureProductA } from '../../src/components/FeatureProductA';
+import { FeatureProductA } from '../../src/components/FeatureProductA'
 
 describe('FeatureProductA', () => {
   it('renders FeatureProductA component', () => {
-      render(<FeatureProductA />);
+    render(<FeatureProductA />)
 
-      const element = screen.getByText('zx9 speaker');
+    const element = screen.getByText('zx9 speaker')
 
-      expect(element).toBeInTheDocument();
+    expect(element).toBeInTheDocument()
   })
 })
