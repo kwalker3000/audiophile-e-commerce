@@ -9,7 +9,7 @@
     right: 0;
     transform: translateY(2rem);
 
-    z-index: 1;
+    z-index: 2;
 }
 
 .burger {
@@ -17,5 +17,8 @@
     background-color: util.$black;
     cursor: pointer;
     padding: 0;
+
+    position: relative;
+    z-index: 1;
 }
 

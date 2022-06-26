@@ -1,28 +1,33 @@
 
 import React, { useState, useEffect } from 'react';
 
-export const Counter = ({stock}) => {
+export const Counter = (
+    {
+        stock,
+        updateOrderSize,
+        orderSize,
+        className,
+        index,
+        adjustment
+    }) => {
+        console.log(index)
 
-    const [count, setCount] = useState(1);
+        adjustment = adjustment || 0
 
-    const updateCount = (action) => {
-        setCount(pre => action == 'increase' ? pre + 1 : pre - 1);
-    }
-    
     return (
         <div id="counter">
-          <div className="counter">
+          <div className={`${className.counter}`}>
             <button
               className="decrement btn_counter"
-              onClick={() => updateCount('decrease')}
-              disabled={count < 2}
+              onClick={() => updateOrderSize('decrease', index)}
+              disabled={orderSize + adjustment < 2}
               aria-label="decrease order size">-
             </button>
-            <div className="count">{count}</div>
+            <div className={`${className.count}`}>{orderSize + adjustment}</div>
             <button
               className="increment btn_counter"
-		onClick={() => updateCount('increase')}
-	      disabled={count >= stock}
+	      onClick={() => updateOrderSize('increase', index)}
+	      disabled={orderSize + adjustment >= stock}
               aria-label="increase order size">+
             </button>
           </div>

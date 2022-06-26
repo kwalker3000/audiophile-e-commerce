@@ -7,7 +7,7 @@ import headphones from '../../public/assets/shared/desktop/image-category-thumbn
 import speakers from '../../public/assets/shared/desktop/image-category-thumbnail-speakers.png'
 import earphones from '../../public/assets/shared/desktop/image-category-thumbnail-earphones.png'
 
-export const Menu = ({ toggleMenu }) => {
+export const Menu = ({ toggleMenu, isRenderedByNav }) => {
   const categories = [
     {
       id: 1,
@@ -37,6 +37,7 @@ export const Menu = ({ toggleMenu }) => {
           src={category.src.src}
           key={category.id}
           toggleMenu={toggleMenu}
+          isRenderedByNav={isRenderedByNav ? true : false}
         />
       ))}
     </div>

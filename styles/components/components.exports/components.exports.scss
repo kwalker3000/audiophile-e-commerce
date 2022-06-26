@@ -5,7 +5,7 @@
 @import '../primary-nav';
 @import '../menu';
 @import '../category';
-@import '../cart';
+#cart {@import '../cart';};
 #hero {@import '../hero';};
 #headline {@import '../headline';};
 #ft-prod-a {@import '../ft-prod-a';};

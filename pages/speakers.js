@@ -34,7 +34,6 @@ export default function Speakers({data}) {
             <section className={styles.mainHeadline}>
               <Headline title="speakers"/>
             </section>
-              <Overlay />
 	    <section
               className={`${styles.ProductQkView} ${styles.mainQkView}`}>
 		<ProductQkView data={data}/>

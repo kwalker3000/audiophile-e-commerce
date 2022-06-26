@@ -3,7 +3,6 @@ import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 
-import { Button } from './Button';
 import { LinkBtn } from './LinkBtn';
 import { Img } from './Img'
 
@@ -38,7 +37,7 @@ export const Hero = () => {
                 </p>
               </div>
               <div className="hero__btn">
-                <LinkBtn />
+                  <LinkBtn path="/headphones/xx99-mark-two-headphones"/>
 
 	      </div>
             </div>

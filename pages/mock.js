@@ -1,23 +1,6 @@
 
 import Head from 'next/head';
-//import Image from 'next/image';
 import styles from '../styles/modules/Product.module.css';
-
-
-import { MongoClient } from 'mongodb';
-import { Header } from '../src/components/Header';
-import { Menu } from '../src/components/Menu';
-import { About } from '../src/components/About';
-import { Footer } from '../src/components/Footer';
-
-import { Counter } from '../src/components/Counter';
-import { AddCart } from '../src/components/AddCart';
-//import { Product } from '../src/components/Product';
-import { Overlay } from '../src/components/Overlay';
-
-import { ProductOvView } from '../src/components/Product/ProductOvView';
-import { ProductContent } from '../src/components/Product/ProductContent';
-import { ProductGallery } from '../src/components/Product/ProductGallery';
 
 export default function Mock({data}) {
 
@@ -30,36 +13,6 @@ export default function Mock({data}) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-        {/* <ProductOvView data={data}/> */}
-        <ProductContent
-          features={data.features}
-          includes={data.includes}/>
-        <ProductGallery gallery={data.gallery}/>
-
     </div>
   )
-}
-export const getStaticProps = async () => {
-
-  const client = await MongoClient.connect(process.env.MONGODB_URI);
-
-  const db = client.db('audiophile');
-
-  const yourCollection = db.collection('product');
-
-    let data = await yourCollection.findOne({category: "earphones"});
-    // let data = []
-
-    // await cursor.forEach(entry => {
-    //     entry._id = entry._id.toString();
-    //     data.push(entry)
-    // })
-    data._id = data._id.toString();
-    // cursor.close()
-
-  return {
-      props: {
-          data
-      }
-  };
 }

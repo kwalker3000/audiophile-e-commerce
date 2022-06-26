@@ -1,11 +1,12 @@
 
 import React from 'react';
+import PropTypes from 'prop-types';
 import Link from 'next/link';
 
-export const LinkBtn = () => {
+export const LinkBtn = ({path}) => {
 
     return (
-        <Link href="/headphones/xx99-mark-two-headphones">
+        <Link href={path}>
 	  <a
             className="link btn btn_active btn-text"
             type='button'>see product
@@ -13,3 +14,7 @@ export const LinkBtn = () => {
 	</Link>
     )
 }
+
+LinkBtn.propTypes = {
+    path: PropTypes.string.isRequired
+};

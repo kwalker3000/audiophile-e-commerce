@@ -11,6 +11,7 @@ html {
     @media (min-width: util.$desktop) {
 	overflow-x: hidden;
     }
+
 }
 
 body {
@@ -30,12 +31,14 @@ body {
 .overlay {
     background-color: #000;
     opacity: 0.65;
-    //position: absolute;
+
+    height: 100vh;
+    width: 100%;
+
     position: fixed;
     top: 0;
-    height: 100%;
-    width: 100%;
-    z-index: 1;
-   
+    z-index: 0;
+
     display: none;
+    @include util.extension;
 }

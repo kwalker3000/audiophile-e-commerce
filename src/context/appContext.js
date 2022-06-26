@@ -1,56 +1,71 @@
 
 import React, { useState, createContext, useContext } from 'react';
 
+import {useCartUpdate} from '../hooks/useCartUpdate';
+
 const AppContext = createContext();
 
 export const AppWrapper = ({ children }) => {
-    const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [cart, setCart] = useState([])
-    // cart array
-
-    let toggleMenu = () => {
-        setIsMenuOpen(!isMenuOpen);
+    const [stockWarn, setStockWarn] = useState(false);
+    
+    let resetWarn = () => {
+        setStockWarn(false)
     }
+    
 
     let addCart = (product, size = 1) => {
-        console.log(product)
+
         let inCart = cart.find(item => item.id == product._id);
         if (inCart) {
             setCart(prevCart => prevCart.map(item => {
-                if(item.id == product._id) {
-                    return {...item, count: item.count+1}
+                if (item.id == product._id) {
+                    console.log(item.count + size)
+                    console.log(product.limit)
+                    if ((item.count + size) > item.limit) {
+                        console.log('over limit!!')
+                        setStockWarn(true)
+                        return item
+                    }
+                    return {...item, count: item.count + size}
                 }
                 return item
             }))
         }
         else {
             setCart(prevCart => [...prevCart, {
-                name: product.name,
+                name: product.altname ? product.altname : product.name,
                 price: product.price,
                 img: product.image.mobile,
-                count: 1,
+                count: size,
+                limit: product.stock,
                 id: product._id
             }]) 
         }
 
     }
-    //let removeCart
-    //let emptyCart
 
-    // const addProducts = (category) => {
-    // 	if(!products) {
-    // 	    setProducts(category)
-    // 	}
-    // 	else if(!(products.find(product =>
-    // 	    product.category == category[0].category))) {
+    let updateCart = (pendingCount) => {
+        setCart(prevCart => prevCart.map((item, index) => {
+            return {...item, count: item.count + pendingCount[index]}
+        }))
 
-    // 	    setProducts(preSet => [...preSet, ...category])
-    // 	}
-    // }
+    }
+
+    let emptyCart = () => setCart([])
     console.log(cart)
 
     return (
-        <AppContext.Provider value={{toggleMenu, isMenuOpen, addCart}}>
+        <AppContext.Provider value={
+            {
+                addCart,
+                updateCart,
+                emptyCart,
+                stockWarn,
+                resetWarn,
+                cart
+            }
+        }>
           {children}
         </AppContext.Provider>
     );

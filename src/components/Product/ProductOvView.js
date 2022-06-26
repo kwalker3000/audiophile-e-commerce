@@ -1,5 +1,5 @@
 
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useAppContext } from '../../../src/context/appContext';
 
 import { Img } from '../Img';
@@ -8,7 +8,30 @@ import { Counter } from '../Counter';
 
 
 export const ProductOvView = ({product}) => {
-    let { addCart } = useAppContext();
+    const [orderSize, setOrderSize] = useState(1);
+
+    let { addCart, stockWarn, resetWarn } = useAppContext();
+
+    useEffect(() => {
+        resetWarn();
+    }, [])
+
+    let updateOrderSize = action => {
+        switch (action) {
+        case 'increase': {
+            setOrderSize(preSize => preSize + 1);
+            break;
+        }
+        case 'decrease': {
+            setOrderSize(preSize => preSize - 1);
+            break;
+        }
+        case 'reset': {
+            setOrderSize(1);
+            break;
+        }
+        }
+    }
 
     return (
         <div id="prod-ov-view">
@@ -42,20 +65,28 @@ export const ProductOvView = ({product}) => {
                 </p>
               </div>
 
-               {product.stock > 0
+               {product.stock > 0 && !stockWarn
                  ? <div className="prod-ov-view__btn-container btn-container">
-		     <div className="prod-ov-view__count">
-                       <Counter stock={product.stock} />
+		     <div className="prod-ov-view__count counter-wrapper">
+                       <Counter
+                         stock={product.stock}
+                         updateOrderSize={updateOrderSize}
+                         orderSize={orderSize}
+                className={{counter: "counter", count: "count"}}/>
                      </div>
                      <div className="prod-ov-view__cart">
                        <AddCart
                          addCart={addCart}
-                         product={product}/>
+                         product={product}
+                         size={orderSize}
+                         updateOrderSize={updateOrderSize}/>
                      </div>
                    </div>
                  : <div className="out-of-stock">
-                     <p>We're sorry, the item is currently out of stock.
-                     </p>
+                     {stockWarn
+                      ? <p>We're sorry, but your order is over the allowable limit, please contact support for assistance. Thank you.</p>
+                      : <p>We're sorry, the item is currently out of stock.
+                     </p>}
                    </div>
                }
 

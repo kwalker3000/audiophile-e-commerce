@@ -51,6 +51,11 @@
     margin-bottom: 3.5rem;
 }
 
+.recommend__btn {
+    width: fit-content;
+    margin: 0 auto;
+}
+
 @media (min-width: util.$tablet) {
 
     .recommend__body {

@@ -9,52 +9,69 @@ describe('Counter', () => {
   it('renders Counter component', () => {
       render(<Counter />);
 
-      const txt = screen.getByText('1');
+      const txt = screen.getByText('+');
 
       expect(txt).toBeInTheDocument();
   })
 })
 
-describe('order size', () => {
+describe('.updateOrderSize', () => {
+
+    let props = {
+        stock: 25,
+        orderSize: 1,
+        updateOrderSize: function(action) {
+            switch (action) {
+            case 'increase':
+                props.orderSize++;
+                break;
+            case 'decrease':
+                props.orderSize--;
+                break;
+            }
+        }
+        
+    }
 
     afterEach(cleanup);
 
-    it('increases order size', async () => {
+    it('increases orderSize', async () => {
 	const user = userEvent.setup();
-	render(<Counter />);
 
+	let {unmount} = render(<Counter {...props}/>);
 	let atRenderValue = '1';
 	let comp = screen.getByText(atRenderValue).textContent;
 
 	expect(comp).toEqual(atRenderValue)
+
 	await user.click(screen.getByRole('button', {
 	    name: 'increase order size'
 	}))
+        unmount()
+
+	render(<Counter {...props}/>);
 	let afterIncreaseValue = '2';
 	comp = screen.getByText(afterIncreaseValue).textContent;
 
 	expect(comp).toEqual(afterIncreaseValue)
     })
 
-    it('decreases order size', async () => {
-	const user = userEvent.setup();
-	render(<Counter />);
+    it('decreases orderSize', async () => {
+    	const user = userEvent.setup();
+        const currentSize = props.orderSize;
 
-	await user.click(screen.getByRole('button', {
-	    name: 'increase order size'
-	}));
-	let afterIncreaseValue = '2';
-	let comp = screen.getByText(afterIncreaseValue).textContent;
+    	let {unmount} = render(<Counter {...props}/>);
 
-	expect(comp).toEqual(afterIncreaseValue);
+    	await user.click(screen.getByRole('button', {
+    	    name: 'decrease order size'
+    	}));
+        unmount()
 
-	await user.click(screen.getByRole('button', {
-	    name: 'decrease order size'
-	}));
-	let afterDecreaseValue = '1';
-	comp = screen.getByText(afterDecreaseValue).textContent;
+    	render(<Counter {...props}/>);
+    	let afterDecreaseValue = currentSize - 1
+    	let comp = screen.getByText(afterDecreaseValue).textContent;
 
-	expect(comp).toEqual(afterDecreaseValue);
+    	expect(Number(comp)).toEqual(currentSize - 1);
     })
 
 })

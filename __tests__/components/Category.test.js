@@ -10,72 +10,52 @@ import '@testing-library/jest-dom';
 
 import Image from 'next/image';
 import mockImg from '../../public/assets/favicon-32x32.png';
-
-
-describe('update attribute based on hover status', () => {
-
-    afterEach(cleanup);
-
-    it('on hover', async () => {
-	const user = userEvent.setup();
-	let {container} = render(<Category src={mockImg} />);
-	
-	await user.hover(screen.getByRole('link'));
-	let activeArrow = container.getElementsByClassName('arrow_active');
-
-	expect(activeArrow[0]).toBeInTheDocument();
-
-    })
-
-    it('on unhover', async () => {
-	const user = userEvent.setup();
-	let {container} = render(<Category src={mockImg} />);
-
-        // test complained about coverage with unhover event only 
-	await user.hover(screen.getByRole('link'));
-	await user.unhover(screen.getByRole('link'));
-
-	let activeArrow = container.getElementsByClassName('arrow_active');
-
-	expect(activeArrow[0]).toBeUndefined();
-
-    })
-})
-
+jest.mock('next/link', () => ({ children }) => children);
 
 describe('<Category/>', () => {
 
-    let text = 'shop';
     afterEach(cleanup);
     
-    it('should mount', () => {
-	render(<Category src={mockImg} />);
+    describe('onClick -> .closeComponent -> .toggleMenu', () => {
+	it('toggles isMenuOpen state to false', async () => {
+	    const user = userEvent.setup();
+            //const push =jest.fn()
 
-	let value = screen.getByText(text);
-	expect(value).toBeInTheDocument();
+	    render(<Category
+		     src={mockImg}
+                     isRenderedByNav={true}
+                     toggleMenu={() => false}
+                     name="headphones"/>) 
+
+	    let element = screen.getByText('shop');
+
+	    expect(element).toBeInTheDocument();
+
+            await user.click(screen.getByTestId('category-link'));
+
+	    let unmountedValue = screen.findByText('shop').length;
+
+            expect(unmountedValue).toBeUndefined;
+	})
+        
+	it('it does not trigger toggleMenu', async () => {
+	    const user = userEvent.setup();
+	    render(<Category
+		     src={mockImg}
+                     isRenderedByNav={false}
+                     toggleMenu={() => false}/>) 
+
+	    let element = screen.getByText('shop');
+
+	    expect(element).toBeInTheDocument();
+
+            await user.click(screen.getByTestId('category-link'));
+
+	    let unmountedValue = screen.queryByText('shop');
+
+            expect(unmountedValue).toBeInTheDocument();
+	})
+
+
     })
-    
-    it('should unmount', async () => {
-        let state = {
-            isMenuOpen: true,
-            toggleMenu() {
-                this.isMenuOpen = false;
-            }
-        };
-	const user = userEvent.setup();
-	render
-        (
-            <Category src={mockImg}/>
-        );
-
-	let mountedValue = screen.getByText(text);
-	await user.click(screen.queryByRole('link', {
-	    name: 'earphones'
-	}));
-	let unmountedValue = screen.findByText(text).length;
-
-	expect(mountedValue).toBeInTheDocument()
-        expect(unmountedValue).toBeUndefined;
-    })
-
 })

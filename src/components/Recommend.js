@@ -1,15 +1,17 @@
-import React from 'react'
-import Link from 'next/link'
 
-import { Img } from './Img'
-import { Button } from './Button'
+import React from 'react';
+import Link from 'next/link';
+
+import { Img } from './Img';
+import { LinkBtn } from './LinkBtn';
 
 export const Recommend = ({ recommend }) => {
 
     let getCategory = (product) => {
         let strArray = product.slug.split('-');
         let len = strArray.length;
-        return strArray[len-1];
+        let isPlural = product.slug[product.slug.length -1] == 's'
+        return (strArray[len-1]) + (isPlural ? '' : 's');
     }
 
     let getKey = (product) => {
@@ -42,11 +44,9 @@ export const Recommend = ({ recommend }) => {
                 className="recommend__subtitle head_level-3">
                 {prod.name}
               </h3>
-            <Link href={`/${getCategory(prod)}/${prod.slug}`}>
-              <a className="recommend__btn link">
-                <Button bk="#D87D4A" bkhvr="#FBAF85" clr="#FFF" clrhvr="#FFF" />
-              </a>
-            </Link>
+              <div className="recommend__btn">
+                <LinkBtn path={`/${getCategory(prod)}/${prod.slug}`}/>
+	    </div>
           </div>
 
                 ))}

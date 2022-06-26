@@ -1,6 +1,5 @@
 
 import Head from 'next/head';
-//import Image from 'next/image';
 import styles from '../styles/modules/Home.module.css';
 
 import { Header } from '../src/components/Header';
@@ -11,8 +10,6 @@ import { FeatureProductB } from '../src/components/FeatureProductB';
 import { FeatureProductC } from '../src/components/FeatureProductC';
 import { About } from '../src/components/About';
 import { Footer } from '../src/components/Footer';
-
-import { Overlay } from '../src/components/Overlay';
 
 export default function Home() {
 
@@ -35,7 +32,6 @@ export default function Home() {
           <Hero />
         </section>
 
-        <Overlay />
         <section className={`${styles.mainProductNav}`}>
           <Menu />
         </section>

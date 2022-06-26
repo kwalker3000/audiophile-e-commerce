@@ -27,7 +27,7 @@ export const FeatureProductC = () => {
 		    yx1 earphones
 		</h2>
               <div className="ft-prod-c__btn">
-                <LinkBtn />
+                <LinkBtn path="/earphones/yx1-earphones"/>
 	      </div>
             </div>
           </div>

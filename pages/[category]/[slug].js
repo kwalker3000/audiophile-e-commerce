@@ -2,7 +2,6 @@
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 import { useEffect } from 'react';
-//import { useAppContext } from '../src/context/appContext';
 
 import styles from '../../styles/modules/Product.module.css';
 
@@ -18,13 +17,16 @@ import { About } from '../../src/components/About';
 import { Footer } from '../../src/components/Footer';
 
 import { Overlay } from '../../src/components/Overlay';
-
+import { useAppContext } from '../../src/context/appContext';
 
 
 export default function Product({data}) {
 
-    const router = useRouter()
-    const {category, slug} = router.query
+    let { isCartOpen } = useAppContext();
+
+    const router = useRouter();
+    const {category, slug} = router.query;
+
     let product = data.find(product => product.slug == slug)
 
     return (
@@ -42,7 +44,6 @@ export default function Product({data}) {
           </header>
 
           <main className={`${styles.pageMain} ${styles.main}`}>
-            <Overlay/>
             <section className={styles.mainNavBack}>
               <NavBack />
             </section>
@@ -81,11 +82,6 @@ export default function Product({data}) {
 
 export const getServerSideProps = async () => {
 
-    // const router = useRouter()
-    // const obj = router.query
-    // console.log('inside serverProps', obj)
-
-
   const client = await MongoClient.connect(process.env.MONGODB_URI);
 
   const db = client.db('audiophile');
@@ -93,7 +89,6 @@ export const getServerSideProps = async () => {
   const yourCollection = db.collection('product');
 
     let cursor = await yourCollection.find();
-    //data._id = data._id.toString();
     let data = []
 
     await cursor.forEach(entry => {
@@ -101,10 +96,7 @@ export const getServerSideProps = async () => {
         data.push(entry)
     })
 
-    //await cursor.forEach(entry => console.log(entry))
     cursor.close()
-    //console.log('my data')
-    //console.log(data)
 
   return {
       props: {

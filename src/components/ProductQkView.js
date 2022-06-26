@@ -40,7 +40,7 @@ export const ProductQkView = ({data}) => {
 		</div>
 
                   <div className="prod-qk-view__btn">
-                    <LinkBtn />
+                    <LinkBtn path={`/${product.category}/${product.slug}`}/>
 		  </div>
 		</div>
 

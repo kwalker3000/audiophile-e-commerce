@@ -35,7 +35,6 @@ export default function Earphones({data}) {
             <section className={styles.mainHeadline}>
               <Headline title="earphones"/>
             </section>
-              <Overlay />
 	    <section
               className={`${styles.ProductQkView} ${styles.mainQkView}`}>
 		<ProductQkView data={data}/>

@@ -3,7 +3,6 @@ import React, { useEffect, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 
-import { Button } from './Button';
 import { LinkBtn } from './LinkBtn';
 import { Img } from './Img'
 
@@ -39,7 +38,7 @@ export const FeatureProductA = () => {
               deliver truly remarkable sound.
             </p>
             <div className="ft-prod-a__btn">
-              <LinkBtn />
+              <LinkBtn path="/speakers/zx9-speaker"/>
 	    </div>
           </div>
 	</div>

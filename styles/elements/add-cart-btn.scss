@@ -1,0 +1,15 @@
+
+@use '../util/util';
+
+
+.btn {
+    background-color: util.$dark-orange;
+    color: util.$white;
+
+    border: none;
+}
+
+.btn_active:hover,
+.btn_active:focus {
+    background-color: util.$peach;
+}

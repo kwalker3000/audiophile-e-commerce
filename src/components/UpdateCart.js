@@ -1,12 +1,8 @@
 
 import React from 'react';
 
-export const AddCart = ({addCart, product, size, updateOrderSize}) => {
+export const UpdateCart = ({updateCart, orderSize}) => {
 
-    let moveToCart = (product, orderSize) => {
-	addCart(product, orderSize);
-	updateOrderSize('reset');
-    }
 
     return (
         <div
@@ -15,8 +11,8 @@ export const AddCart = ({addCart, product, size, updateOrderSize}) => {
             <div className="add-cart__btn">
               <button className="btn btn-text btn_active"
                 aria-label="add to cart"
-                onClick={() => moveToCart(product, size)}>
-		  add to cart
+                      onClick={() => updateCart(orderSize)}>
+		  update cart
 	      </button>
             </div>
           </div>

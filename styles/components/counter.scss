@@ -30,3 +30,18 @@
     padding: 0 1.312rem;
 }
 
+
+.counter_cart {
+    background-color:  util.$gray;
+    padding: 0.238rem calc(1.80rem - 0.75rem);
+
+    display: flex;
+    justify-content: space-around;
+    
+}
+
+.count_cart {
+    @include font.sub-title; 
+    padding: 0 0.75rem;
+}
+

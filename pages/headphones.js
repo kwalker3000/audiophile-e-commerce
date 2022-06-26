@@ -12,8 +12,6 @@ import { Menu } from '../src/components/Menu';
 import { About } from '../src/components/About';
 import { Footer } from '../src/components/Footer';
 
-import { Overlay } from '../src/components/Overlay';
-
 export default function Headphones({data}) {
 
     data = data.sort((a, b) => b.new - a.new)
@@ -35,7 +33,6 @@ export default function Headphones({data}) {
             <section className={styles.mainHeadline}>
               <Headline title="headphones"/>
             </section>
-		<Overlay />
 	    <section
               className={`${styles.ProductQkView} ${styles.mainQkView}`}>
 		<ProductQkView data={data}/>

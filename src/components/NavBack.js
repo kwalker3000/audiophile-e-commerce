@@ -11,7 +11,7 @@ export const NavBack = () => {
     return (
           <div className="nav-back">
             <button
-              className="nav-back__btn btn_back btn btn-text"
+              className="nav-back__btn btn_back btn btn-text btn_reset"
               onClick={navigateBack}>Go Back</button>
           </div>
     )

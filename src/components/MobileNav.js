@@ -1,5 +1,4 @@
 
-import { useAppContext } from '../context/appContext';
 import React, {useState} from 'react'
 import Image from 'next/image'
 
@@ -8,8 +7,8 @@ import { Burger } from './Burger'
 
 import burger from '../../public/assets/shared/tablet/icon-hamburger.svg'
 
-export const MobileNav = () => {
-    const { isMenuOpen, toggleMenu } = useAppContext();
+export const MobileNav = ({isMenuOpen, toggleMenu}) => {
+
     return (
         <div
           className={`mobile-nav`}>
@@ -19,7 +18,9 @@ export const MobileNav = () => {
           />
           {isMenuOpen
            ? <div className="mobile-nav__menu">
-		 <Menu toggleMenu={toggleMenu}/>
+	       <Menu
+                 toggleMenu={toggleMenu}
+                 isRenderedByNav={true}/>
              </div>
              : ""}
         </div>

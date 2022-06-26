@@ -3,9 +3,9 @@ import React, {useState} from 'react'
 import { useAppContext } from '../context/appContext';
 
 
-export const Overlay = () => {
-    const { isMenuOpen } = useAppContext()
-    const display = isMenuOpen ? 'block' : 'none';
+export const Overlay = ({isMenuOpen, isCartOpen}) => {
+
+    const display = isMenuOpen || isCartOpen ? 'block' : 'none';
     return (
         <div
           className="overlay"
