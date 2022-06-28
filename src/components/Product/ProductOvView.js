@@ -12,6 +12,7 @@ export const ProductOvView = ({ product, renderCart }) => {
 
   useEffect(() => {
     resetWarn()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   let updateOrderSize = (action) => {

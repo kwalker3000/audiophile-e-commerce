@@ -6,6 +6,7 @@
 @import '../menu';
 @import '../category';
 #cart {@import '../cart';};
+#cart-items {@import '../cart-items';};
 #hero {@import '../hero';};
 #headline {@import '../headline';};
 #ft-prod-a {@import '../ft-prod-a';};
@@ -21,3 +22,5 @@
 @import '../button';
 @import '../nav-back';
 #counter {@import '../counter';};
+
+

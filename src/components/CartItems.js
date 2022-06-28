@@ -10,7 +10,13 @@ import { LinkBtn } from './LinkBtn'
 
 import icon from '../../public/assets/shared/desktop/icon-cart.svg'
 
-export const Cart = ({ toggleCart, isCartOpen, renderCart }) => {
+export const CartItems = (
+    {
+        toggleCart,
+        isCartOpen,
+        renderCart,
+        redirectToCheckout
+    }) => {
   let { cart, updateCart, emptyCart } = useAppContext()
 
   const [isUpdateCart, setIsUpdateCart] = useState(false)
@@ -58,6 +64,7 @@ export const Cart = ({ toggleCart, isCartOpen, renderCart }) => {
     handleDropDown()
     emptyCart()
   }
+    console.log(cart)
 
   let cartItems = cart.map((item, index) => (
     <div className="dropdown__item item-wrapper" key={item.id}>
@@ -86,15 +93,7 @@ export const Cart = ({ toggleCart, isCartOpen, renderCart }) => {
   ))
 
   return (
-    <div id="cart">
-      <div className="cart">
-        <button className="image-wrapper_cart" onClick={() => handleDropDown()}>
-          {!isEmpty && <div className="cart-status"></div>}
-          <Image src={icon} alt="cart icon" />
-        </button>
-      </div>
-
-      {isCartOpen && (
+      <div id="cart-items">
         <div className="cart__dropdown dropdown">
           <div className="cart__title title">
             <h2 className="cart__head head_level-2">cart</h2>
@@ -118,12 +117,12 @@ export const Cart = ({ toggleCart, isCartOpen, renderCart }) => {
               <div className="dropdown__tail tail-wrapper">
                 <p className="paragraph">Total</p>
                 <p className="head_level-3">$ {getTotalCost()}</p>
-                <LinkBtn path="/cart" text="checkout" />
+                <LinkBtn path="/checkout" text="checkout" />
+                <button onClick={redirectToCheckout}>click</button>
               </div>
             )}
           </div>
         </div>
-      )}
     </div>
   )
 }

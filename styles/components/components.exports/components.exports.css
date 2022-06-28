@@ -479,6 +479,110 @@
   width: 100%;
 }
 
+#cart-items .head_level-2 {
+  font-family: "Manrope", sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin: 0;
+  font-size: 1.125rem;
+  line-height: 1.333em;
+  letter-spacing: 0.072em;
+}
+#cart-items .head_level-3 {
+  font-family: "Manrope", sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin: 0;
+  font-size: 1.125rem;
+  line-height: 1.333em;
+  letter-spacing: 0.072em;
+  font-size: 0.938rem;
+}
+#cart-items .paragraph {
+  font-family: "Manrope", sans-serif;
+  margin: 0;
+  font-size: 0.938rem;
+  font-weight: 500;
+  line-height: 1.667em;
+  opacity: 0.55;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+#cart-items .btn_cart {
+  padding: 0;
+  opacity: 0.55;
+  text-decoration: underline;
+}
+#cart-items .btn_cart:hover,
+#cart-items .btn_cart:focus {
+  color: #d87d4a;
+  opacity: 1;
+}
+#cart-items .cart__dropdown {
+  position: absolute;
+  border-radius: 8px;
+}
+#cart-items .dropdown {
+  background-color: #fff;
+  padding: 1.75rem;
+  max-width: 375px;
+  min-width: 257px;
+  position: absolute;
+  right: 0;
+  left: 0;
+  top: calc(100% + 1.5rem);
+  z-index: 1;
+}
+@media (min-width: 481px) {
+  #cart-items .dropdown {
+    width: 100%;
+    left: unset;
+  }
+}
+#cart-items .dropdown__text {
+  margin-left: 8%;
+}
+#cart-items .dropdown__item {
+  margin-bottom: 1.5rem;
+}
+#cart-items .btn-update {
+  display: flex;
+  justify-content: flex-end;
+}
+#cart-items .title {
+  display: flex;
+  justify-content: space-between;
+}
+#cart-items .cart__title {
+  margin-bottom: 1.5rem;
+}
+#cart-items .item-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+#cart-items .misc-wrapper {
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+#cart-items .img-wrapper {
+  position: relative;
+  width: 64px;
+  height: 64px;
+}
+#cart-items .tail-wrapper {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+#cart-items .tail-wrapper > p {
+  margin-bottom: 1.5rem;
+}
+#cart-items .tail-wrapper > a {
+  width: 100%;
+}
+
 #hero .btn {
   background-color: #d87d4a;
   color: #fff;

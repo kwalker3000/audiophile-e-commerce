@@ -26,7 +26,7 @@ export const Img = ({ mobImg, tabImg, desImg, descr, defaultImg, remote }) => {
     return () => {
       window.removeEventListener('resize', handleResize)
     }
-  }, [])
+  }, [defaultImg])
 
   return <Image src={imageSrc} alt={descr} layout={layout} />
 }

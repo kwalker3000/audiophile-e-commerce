@@ -18,12 +18,11 @@ export const AppWrapper = ({ children }) => {
       setCart((prevCart) =>
         prevCart.map((item) => {
           if (item.id == product._id) {
-            if (item.count + size > item.limit) {
-              console.log('over limit!!')
+            if (item.quantity + size > item.available) {
               setStockWarn(true)
               return item
             }
-            return { ...item, count: item.count + size }
+            return { ...item, quantity: item.quantity + size }
           }
           return item
         })
@@ -35,9 +34,10 @@ export const AppWrapper = ({ children }) => {
           name: product.altname ? product.altname : product.name,
           price: product.price,
           img: product.image.mobile,
-          count: size,
-          limit: product.stock,
-          id: product._id,
+          quantity: size,
+          available: product.stock,
+            id: product._id,
+            stripe_id: product.stripe
         },
       ])
     }
@@ -46,7 +46,7 @@ export const AppWrapper = ({ children }) => {
   let updateCart = (pendingCount) => {
     setCart((prevCart) =>
       prevCart.map((item, index) => {
-        return { ...item, count: item.count + pendingCount[index] }
+        return { ...item, quantity: item.quantity + pendingCount[index] }
       })
     )
   }
