@@ -28,8 +28,8 @@ export default function PreviewPage() {
             items: Object.entries(cart).map(([_, { stripe_id, quantity }]) => ({
                 price: stripe_id,
                 quantity,
-            }))
-        }).catch(err => console.log(JSON.stringify(err, null, 2)))
+            })),
+        });
 
         // Redirect to checkout
         const stripe = await getStripe();
