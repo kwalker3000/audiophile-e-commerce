@@ -2,16 +2,6 @@
 @use '../util/util';
 @use '../typography/typography' as font;
 
-.btn {
-    background-color: util.$dark-orange;
-    color: util.$white;
-}
-
-.btn_active:hover,
-.btn_active:focus {
-    background-color: util.$peach;
-}
-
 .head_level-2 {
     @include font.h5;
     letter-spacing: 0.036em;
@@ -59,12 +49,9 @@
 @media (min-width: util.$tablet) {
 
     .recommend__body {
-	//flex-direction: initial;
-	//justify-content:  space-between;
 	display: grid;
 	grid-template-columns: repeat(3, 1fr);
 	grid-column-gap: 0.7rem;
-	//grid-auto-flow: column;
     }
 
     .recommend__product {
@@ -73,7 +60,6 @@
 
     .img-wrapper {
 	padding-bottom: 142.6%;
-	//width: 100%;
     }
 }
 
@@ -85,7 +71,6 @@
 
     .img-wrapper {
 	padding-bottom: 90.86%;
-	//width: 100%;
     }
 
 }

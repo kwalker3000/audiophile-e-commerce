@@ -1,23 +1,26 @@
-
 const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
 
+console.log('you made it to checkout')
+
 export default async function handler(req, res) {
+
+    
+    console.log('you made it')
+    console.log(req.body)
   if (req.method === 'POST') {
     try {
       // Create Checkout Sessions from body params.
       const session = await stripe.checkout.sessions.create({
-	  mode: 'payment',
-	  payment_method_types: ['card', 'wallet'],
         line_items: [
           {
             // Provide the exact Price ID (for example, pr_1234) of the product you want to sell
-            price: '{{PRICE_ID}}',
+            price: 'price_1LF5skEDGDQymE7PS0oeF88h',
             quantity: 1,
           },
         ],
         mode: 'payment',
-        success_url: `${req.headers.origin}/success?session_id={CHECKOUT_SESSION_ID}`,
-        cancel_url: `${req.headers.origin}/cart`,
+        success_url: `${req.headers.origin}/?success=true`,
+        cancel_url: `${req.headers.origin}/?canceled=true`,
       });
       res.redirect(303, session.url);
     } catch (err) {

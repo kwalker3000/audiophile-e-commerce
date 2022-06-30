@@ -2,10 +2,10 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import Link from 'next/link'
 
-export const LinkBtn = ({ path, text }) => {
+export const LinkBtn = ({ path, text, theme }) => {
   return (
     <Link href={path}>
-      <a className="link btn btn_active btn-text" type="button">
+	<a className={`link btn btn-${theme} btn-${theme}_active btn-text`}>
         {text ? text : 'see product'}
       </a>
     </Link>
@@ -14,4 +14,5 @@ export const LinkBtn = ({ path, text }) => {
 
 LinkBtn.propTypes = {
   path: PropTypes.string.isRequired,
+    theme: PropTypes.string.isRequired
 }

@@ -19,4 +19,37 @@
   text-align: center;
 }
 
+.btn-dark {
+  background-color: #d87d4a;
+  color: #fff;
+  border: none;
+}
+
+.btn-dark_active:hover,
+.btn-dark_active:focus {
+  background-color: #fbaf85;
+}
+
+.btn-inverse {
+  background-color: #f1f1f1;
+  color: #000;
+  border: 1px solid #000;
+}
+
+.btn-inverse_active:hover,
+.btn-inverse_active:focus {
+  background-color: #000;
+  color: #fff;
+}
+
+.btn-contrast {
+  background-color: #000;
+  color: #fff;
+}
+
+.btn-contrast_active:hover,
+.btn-light-inverse_active:focus {
+  background-color: #4C4C4C;
+}
+
 /*# sourceMappingURL=button.css.map */

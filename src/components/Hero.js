@@ -32,7 +32,9 @@ export const Hero = () => {
             </p>
           </div>
           <div className="hero__btn">
-            <LinkBtn path="/headphones/xx99-mark-two-headphones" />
+            <LinkBtn
+              path="/headphones/xx99-mark-two-headphones"
+              theme="dark"/>
           </div>
         </div>
       </div>

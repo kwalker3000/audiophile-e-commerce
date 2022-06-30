@@ -11,7 +11,7 @@ export const UpdateCart = ({ updateCart, orderSize, handleDropDown }) => {
       <div>
         <div className="btn-wrapper">
           <button
-            className="btn btn-text btn-light btn-light_active"
+            className="btn btn-text btn-inverse btn-inverse_active"
             aria-label="add to cart"
             onClick={() => handleDropDown()}
           >
@@ -19,7 +19,7 @@ export const UpdateCart = ({ updateCart, orderSize, handleDropDown }) => {
           </button>
 
           <button
-            className="btn btn-text btn_active"
+            className="btn btn-text btn-dark btn-dark_active"
             aria-label="add to cart"
             onClick={() => handleUpdate()}
           >

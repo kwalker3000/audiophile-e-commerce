@@ -1,12 +1,26 @@
-import React, { useState, createContext, useContext } from 'react'
+import React, { useState, createContext, useContext, useEffect } from 'react';
+import { parseCookies, setCookie, destroyCookie } from 'nookies';
 
-import { useCartUpdate } from '../hooks/useCartUpdate'
+//import { useCartUpdate } from '../hooks/useCartUpdate';
 
 const AppContext = createContext()
 
 export const AppWrapper = ({ children }) => {
+    const cookies = parseCookies()
+    console.log(cookies)
   const [cart, setCart] = useState([])
   const [stockWarn, setStockWarn] = useState(false)
+
+    useEffect(() => {
+	let customerCart = JSON.stringify(cart)
+	console.log(customerCart)
+	setCookie(null, 'shoppingCart', customerCart, {
+	    maxAge: 24 * 60 * 60,
+	    path: '/'
+	})
+	let newCart = [];
+	
+    }, [cart])
 
   let resetWarn = () => {
     setStockWarn(false)

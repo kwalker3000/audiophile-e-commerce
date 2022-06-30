@@ -18,7 +18,7 @@ export const AddCart = ({
       <div className="add-cart">
         <div className="add-cart__btn">
           <button
-            className="btn btn-text btn_active"
+            className="btn btn-text btn-dark btn-dark_active"
             aria-label="add to cart"
             onClick={() => moveToCart(product, size)}
           >

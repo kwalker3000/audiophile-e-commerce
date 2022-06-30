@@ -2,17 +2,6 @@
 @use '../util/util';
 @use '../typography/typography' as font;
 
-.btn {
-    background-color: transparent;
-    color: util.$black;
-}
-
-.btn_active:hover,
-.btn_active:focus {
-    background-color: util.$black;
-    color: util.$white;
-}
-
 .head_level-2 {
     @include font.h4;
 }

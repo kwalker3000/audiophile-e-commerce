@@ -140,4 +140,15 @@
   width: 100%;
 }
 
+.btn-wrapper {
+  display: flex;
+  width: 100%;
+  justify-content: flex-end;
+}
+
+.btn-wrapper > button:nth-child(1) {
+  position: relative;
+  right: 8%;
+}
+
 /*# sourceMappingURL=cart.css.map */

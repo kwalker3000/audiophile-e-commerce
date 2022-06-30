@@ -118,7 +118,7 @@ export const Cart = ({ toggleCart, isCartOpen, renderCart }) => {
               <div className="dropdown__tail tail-wrapper">
                 <p className="paragraph">Total</p>
                 <p className="head_level-3">$ {getTotalCost()}</p>
-                <LinkBtn path="/cart" text="checkout" />
+                <LinkBtn path="/checkout" text="checkout" theme="dark"/>
               </div>
             )}
           </div>

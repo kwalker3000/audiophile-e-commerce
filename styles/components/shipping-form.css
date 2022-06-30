@@ -1,0 +1,44 @@
+.ship-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.ship-form > div {
+  display: flex;
+  flex-direction: column;
+}
+
+.form__label {
+  margin-bottom: 0.65em;
+}
+
+.form__input {
+  margin-bottom: 1.5rem;
+}
+
+.label {
+  font-size: 0.75;
+  font-weight: 700;
+}
+
+.input {
+  border: 1px solid #CFCFCF;
+  border-radius: 8px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  padding: 1.32em 1.71em;
+}
+
+.input::placeholder {
+  font-size: 0.875rem;
+  color: #000;
+  opacity: 0.4;
+}
+
+.input:focus {
+  border: 1px solid #d87d4a;
+  caret-color: #d87d4a;
+  outline: 0;
+}
+
+/*# sourceMappingURL=shipping-form.css.map */

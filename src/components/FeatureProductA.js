@@ -33,7 +33,9 @@ export const FeatureProductA = () => {
             truly remarkable sound.
           </p>
           <div className="ft-prod-a__btn">
-            <LinkBtn path="/speakers/zx9-speaker" />
+            <LinkBtn
+              path="/speakers/zx9-speaker"
+              theme="contrast"/>
           </div>
         </div>
       </div>

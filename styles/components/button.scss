@@ -17,3 +17,38 @@
     text-align: center;
 }
 
+.btn-dark {
+    background-color: util.$dark-orange;
+    color: util.$white;
+
+    border: none;
+}
+
+.btn-dark_active:hover,
+.btn-dark_active:focus {
+    background-color: util.$peach;
+}
+
+.btn-inverse {
+    background-color: util.$gray;
+    color: util.$black;
+
+    border: 1px solid util.$black;
+
+}
+
+.btn-inverse_active:hover,
+.btn-inverse_active:focus {
+    background-color: util.$black;
+    color: util.$white;
+}
+
+.btn-contrast {
+    background-color: util.$black;
+    color: util.$white;
+}
+
+.btn-contrast_active:hover,
+.btn-light-inverse_active:focus {
+    background-color: #4C4C4C;
+}

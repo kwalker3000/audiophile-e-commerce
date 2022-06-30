@@ -2,16 +2,6 @@
 @use '../util/util';
 @use '../typography/typography' as font;
 
-.btn {
-    background-color: util.$dark-orange;
-    color: util.$white;
-}
-
-.btn_active:hover,
-.btn_active:focus {
-    background-color: util.$peach;
-}
-
 .paragraph {
     @include font.body; 
     opacity: 0.75;
