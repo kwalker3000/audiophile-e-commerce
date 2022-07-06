@@ -1,0 +1,100 @@
+
+const axios = require('axios');
+
+export const getShipEstimates = async (address, cart) => {
+    console.log(address)
+    let api = `${process.env.SHIP_KEY}`;
+
+    let loc1 = {
+	country: "DE",
+	zip: "80331",
+	city: "Munich",
+	lat: 48.1345,
+	lon: 11.571
+    };
+
+    let loc2 = {
+	country: "US",
+	zip: "10024",
+	city: "New York",
+	lat: 40.7864,
+	lon: -73.9764
+	
+    };
+
+    let distanceA = distance(loc1.lat, address.lat, loc1.lon, address.lon)
+    let distanceB = distance(loc2.lat, address.lat, loc2.lon, address.lon)
+    let from = Math.min(distanceA, distanceB) == distanceA ? loc1 : loc2
+
+    console.log('coming from...', from)
+
+    let getWeight = (cart) => {
+        let total = 0;
+        cart.forEach(item => total += item.weight * quantity);
+        return total
+    }
+    let data = JSON.stringify({
+    "carrier_ids": [
+	"se-2503954", "se-2503953"
+    ],
+    "from_country_code": from.country,
+    "from_postal_code": from.zip,
+    "to_country_code": address.country,
+    "to_postal_code": address.zip,
+    "weight": {
+	"value": 500,
+	"unit": "gram"
+    }
+    });
+
+    let config = {
+    method: 'post',
+    url: 'https://api.shipengine.com/v1/rates/estimate',
+    headers: { 
+	'Content-Type': 'application/json', 
+	'API-Key': api
+    },
+    data : data
+    };
+
+    let result = await axios(config)
+	.then(function (response) {
+            return response.data
+            
+	    //console.log(JSON.stringify(response.data));
+    })
+	.catch(function (error) {
+	    console.log(error);
+    });
+
+    return result
+
+}
+
+
+const distance = (lat1, lat2, lon1, lon2) => {
+
+    // The math module contains a function
+    // named toRadians which converts from
+    // degrees to radians.
+    lon1 =  lon1 * Math.PI / 180;
+    lon2 = lon2 * Math.PI / 180;
+    lat1 = lat1 * Math.PI / 180;
+    lat2 = lat2 * Math.PI / 180;
+
+    // Haversine formula
+    let dlon = lon2 - lon1;
+    let dlat = lat2 - lat1;
+    let a = Math.pow(Math.sin(dlat / 2), 2)
+		+ Math.cos(lat1) * Math.cos(lat2)
+		* Math.pow(Math.sin(dlon / 2),2);
+
+    let c = 2 * Math.asin(Math.sqrt(a));
+
+    // Radius of earth in kilometers. Use 3956
+    // for miles
+    let r = 6371;
+
+    // calculate the result
+    return(c * r);
+}

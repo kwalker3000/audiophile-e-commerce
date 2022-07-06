@@ -1,3 +1,5 @@
+
+import { useEffect } from 'react';
 import Head from 'next/head'
 import styles from '../styles/modules/Home.module.css'
 
@@ -10,7 +12,15 @@ import { FeatureProductC } from '../src/components/FeatureProductC'
 import { About } from '../src/components/About'
 import { Footer } from '../src/components/Footer'
 
-export default function Home() {
+import { useAppContext } from '../src/context/appContext'
+
+export default function Home({countryList}) {
+    let { setCountries } = useAppContext();
+
+    useEffect(() => {
+	setCountries(countryList)
+    }, [])
+
   return (
     <div className={styles.page}>
       <Head>
@@ -54,4 +64,34 @@ export default function Home() {
       </footer>
     </div>
   )
+}
+
+
+
+export async function getStaticProps() {
+
+    const fs = require('fs/promises')
+    const fileName = '/home/kwalker/stem/dev/projects/portfolio/audiophile/public/assets/static/data.csv';
+
+    const readFile = async fileName => {
+        try {
+            const data = await fs.readFile(fileName, 'utf8');
+	    let array = await data.split('\r');
+	    await array.shift();
+	    let countries = await array.map(country => country.slice(1))
+
+            return countries
+        }
+        catch(err) {
+            console.log(err)
+        }
+    }
+
+    let countryList = await readFile(fileName)
+    
+  return {
+      props: {
+          countryList
+      }
+  }
 }

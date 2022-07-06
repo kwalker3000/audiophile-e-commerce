@@ -1,11 +1,25 @@
 
-import React from 'react';
+
+import React, { useState } from 'react';
+import { useAppContext } from '../../context/appContext';
+import { LinkBtn } from '../../components/LinkBtn';
 
 export const ShippingForm = () => {
 
+    let { address, handleChange, countryList } = useAppContext();
+    console.log(countryList)
+    console.log(address)
+    console.log('hello')
+
+    let {name, email, phone, line1, line2, zip, city, country, state} = address
+
+    let countries = countryList.map((country, index) => (
+        <option className="options" value={`${country[1]}`} key={index}>{country[0]}</option>
+    ))
+
     return (
         <div id="ship-form">
-	    <form className="ship-form" action="/api/form" method="post">
+	    <form className="ship-form">
               <div>
 		<label
                   htmlFor="name"
@@ -16,6 +30,8 @@ export const ShippingForm = () => {
                   id="name"
                   name="name"
                   placeholder="Alexei Ward"
+                  value={name}
+                  onChange={(e) => handleChange(e)}
                   required />
               </div>
 
@@ -29,6 +45,8 @@ export const ShippingForm = () => {
                   id="email"
                   name="email"
                   placeholder="alexei@mail.com"
+                  value={email}
+                  onChange={(e) => handleChange(e)}
                   required />
               </div>
       
@@ -42,19 +60,23 @@ export const ShippingForm = () => {
                    id="phone"
                    name="phone"
                    placeholder="+1 202-555-0136"
+                   value={phone}
+                  onChange={(e) => handleChange(e)}
                    required />
               </div>
 
               <div>
 		<label
                   htmlFor="address"
-                  className="form__label label">Address</label>
+                  className="form__label label">Your Address</label>
 		<input
                   className="form__input input"
                   type="text"
                   id="address"
                   name="line1"
                   placeholder="1137 Williams Street"
+                  value={line1}
+                  onChange={(e) => handleChange(e)}
                   required />
 		<input
                   className="form__input input"
@@ -62,6 +84,8 @@ export const ShippingForm = () => {
                   id="address"
                   name="line2"
                   placeholder="Apt 21"
+                  value={line2}
+                  onChange={(e) => handleChange(e)}
                   required />
               </div>
 
@@ -72,11 +96,13 @@ export const ShippingForm = () => {
 		<input
                   className="form__input input"
                   type="text"
-                  inputmode="numeric"
+                  inputMode="numeric"
                   pattern="\d*"
                   id="zip"
                   name="zip"
-                  placeholder="10001"
+                  placeholder="48103"
+                  value={zip}
+                  onChange={(e) => handleChange(e)}
                   required />
               </div>
       
@@ -89,27 +115,51 @@ export const ShippingForm = () => {
                    type="text"
                    id="city"
                    name="city"
-                   placeholder="New York"
+                   placeholder="Ann Arbor"
+                   value={city}
+                  onChange={(e) => handleChange(e)}
                    required />
               </div>
+		
+               <div>
+		 <label
+                   htmlFor="state"
+                   className="form__label label">State or Region</label>
+		 <input
+                  className="form__input input"
+                   type="text"
+                   id="state"
+                   name="state"
+                   placeholder="Michigan"
+                   value={state}
+                  onChange={(e) => handleChange(e)}
+                   required />
+              </div>
+
               
-              <div>
+              <div className="country custom-select">
 		<label
                   htmlFor="country"
                   className="form__label label">Country</label>
-		<input
-                  className="form__input input"
-                  type="country"
-                  id="country"
+
+                <select
+                  value={country}
                   name="country"
-                  placeholder="United States"
-                  required />
+                  id="country"
+                  onChange={(e) => handleChange(e)}>
+                  {countries}
+                </select>
+
               </div>
 
 
      
-      <button className="btn btn-text" type="submit">Submit</button>
+		<LinkBtn
+		    path="/checkout"
+		    theme="dark"
+		    text="continue & pay"/>
 	    </form>
         </div>
     )
 }
+

@@ -2,7 +2,6 @@
 @use '../util/util';
 @use '../typography/typography' as font;
 
-
 .ship-form {
     display: flex;
     flex-direction: column;
@@ -21,12 +20,21 @@
     margin-bottom: 1.5rem;
 }
 
+.form__head {
+    margin-bottom: 1rem;
+}
+
+.form__fieldset {
+    margin-bottom: 1.5rem;
+}
+
 .label {
-    font-size: 0.75;
+    font-size: 0.75rem;
     font-weight: 700;
 }
 
-.input {
+.input,
+.country > select {
     border: 1px solid #CFCFCF;
     border-radius: 8px;
     font-size: 0.875rem;
@@ -36,16 +44,61 @@
 
 }
 
+.country > select {
+    margin-bottom: 2rem;
+}
+
+.country__body {
+    margin-bottom: 2rem;
+    font-style: italic;
+    text-transform: none
+}
+
 .input::placeholder {
     font-size: 0.875rem;
     color: util.$black;
     opacity: 0.4;
-   
 }
 
 .input:focus {
     border: 1px solid util.$dark-orange;
     caret-color: util.$dark-orange;
     outline: 0;
-   
+}
+
+.custom-select * {
+    cursor:  pointer;
+}
+
+.fieldset {
+    padding: 0;
+    border: none;
+}
+
+
+//// Estimates
+.dropdown__total {
+    margin-bottom: 0.75rem;
+}
+
+.total-wrapper {
+    display: flex;
+    justify-content:  space-between;
+    flex-wrap: wrap;
+}
+
+.status {
+    @include font.body;
+    font-style: italic;
+    opacity: 1;
+}
+
+.grand {
+    border-top: 1px solid hsla(0,0,0,0.35);
+    padding-top: 1.5rem;
+    padding-bottom: 0.75rem;
+}
+
+.grand > p:nth-child(2) {
+    color: util.$dark-orange;
 }

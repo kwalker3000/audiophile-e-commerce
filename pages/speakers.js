@@ -4,7 +4,7 @@ import styles from '../styles/modules/Category.module.css'
 
 import { MongoClient } from 'mongodb'
 import { Headline } from '../src/components/Headline'
-import { ProductQkView } from '../src/components/ProductQkView'
+import { ProductQkView } from '../src/components/Product/ProductQkView'
 import { Header } from '../src/components/Header'
 import { Menu } from '../src/components/Menu'
 import { About } from '../src/components/About'

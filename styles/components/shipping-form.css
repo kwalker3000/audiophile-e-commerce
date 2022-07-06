@@ -16,17 +16,36 @@
   margin-bottom: 1.5rem;
 }
 
+.form__head {
+  margin-bottom: 1rem;
+}
+
+.form__fieldset {
+  margin-bottom: 1.5rem;
+}
+
 .label {
-  font-size: 0.75;
+  font-size: 0.75rem;
   font-weight: 700;
 }
 
-.input {
+.input,
+.country > select {
   border: 1px solid #CFCFCF;
   border-radius: 8px;
   font-size: 0.875rem;
   font-weight: 500;
   padding: 1.32em 1.71em;
+}
+
+.country > select {
+  margin-bottom: 2rem;
+}
+
+.country__body {
+  margin-bottom: 2rem;
+  font-style: italic;
+  text-transform: none;
 }
 
 .input::placeholder {
@@ -39,6 +58,46 @@
   border: 1px solid #d87d4a;
   caret-color: #d87d4a;
   outline: 0;
+}
+
+.custom-select * {
+  cursor: pointer;
+}
+
+.fieldset {
+  padding: 0;
+  border: none;
+}
+
+.dropdown__total {
+  margin-bottom: 0.75rem;
+}
+
+.total-wrapper {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.status {
+  font-family: "Manrope", sans-serif;
+  margin: 0;
+  font-size: 0.938rem;
+  font-weight: 500;
+  line-height: 1.667em;
+  opacity: 0.55;
+  font-style: italic;
+  opacity: 1;
+}
+
+.grand {
+  border-top: 1px solid hsla(0deg, 0%, 0%, 0.35);
+  padding-top: 1.5rem;
+  padding-bottom: 0.75rem;
+}
+
+.grand > p:nth-child(2) {
+  color: #d87d4a;
 }
 
 /*# sourceMappingURL=shipping-form.css.map */

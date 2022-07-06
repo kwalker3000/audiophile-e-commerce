@@ -140,6 +140,10 @@
   width: 100%;
 }
 
+.tail-wrapper > button {
+  width: 100%;
+}
+
 .btn-wrapper {
   display: flex;
   width: 100%;

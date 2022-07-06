@@ -528,6 +528,9 @@ body {
 #cart .tail-wrapper > a {
   width: 100%;
 }
+#cart .tail-wrapper > button {
+  width: 100%;
+}
 #cart .btn-wrapper {
   display: flex;
   width: 100%;
@@ -1308,7 +1311,7 @@ body {
   opacity: 0.55;
   font-size: 1.125rem;
   opacity: 0.85;
-  color: red;
+  color: #CD2C2C;
   width: 300px;
 }
 
@@ -1511,6 +1514,33 @@ body {
   }
 }
 
+#checkout .head_level-1 {
+  font-family: "Manrope", sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin: 0;
+  font-size: 1.75rem;
+  line-height: 1.36em;
+  letter-spacing: 0.07em;
+  letter-spacing: 0.036em;
+}
+#checkout .head_level-2 {
+  font-family: "Manrope", sans-serif;
+  margin: 0;
+  font-size: 0.8125rem;
+  font-weight: 700;
+  line-height: 1.923em;
+  letter-spacing: 0.076em;
+  text-transform: uppercase;
+  color: #d87d4a;
+}
+#checkout .checkout__head {
+  margin-bottom: 2rem;
+}
+#checkout .form__head {
+  margin-bottom: 1rem;
+}
+
 #ship-form .ship-form {
   display: flex;
   flex-direction: column;
@@ -1525,16 +1555,31 @@ body {
 #ship-form .form__input {
   margin-bottom: 1.5rem;
 }
+#ship-form .form__head {
+  margin-bottom: 1rem;
+}
+#ship-form .form__fieldset {
+  margin-bottom: 1.5rem;
+}
 #ship-form .label {
-  font-size: 0.75;
+  font-size: 0.75rem;
   font-weight: 700;
 }
-#ship-form .input {
+#ship-form .input,
+#ship-form .country > select {
   border: 1px solid #CFCFCF;
   border-radius: 8px;
   font-size: 0.875rem;
   font-weight: 500;
   padding: 1.32em 1.71em;
+}
+#ship-form .country > select {
+  margin-bottom: 2rem;
+}
+#ship-form .country__body {
+  margin-bottom: 2rem;
+  font-style: italic;
+  text-transform: none;
 }
 #ship-form .input::placeholder {
   font-size: 0.875rem;
@@ -1545,6 +1590,162 @@ body {
   border: 1px solid #d87d4a;
   caret-color: #d87d4a;
   outline: 0;
+}
+#ship-form .custom-select * {
+  cursor: pointer;
+}
+#ship-form .fieldset {
+  padding: 0;
+  border: none;
+}
+#ship-form .dropdown__total {
+  margin-bottom: 0.75rem;
+}
+#ship-form .total-wrapper {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+#ship-form .status {
+  font-family: "Manrope", sans-serif;
+  margin: 0;
+  font-size: 0.938rem;
+  font-weight: 500;
+  line-height: 1.667em;
+  opacity: 0.55;
+  font-style: italic;
+  opacity: 1;
+}
+#ship-form .grand {
+  border-top: 1px solid hsla(0deg, 0%, 0%, 0.35);
+  padding-top: 1.5rem;
+  padding-bottom: 0.75rem;
+}
+#ship-form .grand > p:nth-child(2) {
+  color: #d87d4a;
+}
+
+#checkout-page {
+  /* Buttons and links */
+  /* spinner/processing state, errors */
+}
+#checkout-page #root {
+  display: flex;
+  align-items: center;
+  font-family: "Manrope", sans-serif;
+}
+#checkout-page body {
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  height: 100vh;
+  width: 100vw;
+}
+#checkout-page form {
+  width: 30vw;
+  min-width: 500px;
+  align-self: center;
+  border-radius: 7px;
+  padding: 40px;
+}
+#checkout-page #payment-message {
+  color: rgb(105, 115, 134);
+  font-size: 16px;
+  line-height: 20px;
+  padding-top: 12px;
+  text-align: center;
+}
+#checkout-page #payment-element {
+  margin-bottom: 24px;
+}
+#checkout-page button {
+  display: block;
+  padding: 0.72rem 1.89rem;
+  cursor: pointer;
+  font-family: "Manrope", sans-serif;
+  margin: 0;
+  font-size: 0.8125rem;
+  font-weight: 700;
+  line-height: 1.923em;
+  letter-spacing: 0.076em;
+  text-transform: uppercase;
+  text-align: center;
+  background-color: #d87d4a;
+  color: #fff;
+  border: none;
+  display: block;
+  width: 100%;
+}
+#checkout-page .btn-dark_active:hover {
+  background-color: #fbaf85;
+}
+#checkout-page button:disabled {
+  cursor: not-allowed;
+}
+#checkout-page .spinner,
+#checkout-page .spinner:before,
+#checkout-page .spinner:after {
+  border-radius: 50%;
+}
+#checkout-page .spinner {
+  color: #ffffff;
+  font-size: 22px;
+  text-indent: -99999px;
+  margin: 0px auto;
+  position: relative;
+  width: 20px;
+  height: 20px;
+  box-shadow: inset 0 0 0 2px;
+  -webkit-transform: translateZ(0);
+  -ms-transform: translateZ(0);
+  transform: translateZ(0);
+}
+#checkout-page .spinner:before,
+#checkout-page .spinner:after {
+  position: absolute;
+  content: "";
+}
+#checkout-page .spinner:before {
+  width: 10.4px;
+  height: 20.4px;
+  background: #d87d4a;
+  border-radius: 20.4px 0 0 20.4px;
+  top: -0.2px;
+  left: -0.2px;
+  -webkit-transform-origin: 10.4px 10.2px;
+  transform-origin: 10.4px 10.2px;
+  -webkit-animation: loading 2s infinite ease 1.5s;
+  animation: loading 2s infinite ease 1.5s;
+}
+#checkout-page .spinner:after {
+  width: 10.4px;
+  height: 10.2px;
+  background: #d87d4a;
+  border-radius: 0 10.2px 10.2px 0;
+  top: -0.1px;
+  left: 10.2px;
+  -webkit-transform-origin: 0px 10.2px;
+  transform-origin: 0px 10.2px;
+  -webkit-animation: loading 2s infinite ease;
+  animation: loading 2s infinite ease;
+}
+@keyframes loading {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+@media only screen and (max-width: 600px) {
+  #checkout-page form {
+    width: 80vw;
+    min-width: initial;
+  }
 }
 
 .btn_reset {
@@ -1601,6 +1802,73 @@ body {
   background-color: #4C4C4C;
 }
 
+.btn:disabled {
+  cursor: not-allowed;
+}
+
+/* spinner/processing state, errors */
+.spinner,
+.spinner:before,
+.spinner:after {
+  border-radius: 50%;
+}
+
+.spinner {
+  color: #ffffff;
+  font-size: 22px;
+  text-indent: -99999px;
+  margin: 0px auto;
+  position: relative;
+  width: 20px;
+  height: 20px;
+  box-shadow: inset 0 0 0 2px;
+  -webkit-transform: translateZ(0);
+  -ms-transform: translateZ(0);
+  transform: translateZ(0);
+}
+
+.spinner:before,
+.spinner:after {
+  position: absolute;
+  content: "";
+}
+
+.spinner:before {
+  width: 10.4px;
+  height: 20.4px;
+  background: #d87d4a;
+  border-radius: 20.4px 0 0 20.4px;
+  top: -0.2px;
+  left: -0.2px;
+  -webkit-transform-origin: 10.4px 10.2px;
+  transform-origin: 10.4px 10.2px;
+  -webkit-animation: loading 2s infinite ease 1.5s;
+  animation: loading 2s infinite ease 1.5s;
+}
+
+.spinner:after {
+  width: 10.4px;
+  height: 10.2px;
+  background: #d87d4a;
+  border-radius: 0 10.2px 10.2px 0;
+  top: -0.1px;
+  left: 10.2px;
+  -webkit-transform-origin: 0px 10.2px;
+  transform-origin: 0px 10.2px;
+  -webkit-animation: loading 2s infinite ease;
+  animation: loading 2s infinite ease;
+}
+
+@keyframes loading {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
 .btn_back {
   padding: 0;
   opacity: 0.55;

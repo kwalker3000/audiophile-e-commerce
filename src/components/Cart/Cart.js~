@@ -2,19 +2,22 @@ import React, { useState, useEffect } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 
-import { useAppContext } from '../context/appContext'
-import { Img } from './Img'
-import { Counter } from './Counter'
+import { useAppContext } from '../../context/appContext';
+import { Img } from '../../components/Img'
+import { Counter } from '../../components/Counter'
 import { UpdateCart } from './UpdateCart'
-import { LinkBtn } from './LinkBtn'
+import { LinkBtn } from '../../components/LinkBtn'
+import { ShippingForm } from '../Checkout/ShippingForm'
+import { Checkout } from '../Checkout/Checkout'
 
-import icon from '../../public/assets/shared/desktop/icon-cart.svg'
+import icon from '../../../public/assets/shared/desktop/icon-cart.svg'
 
 export const Cart = ({ toggleCart, isCartOpen, renderCart }) => {
   let { cart, updateCart, emptyCart } = useAppContext()
 
   const [isUpdateCart, setIsUpdateCart] = useState(false)
   const [orderSize, setOrderSize] = useState([])
+    const [isCheckout, setIsCheckout] = useState(false)
 
   let isEmpty = cart.length == 0
 
@@ -32,6 +35,7 @@ export const Cart = ({ toggleCart, isCartOpen, renderCart }) => {
   let handleDropDown = () => {
     toggleCart()
     setIsUpdateCart(false)
+      setIsCheckout(false)
   }
 
   let adjustedSize = (adjustment, index) => {
@@ -87,6 +91,7 @@ export const Cart = ({ toggleCart, isCartOpen, renderCart }) => {
 
   return (
     <div id="cart">
+
       <div className="cart">
         <button className="image-wrapper_cart" onClick={() => handleDropDown()}>
           {!isEmpty && <div className="cart-status"></div>}
@@ -95,7 +100,10 @@ export const Cart = ({ toggleCart, isCartOpen, renderCart }) => {
       </div>
 
       {isCartOpen && (
+
         <div className="cart__dropdown dropdown">
+
+            {!isCheckout ? <>
           <div className="cart__title title">
             <h2 className="cart__head head_level-2">cart</h2>
             <button
@@ -105,7 +113,9 @@ export const Cart = ({ toggleCart, isCartOpen, renderCart }) => {
               Remove all
             </button>
           </div>
+
           <div>{cartItems}</div>
+
           <div className="">
             {isUpdateCart ? (
               <UpdateCart
@@ -118,12 +128,18 @@ export const Cart = ({ toggleCart, isCartOpen, renderCart }) => {
               <div className="dropdown__tail tail-wrapper">
                 <p className="paragraph">Total</p>
                 <p className="head_level-3">$ {getTotalCost()}</p>
-                <LinkBtn path="/checkout" text="checkout" theme="dark"/>
-              </div>
-            )}
-          </div>
+                <button
+                  className="btn btn-text btn-dark btn-dark_active"
+                  onClick={() => setIsCheckout(true)}
+                >
+                  checkout
+                </button>
+              </div> )  
+            }
+             </div></> : <><Checkout/></>}
+
         </div>
-      )}
+      ) }
     </div>
   )
 }

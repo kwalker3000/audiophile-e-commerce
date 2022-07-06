@@ -1,0 +1,52 @@
+
+import React from 'react';
+
+export const Estimates = () => {
+    
+    return (
+        <div id="ship-form">
+	    <form className="ship-form">
+
+              <div>
+		<label
+                  htmlFor="zip"
+                  className="form__label label">ZIP Code</label>
+		<input
+                  className="form__input input"
+                  type="text"
+                  inputMode="numeric"
+                  pattern="\d*"
+                  id="zip"
+                  name="zip"
+                  placeholder="48103"
+                  value={zip}
+                  onChange={(e) => handleChange(e)}
+                  required />
+              </div>
+      
+              <div className="country custom-select">
+		<label
+                  htmlFor="country"
+                  className="form__label label">Country</label>
+
+                <select
+                  value={country}
+                  name="country"
+                  id="country"
+                  onChange={(e) => handleChange(e)}>
+                  {countries}
+                </select>
+
+              </div>
+
+
+     
+		<LinkBtn
+		    path="/checkout"
+		    theme="dark"
+		    text="continue & pay"/>
+	    </form>
+
+        </div>
+    )
+}

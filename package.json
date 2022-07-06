@@ -15,12 +15,16 @@
     "@stripe/react-stripe-js": "^1.9.0",
     "@stripe/stripe-js": "^1.32.0",
     "axios": "^0.27.2",
+    "data.js": "^0.0.0",
     "mongodb": "^4.7.0",
     "next": "^12.1.6",
     "nookies": "^2.5.2",
+    "pg-promise": "^10.11.1",
     "prop-types": "^15.8.1",
     "react": "18.1.0",
     "react-dom": "18.1.0",
+    "request": "^2.88.2",
+    "shipengine": "^1.0.1",
     "stripe": "^9.10.0"
   },
   "devDependencies": {

@@ -1,0 +1,31 @@
+.head_level-1 {
+  font-family: "Manrope", sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin: 0;
+  font-size: 1.75rem;
+  line-height: 1.36em;
+  letter-spacing: 0.07em;
+  letter-spacing: 0.036em;
+}
+
+.head_level-2 {
+  font-family: "Manrope", sans-serif;
+  margin: 0;
+  font-size: 0.8125rem;
+  font-weight: 700;
+  line-height: 1.923em;
+  letter-spacing: 0.076em;
+  text-transform: uppercase;
+  color: #d87d4a;
+}
+
+.checkout__head {
+  margin-bottom: 2rem;
+}
+
+.form__head {
+  margin-bottom: 1rem;
+}
+
+/*# sourceMappingURL=checkout.css.map */

@@ -5,11 +5,27 @@ const calculateOrderAmount = (items) => {
   // Replace this constant with a calculation of the order's amount
   // Calculate the order total on the server to prevent
   // people from directly manipulating the amount on the client
-  return 1400;
+    let total = 0;
+    items.forEach(item => {
+        console.log(items)
+        total += (item.price * 100) * item.quantity;
+    })
+    console.log(total)
+  return total;
 };
 
+const getOrderDetails = (items) => {
+    let details = [];
+    items.forEach(item => {
+        details.push(`${item.name}: ${item.quantity}; `)
+    })
+    console.log(details)
+    return details.join(',');
+   
+}
+
 export default async function handler(req, res) {
-  const { items } = req.body;
+    const { items, address } = req.body;
     console.log('you are in handler');
     console.log(items)
 
@@ -22,16 +38,17 @@ export default async function handler(req, res) {
     },
       shipping: {
           address: {
-              city: "saint charles",
-              country: "US",
-              line1: "37 olde yorkshire ct",
-              line2: "",
-              postal_code: "63304",
-              state: "missouri"
+              city: address.city,
+              country: address.country,
+              line1: address.line1,
+              line2: address.line2,
+              postal_code: address.zip,
+              state: address.state
           },
-          name: "John"
-      }
-
+          name: address.name
+      },
+      description: getOrderDetails(items),
+      receipt_email: address.email
   });
 
   res.send({

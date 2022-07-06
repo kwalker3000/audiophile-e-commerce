@@ -28,8 +28,6 @@
 
 
 
-
-
 /// dropdown 
 
 .head_level-2 {
@@ -133,7 +131,12 @@
 .tail-wrapper > p {
     margin-bottom: 1.5rem;
 }
+
 .tail-wrapper > a {
+    width: 100%;
+}
+
+.tail-wrapper > button {
     width: 100%;
 }
 

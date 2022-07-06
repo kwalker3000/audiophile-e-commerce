@@ -1,26 +1,77 @@
-import React, { useState, createContext, useContext, useEffect } from 'react';
-import { parseCookies, setCookie, destroyCookie } from 'nookies';
 
-//import { useCartUpdate } from '../hooks/useCartUpdate';
+import React, { useState, createContext, useContext, useEffect, useReducer } from 'react';
+import { parseCookies, setCookie, destroyCookie } from 'nookies';
 
 const AppContext = createContext()
 
 export const AppWrapper = ({ children }) => {
-    const cookies = parseCookies()
-    console.log(cookies)
-  const [cart, setCart] = useState([])
-  const [stockWarn, setStockWarn] = useState(false)
 
-    useEffect(() => {
-	let customerCart = JSON.stringify(cart)
-	console.log(customerCart)
-	setCookie(null, 'shoppingCart', customerCart, {
-	    maxAge: 24 * 60 * 60,
-	    path: '/'
+    const [countryList, setCountryList] = useState([])
+    const [cart, setCart] = useState([])
+    const [stockWarn, setStockWarn] = useState(false)
+    const [address, setAddress] = useReducer((state, action) => {
+	switch (action.type) {
+	  case 'UPDATE':
+	    return {
+		...state,
+		[action.payload.key]: action.payload.value
+	    };
+	  case 'REPLACE CITY':
+	    return {
+		...state,
+		[action.payload.key]: action.payload.value
+	    }
+	  default:
+	    throw new Error(`Unknown action ${action.type}`);
+	};
+    },  {
+	    name: "",
+	    email: "",
+	    phone: "",
+	    line1: "",
+	    line2: "",
+	    zip: "",
+	    city: "",
+	    country: "",
+	    state: ""
+	}
+    );
+
+    const inputAction = (event) => {
+	setAddress({
+	type: 'UPDATE',
+	payload: { key: event.target.name, value: event.target.value },
+	});
+    };
+
+    const replaceAction = (city) => {
+	setAddress({
+	    type: 'REPLACE CITY',
+	    payload: { key: "city", value: city}
 	})
-	let newCart = [];
-	
-    }, [cart])
+    }
+
+
+    let setCountries = list => {
+        let countries = []
+        for (let country of list) {
+            let tuple = country.replace("\"","").split(',')
+            countries.push(tuple)
+        }
+        setCountryList(countries)
+        let countryList = JSON.stringify(countries)
+        localStorage.setItem('countries', countryList)
+    }
+
+    let handleChange = e => {
+	let {name, value} = e.target;
+        setAddress(preVal => {
+            return {
+                ...preVal,
+                [name]: value
+            }
+        })
+    }
 
   let resetWarn = () => {
     setStockWarn(false)
@@ -51,7 +102,8 @@ export const AppWrapper = ({ children }) => {
           quantity: size,
           available: product.stock,
             id: product._id,
-            stripe_id: product.stripe
+            stripe_id: product.stripe,
+            weight: product.weight
         },
       ])
     }
@@ -65,7 +117,38 @@ export const AppWrapper = ({ children }) => {
     )
   }
 
-  let emptyCart = () => setCart([])
+    let emptyCart = () => {
+	setCart([]);   
+        destroyCookie(null, 'shoppingCart', { path: '/'})
+    }
+
+    useEffect(() => {
+
+        if (cart.length == 0) {
+	    const cookies = parseCookies();
+	    if (cookies) {
+		let { shoppingCart } = cookies;
+		if (shoppingCart && shoppingCart.length > 0) {
+		    setCart(JSON.parse(shoppingCart)) 
+		}
+	    }
+        }
+
+        if (cart.length > 0) {
+	    let customerCart = JSON.stringify(cart)
+	    setCookie(null, 'shoppingCart', customerCart, {
+		maxAge: 24 * 60 * 60,
+		path: '/'
+	    })
+        }
+        
+	let countryArr = JSON.parse(localStorage.getItem('countries'))
+        if (countryArr && countryList.length == 0) {
+            setCountryList(countryArr || countryList)
+        }
+	
+    }, [cart])
+
 
   return (
     <AppContext.Provider
@@ -75,7 +158,12 @@ export const AppWrapper = ({ children }) => {
         emptyCart,
         stockWarn,
         resetWarn,
-        cart,
+            cart,
+            inputAction,
+	    replaceAction,
+          address,
+          setCountries,
+          countryList
       }}
     >
       {children}

@@ -30,7 +30,7 @@ export const About = () => {
             audio gear
           </h2>
           <p className="about__body paragraph">
-            Located at the heart of New York City, Audiophile is the premier
+              Located in downtown Munich and New York City, Audiophile is the premier
             store for high end headphones, earphones, speakers, and audio
             accessories. We have a large showroom and luxury demonstration rooms
             available for you to browse and experience a wide range of our
