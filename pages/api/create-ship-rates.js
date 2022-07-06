@@ -1,7 +1,7 @@
 
 const axios = require('axios');
 
-export default async function(req, res) {
+export default async function handler(req, res) {
 
     let api = `${process.env.SHIP_KEY}`;
     let { geo, address, cart } = req.body
