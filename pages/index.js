@@ -71,7 +71,7 @@ export default function Home({countryList}) {
 export async function getStaticProps() {
 
     const fs = require('fs/promises')
-    const fileName = '/home/kwalker/stem/dev/projects/portfolio/audiophile/public/assets/static/data.csv';
+    const fileName = '/public/assets/static/data.csv';
 
     const readFile = async fileName => {
         try {
