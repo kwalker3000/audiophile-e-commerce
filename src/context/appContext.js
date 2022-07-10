@@ -160,7 +160,7 @@ export const AppWrapper = ({ children }) => {
     }
   }, [cart])
 
-  console.log(process.env.NODE_ENV)
+    console.log((process.env.NODE_ENV) == 'development')
 
   return (
     <AppContext.Provider

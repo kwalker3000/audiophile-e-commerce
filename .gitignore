@@ -31,4 +31,9 @@ yarn-error.log*
 # vercel
 .vercel
 
-# styles
+# styl
+
+
+# temp files
+.js~
+.scss~

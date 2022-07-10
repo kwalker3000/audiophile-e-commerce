@@ -24,9 +24,9 @@ export default function CheckoutForm({ address, order }) {
       confirmParams: {
         // Make sure to change this to your payment completion page
         return_url: `${
-          !process.env.NODE_ENV == 'development'
-            ? 'https://audiophile-tan.vercel.app/status'
-            : 'http://localhost:3000/status'
+          process.env.NODE_ENV == 'development'
+            ? 'http://localhost/status'
+            : 'https://audiophile-tan.vercel.app/status'
         }`,
         receipt_email: address.email,
       },
