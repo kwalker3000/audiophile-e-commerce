@@ -25,9 +25,7 @@ export const FeatureProductC = () => {
         <div className="ft-prod-c__content content-wrapper">
           <h2 className="ft-prod-c__head head_level-2">yx1 earphones</h2>
           <div className="ft-prod-c__btn">
-              <LinkBtn
-		path="/earphones/yx1-earphones"
-                theme="inverse"/>
+            <LinkBtn path="/earphones/yx1-earphones" theme="inverse" />
           </div>
         </div>
       </div>

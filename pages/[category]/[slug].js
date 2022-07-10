@@ -23,7 +23,7 @@ export default function Product({ data }) {
 
   let { cart } = useAppContext()
 
-    // Object.entries(cart).forEach(([_, { id, count}]) => console.log(id, count))
+  // Object.entries(cart).forEach(([_, { id, count}]) => console.log(id, count))
 
   let renderCart = () => {
     setIsCartUpdate(!isCartUpdate)

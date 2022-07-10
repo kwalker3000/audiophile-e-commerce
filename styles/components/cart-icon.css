@@ -1,0 +1,22 @@
+.image-wrapper_cart {
+  margin-bottom: 2px;
+  border: none;
+  background-color: #000;
+  cursor: pointer;
+  padding: 0;
+  position: relative;
+  z-index: 1;
+}
+
+.cart-status {
+  border-radius: 50%;
+  width: 8px;
+  height: 8px;
+  background-color: #d87d4a;
+  position: absolute;
+  top: -2px;
+  right: 0;
+  z-index: 1;
+}
+
+/*# sourceMappingURL=cart-icon.css.map */

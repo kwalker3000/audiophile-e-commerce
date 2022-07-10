@@ -1,0 +1,41 @@
+.head_level-3 {
+  font-family: "Manrope", sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin: 0;
+  font-size: 1.125rem;
+  line-height: 1.333em;
+  letter-spacing: 0.072em;
+  font-size: 0.938rem;
+}
+
+.paragraph {
+  font-family: "Manrope", sans-serif;
+  margin: 0;
+  font-size: 0.938rem;
+  font-weight: 500;
+  line-height: 1.667em;
+  opacity: 0.55;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+.tail-wrapper {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.tail-wrapper > p {
+  margin-bottom: 1.5rem;
+}
+
+.tail-wrapper > a {
+  width: 100%;
+}
+
+.tail-wrapper > button {
+  width: 100%;
+}
+
+/*# sourceMappingURL=cart-footer.css.map */

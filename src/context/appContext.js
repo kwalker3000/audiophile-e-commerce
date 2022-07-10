@@ -1,80 +1,93 @@
-
-import React, { useState, createContext, useContext, useEffect, useReducer } from 'react';
-import { parseCookies, setCookie, destroyCookie } from 'nookies';
+import React, {
+  useState,
+  createContext,
+  useContext,
+  useEffect,
+  useReducer,
+} from 'react'
+import { parseCookies, setCookie, destroyCookie } from 'nookies'
 
 const AppContext = createContext()
 
 export const AppWrapper = ({ children }) => {
-
-    const [countryList, setCountryList] = useState([])
-    const [cart, setCart] = useState([])
-    const [stockWarn, setStockWarn] = useState(false)
-    const [address, setAddress] = useReducer((state, action) => {
-	switch (action.type) {
-	  case 'UPDATE':
-	    return {
-		...state,
-		[action.payload.key]: action.payload.value
-	    };
-	  case 'REPLACE CITY':
-	    return {
-		...state,
-		[action.payload.key]: action.payload.value
-	    }
-	  default:
-	    throw new Error(`Unknown action ${action.type}`);
-	};
-    },  {
-	    name: "",
-	    email: "",
-	    phone: "",
-	    line1: "",
-	    line2: "",
-	    zip: "",
-	    city: "",
-	    country: "",
-	    state: ""
-	}
-    );
-
-    const inputAction = (event) => {
-	setAddress({
-	type: 'UPDATE',
-	payload: { key: event.target.name, value: event.target.value },
-	});
-    };
-
-    const replaceAction = (city) => {
-	setAddress({
-	    type: 'REPLACE CITY',
-	    payload: { key: "city", value: city}
-	})
+  const [countryList, setCountryList] = useState([])
+  const [invoice, setInvoice] = useState({
+    cart: 0,
+    ship: null,
+  })
+  const [cart, setCart] = useState([])
+  const [stockWarn, setStockWarn] = useState(false)
+  const [address, setAddress] = useReducer(
+    (state, action) => {
+      switch (action.type) {
+        case 'UPDATE':
+          return {
+            ...state,
+            [action.payload.key]: action.payload.value,
+          }
+        case 'REPLACE CITY':
+          return {
+            ...state,
+            [action.payload.key]: action.payload.value,
+          }
+        default:
+          throw new Error(`Unknown action ${action.type}`)
+      }
+    },
+    {
+      name: '',
+      email: '',
+      phone: '',
+      line1: '',
+      line2: '',
+      zip: '',
+      city: '',
+      country: '',
+      state: '',
     }
+  )
 
+  const inputAction = (event) => {
+    setAddress({
+      type: 'UPDATE',
+      payload: { key: event.target.name, value: event.target.value },
+    })
+  }
 
-    let setCountries = list => {
-        let countries = []
-        for (let country of list) {
-            let tuple = country.replace("\"","").split(',')
-            countries.push(tuple)
-        }
-        setCountryList(countries)
-        let countryList = JSON.stringify(countries)
-        localStorage.setItem('countries', countryList)
+  const replaceAction = (city) => {
+    setAddress({
+      type: 'REPLACE CITY',
+      payload: { key: 'city', value: city },
+    })
+  }
+
+  let setCountries = (list) => {
+    let countries = []
+    for (let country of list) {
+      let tuple = country.replace('"', '').split(',')
+      countries.push(tuple)
     }
+    setCountryList(countries)
+    let countryList = JSON.stringify(countries)
+    localStorage.setItem('countries', countryList)
+  }
 
-    let handleChange = e => {
-	let {name, value} = e.target;
-        setAddress(preVal => {
-            return {
-                ...preVal,
-                [name]: value
-            }
-        })
-    }
+  let handleChange = (e) => {
+    let { name, value } = e.target
+    setAddress((preVal) => {
+      return {
+        ...preVal,
+        [name]: value,
+      }
+    })
+  }
 
   let resetWarn = () => {
     setStockWarn(false)
+  }
+
+  let updateInvoice = (key, val) => {
+    setInvoice((preVal) => ({ ...preVal, [key]: val }))
   }
 
   let addCart = (product, size = 1) => {
@@ -101,9 +114,9 @@ export const AppWrapper = ({ children }) => {
           img: product.image.mobile,
           quantity: size,
           available: product.stock,
-            id: product._id,
-            stripe_id: product.stripe,
-            weight: product.weight
+          id: product._id,
+          stripe_id: product.stripe,
+          weight: product.weight,
         },
       ])
     }
@@ -117,53 +130,54 @@ export const AppWrapper = ({ children }) => {
     )
   }
 
-    let emptyCart = () => {
-	setCart([]);   
-        destroyCookie(null, 'shoppingCart', { path: '/'})
+  let emptyCart = () => {
+    setCart([])
+    destroyCookie(null, 'shoppingCart', { path: '/' })
+  }
+
+  useEffect(() => {
+    if (cart.length == 0) {
+      const cookies = parseCookies()
+      if (cookies) {
+        let { shoppingCart } = cookies
+        if (shoppingCart && shoppingCart.length > 0) {
+          setCart(JSON.parse(shoppingCart))
+        }
+      }
     }
 
-    useEffect(() => {
+    if (cart.length > 0) {
+      let customerCart = JSON.stringify(cart)
+      setCookie(null, 'shoppingCart', customerCart, {
+        maxAge: 24 * 60 * 60,
+        path: '/',
+      })
+    }
 
-        if (cart.length == 0) {
-	    const cookies = parseCookies();
-	    if (cookies) {
-		let { shoppingCart } = cookies;
-		if (shoppingCart && shoppingCart.length > 0) {
-		    setCart(JSON.parse(shoppingCart)) 
-		}
-	    }
-        }
+    let countryArr = JSON.parse(localStorage.getItem('countries'))
+    if (countryArr && countryList.length == 0) {
+      setCountryList(countryArr || countryList)
+    }
+  }, [cart])
 
-        if (cart.length > 0) {
-	    let customerCart = JSON.stringify(cart)
-	    setCookie(null, 'shoppingCart', customerCart, {
-		maxAge: 24 * 60 * 60,
-		path: '/'
-	    })
-        }
-        
-	let countryArr = JSON.parse(localStorage.getItem('countries'))
-        if (countryArr && countryList.length == 0) {
-            setCountryList(countryArr || countryList)
-        }
-	
-    }, [cart])
-
+  console.log(process.env.NODE_ENV)
 
   return (
     <AppContext.Provider
       value={{
+        cart,
         addCart,
         updateCart,
         emptyCart,
         stockWarn,
         resetWarn,
-            cart,
-            inputAction,
-	    replaceAction,
-          address,
-          setCountries,
-          countryList
+        address,
+        inputAction,
+        replaceAction,
+        setCountries,
+        countryList,
+        invoice,
+        updateInvoice,
       }}
     >
       {children}

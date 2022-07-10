@@ -12,7 +12,7 @@ export const UpdateCart = ({ updateCart, orderSize, handleDropDown }) => {
         <div className="btn-wrapper">
           <button
             className="btn btn-text btn-inverse btn-inverse_active"
-            aria-label="add to cart"
+            aria-label="cancel"
             onClick={() => handleDropDown()}
           >
             cancel

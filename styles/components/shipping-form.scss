@@ -2,6 +2,8 @@
 @use '../util/util';
 @use '../typography/typography' as font;
 
+@use './summary';
+
 .ship-form {
     display: flex;
     flex-direction: column;
@@ -76,29 +78,3 @@
 }
 
 
-//// Estimates
-.dropdown__total {
-    margin-bottom: 0.75rem;
-}
-
-.total-wrapper {
-    display: flex;
-    justify-content:  space-between;
-    flex-wrap: wrap;
-}
-
-.status {
-    @include font.body;
-    font-style: italic;
-    opacity: 1;
-}
-
-.grand {
-    border-top: 1px solid hsla(0,0,0,0.35);
-    padding-top: 1.5rem;
-    padding-bottom: 0.75rem;
-}
-
-.grand > p:nth-child(2) {
-    color: util.$dark-orange;
-}

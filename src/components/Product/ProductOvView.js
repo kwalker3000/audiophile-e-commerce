@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { useAppContext } from '../../../src/context/appContext'
 
 import { Img } from '../Img'
-import { AddCart } from '../../components/Cart/AddCart'
+import { AddCart } from './AddCart'
 import { Counter } from '../../components/Counter'
 
 export const ProductOvView = ({ product, renderCart }) => {

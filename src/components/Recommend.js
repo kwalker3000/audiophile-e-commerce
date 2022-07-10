@@ -41,7 +41,8 @@ export const Recommend = ({ recommend }) => {
               <div className="recommend__btn">
                 <LinkBtn
                   path={`/${getCategory(prod)}/${prod.slug}`}
-                  theme="dark"/>
+                  theme="dark"
+                />
               </div>
             </div>
           ))}

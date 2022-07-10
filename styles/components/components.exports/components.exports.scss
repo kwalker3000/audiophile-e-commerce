@@ -6,7 +6,6 @@
 @import '../menu';
 @import '../category';
 #cart {@import '../cart';};
-#cart-items {@import '../cart-items';};
 #hero {@import '../hero';};
 #headline {@import '../headline';};
 #ft-prod-a {@import '../ft-prod-a';};
@@ -20,10 +19,10 @@
 #recommend {@import '../recommend';};
 #checkout {@import '../checkout';};
 #ship-form {@import '../shipping-form';};
-#checkout-page {@import '../checkout-page';};
-
+#stripe-payment-form {@import '../stripe-payment-form';};
+#checkout-summary {@import '../checkout-summary';};
 @import '../button';
 @import '../nav-back';
 #counter {@import '../counter';};
 
-
+@import '../stepper';

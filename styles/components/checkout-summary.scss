@@ -1,0 +1,36 @@
+
+@use '../util/util';
+@use '../typography/typography' as font;
+
+
+@use './checkout-cart-list';
+@use './checkout-totals';
+
+.head_level-2 {
+    @include font.h6;
+}
+
+.head_level-3 {
+    @include font.h6;
+    font-size: 0.938rem;
+
+    font-size: 0.75rem;
+}
+
+.paragraph {
+    @include font.body;
+    text-transform:  uppercase;
+    font-weight: 700;
+
+    font-size: 0.75rem;
+}
+
+.checkout-summary {
+    border-radius: 8px;
+}
+
+.checkout-summary__head {
+    margin-bottom: 1.25rem;
+}
+
+

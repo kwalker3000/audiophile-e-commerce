@@ -1,0 +1,32 @@
+.head_level-2 {
+  font-family: "Manrope", sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin: 0;
+  font-size: 1.125rem;
+  line-height: 1.333em;
+  letter-spacing: 0.072em;
+}
+
+.btn_cart {
+  padding: 0;
+  opacity: 0.55;
+  text-decoration: underline;
+}
+
+.btn_cart:hover,
+.btn_cart:focus {
+  color: #d87d4a;
+  opacity: 1;
+}
+
+.title {
+  display: flex;
+  justify-content: space-between;
+}
+
+.cart__title {
+  margin-bottom: 1.5rem;
+}
+
+/*# sourceMappingURL=cart-header.css.map */

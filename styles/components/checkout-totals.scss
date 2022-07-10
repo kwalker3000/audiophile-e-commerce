@@ -1,0 +1,34 @@
+
+@use '../util/util';
+@use '../typography/typography' as font;
+
+
+//// Estimates
+.checkout-totals__total {
+    margin-bottom: 0.75rem;
+}
+
+.total-wrapper {
+    display: flex;
+    justify-content:  space-between;
+    flex-wrap: wrap;
+
+}
+
+.status {
+    @include font.body;
+    font-style: italic;
+    opacity: 1;
+}
+
+.grand {
+    border-top: 1px solid rgba(0,0,0,0.35);
+    padding-top: 1.5rem;
+    padding-bottom: 0.75rem;
+}
+
+.grand > p:nth-child(2) {
+    color: util.$dark-orange;
+}
+
+

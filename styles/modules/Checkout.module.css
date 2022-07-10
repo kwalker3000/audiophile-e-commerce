@@ -1,0 +1,89 @@
+/* .page {
+   max-width: 1440px;
+   overflow-x: hidden;
+   display: grid;
+   grid-template-rows: repeat(2, auto);
+   @include util.g-col-sp-mob;
+
+   grid-template-areas:
+   "main main main"
+   ". footer .";
+
+   @media (min-width: util.$tablet) {
+   overflow-x: unset;
+   }
+
+
+
+   @media (min-width: util.$desktop) {
+   overflow-x: unset;
+   }
+
+   }
+
+   .main {
+   //width: 100%;
+   display: grid;
+   grid-template-rows: 4rem auto 7rem auto 7rem;
+   @include util.g-col-sp-mob;
+   //    grid-template-columns: 1fr 1fr 1fr;
+
+   grid-template-areas:
+   ". . ."
+   ". sum ."
+   ". . ."
+   ". form ."
+   ". about .";
+
+
+   @media (min-width: util.$desktop) {
+
+   grid-template-rows: 4rem auto 7rem auto 7rem;
+   }
+   }
+
+   .pageMain {
+   grid-area: main;
+   }
+
+
+   .pageFooter {
+   grid-area: footer;
+   }
+
+   .mainAbout {
+   grid-area: about;
+   width: 80vw;
+   }
+
+   .mainSum {
+   grid-area: sum;
+   } */
+.page {
+  display: grid;
+  grid-template-rows: 7rem auto 2rem auto 2rem auto 5rem;
+  grid-template-columns: 1.5rem auto 1.5rem;
+  grid-template-areas: ". . ." ". step ." ". . ." ". sum ." ". . ." ". form ." ". . .";
+}
+
+.pageStepper {
+  display: flex;
+  justify-content: center;
+  grid-area: step;
+}
+
+.pageSummary {
+  background-color: #fafafa;
+  padding: 20px;
+  grid-area: sum;
+}
+
+.pageForm {
+  grid-area: form;
+  background-color: blue;
+  border-radius: 8px;
+  padding: 20px;
+  background-color: #fafafa;
+}
+
+/*# sourceMappingURL=Checkout.module.css.map */

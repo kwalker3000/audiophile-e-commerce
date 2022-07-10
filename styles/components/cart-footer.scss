@@ -1,0 +1,35 @@
+
+@use '../util/util';
+@use '../typography/typography' as font;
+
+.head_level-3 {
+    @include font.h6;
+    font-size: 0.938rem;
+}
+
+.paragraph {
+    @include font.body;
+    text-transform:  uppercase;
+    font-weight: 700;
+}
+
+
+.tail-wrapper {
+    display: flex;
+    justify-content:  space-between;
+    flex-wrap: wrap;
+}
+
+.tail-wrapper > p {
+    margin-bottom: 1.5rem;
+}
+
+.tail-wrapper > a {
+    width: 100%;
+}
+
+.tail-wrapper > button {
+    width: 100%;
+}
+
+

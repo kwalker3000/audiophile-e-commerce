@@ -1,0 +1,25 @@
+
+@use '../util/util';
+@use '../typography/typography' as font;
+
+
+.img-wrapper {
+
+    position: relative;
+    width: 35px;
+    height: 35px;
+
+
+    margin: 0 0.75rem 0.75rem 0;
+}
+
+.item-wrapper {
+    display: flex;
+    justify-content: space-between;
+}
+
+
+.misc-wrapper {
+    display: flex;
+}
+

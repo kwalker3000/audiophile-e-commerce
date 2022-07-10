@@ -1,0 +1,38 @@
+.container {
+  display: flex;
+  justify-content: center;
+  padding: 0 1.5rem;
+}
+
+.cir {
+  padding: 2.5px;
+  border-radius: 50%;
+  background-color: black;
+}
+
+.inner {
+  padding: 4px;
+  border-radius: 50%;
+  background-color: #d87d4a;
+}
+
+.box > div,
+.final > div {
+  padding-top: 5.5px;
+  min-width: 60px;
+  margin: 0 6px;
+}
+
+.box > div:nth-child(2) {
+  border-top: 1.5px solid #d87d4a;
+}
+
+.fin-cir {
+  background-color: #f1f1f1;
+}
+
+.final > div:nth-child(2) {
+  border-top: 1.5px solid #f1f1f1;
+}
+
+/*# sourceMappingURL=stepper.css.map */

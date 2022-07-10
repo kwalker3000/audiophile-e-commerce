@@ -1,4 +1,3 @@
-
 import { useEffect } from 'react'
 import { useAppContext } from '../src/context/appContext'
 import Head from 'next/head'
@@ -13,7 +12,6 @@ import { About } from '../src/components/About'
 import { Footer } from '../src/components/Footer'
 
 export default function Headphones({ data }) {
-
   data = data.sort((a, b) => b.new - a.new)
 
   return (
@@ -48,7 +46,6 @@ export default function Headphones({ data }) {
 }
 
 export const getServerSideProps = async () => {
-
   const client = await MongoClient.connect(process.env.MONGODB_URI)
   const db = client.db('audiophile')
   const yourCollection = db.collection('product')

@@ -1,0 +1,33 @@
+.dropdown__total {
+  margin-bottom: 0.75rem;
+}
+
+.total-wrapper {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  position: relative;
+}
+
+.status {
+  font-family: "Manrope", sans-serif;
+  margin: 0;
+  font-size: 0.938rem;
+  font-weight: 500;
+  line-height: 1.667em;
+  opacity: 0.55;
+  font-style: italic;
+  opacity: 1;
+}
+
+.grand {
+  border-top: 1px solid rgba(0, 0, 0, 0.35);
+  padding-top: 1.5rem;
+  padding-bottom: 0.75rem;
+}
+
+.grand > p:nth-child(2) {
+  color: #d87d4a;
+}
+
+/*# sourceMappingURL=summary.css.map */

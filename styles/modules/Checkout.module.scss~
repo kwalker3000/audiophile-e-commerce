@@ -1,0 +1,65 @@
+
+@use '../util/util';
+
+.page {
+    max-width: 1440px;
+    overflow-x: hidden;
+    display: grid;
+    grid-template-rows: repeat(2, auto);
+    @include util.g-col-sp-mob;
+
+    grid-template-areas:
+	"main main main"
+	". footer .";
+
+    @media (min-width: util.$tablet) {
+	overflow-x: unset;
+    }
+
+
+
+    @media (min-width: util.$desktop) {
+	overflow-x: unset;
+    }
+
+}
+
+.main {
+    //width: 100%;
+    display: grid;
+    grid-template-rows: 4rem auto 7rem auto 7rem;
+    @include util.g-col-sp-mob;
+//    grid-template-columns: 1fr 1fr 1fr;
+
+    grid-template-areas:
+	". . ."
+	". sum ."
+	". . ."
+	". form ."
+	". about .";
+
+
+	@media (min-width: util.$desktop) {
+
+	grid-template-rows: 4rem auto 7rem auto 7rem;
+    }
+}
+
+.pageMain {
+    grid-area: main;
+}
+
+
+.pageFooter {
+    grid-area: footer;
+}
+
+.mainAbout {
+    grid-area: about;
+    width: 80vw;
+}
+
+.mainSum {
+    grid-area: sum;
+}
+

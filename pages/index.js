@@ -1,6 +1,6 @@
-
-import { useEffect } from 'react';
+import { useEffect } from 'react'
 import Head from 'next/head'
+
 import styles from '../styles/modules/Home.module.css'
 
 import { Header } from '../src/components/Header'
@@ -14,12 +14,12 @@ import { Footer } from '../src/components/Footer'
 
 import { useAppContext } from '../src/context/appContext'
 
-export default function Home({countryList}) {
-    let { setCountries } = useAppContext();
+export default function Home({ countryList }) {
+  let { setCountries } = useAppContext()
 
-    useEffect(() => {
-	setCountries(countryList)
-    }, [])
+  useEffect(() => {
+    setCountries(countryList)
+  }, [])
 
   return (
     <div className={styles.page}>
@@ -66,32 +66,28 @@ export default function Home({countryList}) {
   )
 }
 
-
-
 export async function getStaticProps() {
+  const fs = require('fs/promises')
+  const fileName = 'public/assets/static/data.csv'
 
-    const fs = require('fs/promises')
-    const fileName = 'public/assets/static/data.csv';
+  const readFile = async (fileName) => {
+    try {
+      const data = await fs.readFile(fileName, 'utf8')
+      let array = await data.split('\r')
+      await array.shift()
+      let countries = await array.map((country) => country.slice(1))
 
-    const readFile = async fileName => {
-        try {
-            const data = await fs.readFile(fileName, 'utf8');
-	    let array = await data.split('\r');
-	    await array.shift();
-	    let countries = await array.map(country => country.slice(1))
-
-            return countries
-        }
-        catch(err) {
-            console.log(err)
-        }
+      return countries
+    } catch (err) {
+      console.log(err)
     }
+  }
 
-    let countryList = await readFile(fileName)
-    
+  let countryList = await readFile(fileName)
+
   return {
-      props: {
-          countryList
-      }
+    props: {
+      countryList,
+    },
   }
 }
