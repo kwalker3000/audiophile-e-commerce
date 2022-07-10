@@ -1,8 +1,8 @@
 import React from 'react'
 import Link from 'next/link'
 
-import { Img } from './Img'
-import { LinkBtn } from './LinkBtn'
+import { Img } from '../Img'
+import { LinkBtn } from '../LinkBtn'
 
 export const Recommend = ({ recommend }) => {
   let getCategory = (product) => {

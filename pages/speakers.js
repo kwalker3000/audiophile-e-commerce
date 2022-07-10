@@ -3,14 +3,15 @@ import Head from 'next/head'
 import styles from '../styles/modules/Category.module.css'
 
 import { MongoClient } from 'mongodb'
-import { Headline } from '../src/components/Headline'
-import { ProductQkView } from '../src/components/Product/ProductQkView'
-import { Header } from '../src/components/Header'
-import { Menu } from '../src/components/Menu'
-import { About } from '../src/components/About'
-import { Footer } from '../src/components/Footer'
 
-import { Overlay } from '../src/components/Overlay'
+import { Headline } from '../src/components/Headline';
+import { ProductQkView } from '../src/components/Product/ProductQkView';
+import { Header } from '../src/components/Header/Header';
+import { Menu } from '../src/components/Menu/Menu';
+import { About } from '../src/components/About';
+import { Footer } from '../src/components/Footer/Footer';
+
+import { Overlay } from '../src/components/Overlay';
 
 export default function Speakers({ data }) {
   data = data.sort((a, b) => b.new - a.new)

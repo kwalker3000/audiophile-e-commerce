@@ -4,7 +4,7 @@ import { CheckoutCartList } from './CheckoutCartList'
 import { CheckoutTotals } from './CheckoutTotals'
 
 export const CheckoutSummary = ({ cart, order }) => {
-  console.log(order)
+
   let { amount_subtotal, amount_total, total_details, shipping_cost } = order
 
   let cartTotal = amount_subtotal / 100

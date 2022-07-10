@@ -1,11 +1,12 @@
 import React from 'react'
-import { Category } from './Category'
 import Link from 'next/link'
 import Image from 'next/image'
 
-import headphones from '../../public/assets/shared/desktop/image-category-thumbnail-headphones.png'
-import speakers from '../../public/assets/shared/desktop/image-category-thumbnail-speakers.png'
-import earphones from '../../public/assets/shared/desktop/image-category-thumbnail-earphones.png'
+import { Category } from './Category'
+
+import headphones from '../../../public/assets/shared/desktop/image-category-thumbnail-headphones.png'
+import speakers from '../../../public/assets/shared/desktop/image-category-thumbnail-speakers.png'
+import earphones from '../../../public/assets/shared/desktop/image-category-thumbnail-earphones.png'
 
 export const Menu = ({ toggleMenu, isRenderedByNav }) => {
   const categories = [

@@ -2,7 +2,7 @@ import React from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 
-import arrow from '../../public/assets/shared/desktop/icon-arrow-right.svg'
+import arrow from '../../../public/assets/shared/desktop/icon-arrow-right.svg'
 
 export const Category = ({
   className,

@@ -3,7 +3,7 @@ import React, { useState } from 'react'
 import { useAppContext } from '../../../context/appContext'
 import { LinkBtn } from '../../../components/LinkBtn'
 import { CarrierRates } from './CarrierRates'
-import { Summary } from '../../../components/Summary'
+import { Summary } from '../../Cart/Summary'
 
 import { validateAddress } from '../../../../lib/validateAddress'
 import { getShipRates } from '../../../../lib/getShipRates'

@@ -1,10 +1,8 @@
 import React, { useState } from 'react'
 import Image from 'next/image'
 
-import { Menu } from './Menu'
+import { Menu } from '../Menu/Menu'
 import { Burger } from './Burger'
-
-import burger from '../../public/assets/shared/tablet/icon-hamburger.svg'
 
 export const MobileNav = ({ isMenuOpen, toggleMenu }) => {
   return (

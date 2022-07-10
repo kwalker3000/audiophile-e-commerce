@@ -2,13 +2,13 @@ import React, { useEffect, useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 
-import { LinkBtn } from './LinkBtn'
-import { Img } from './Img'
+import { LinkBtn } from '../LinkBtn'
+import { Img } from '../Img'
 
-import zx9M from '../../public/assets/home/mobile/image-speaker-zx9.png'
-import zx9T from '../../public/assets/home/tablet/image-speaker-zx9.png'
-import zx9D from '../../public/assets/home/desktop/image-speaker-zx9.png'
-import pattern from '../../public/assets/home/desktop/pattern-circles.svg'
+import zx9M from '../../../public/assets/home/mobile/image-speaker-zx9.png'
+import zx9T from '../../../public/assets/home/tablet/image-speaker-zx9.png'
+import zx9D from '../../../public/assets/home/desktop/image-speaker-zx9.png'
+import pattern from '../../../public/assets/home/desktop/pattern-circles.svg'
 
 export const FeatureProductA = () => {
   return (

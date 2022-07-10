@@ -10,7 +10,7 @@ import { appearance } from '../../lib/appearance'
 
 import { useAppContext } from '../../src/context/appContext'
 
-import { Stepper } from '../../src/components/Stepper'
+import { Stepper } from '../../src/components/Checkout/Stepper'
 import CheckoutForm from '../../src/components/Checkout/CheckoutForm'
 import { CheckoutSummary } from '../../src/components/Checkout/CheckoutSummary'
 
@@ -53,7 +53,6 @@ export default function CheckoutPage({ prices }) {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data.order)
         setOrder(data.order)
         setClientSecret(data.clientSecret)
       })

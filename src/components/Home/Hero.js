@@ -2,12 +2,12 @@ import React from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 
-import { LinkBtn } from './LinkBtn'
-import { Img } from './Img'
+import { LinkBtn } from '../LinkBtn'
+import { Img } from '../Img'
 
-import heroM from '../../public/assets/home/mobile/image-hero.jpg'
-import heroT from '../../public/assets/home/tablet/image-hero.jpg'
-import heroD from '../../public/assets/home/desktop/image-hero.jpg'
+import heroM from '../../../public/assets/home/mobile/image-hero.jpg'
+import heroT from '../../../public/assets/home/tablet/image-hero.jpg'
+import heroD from '../../../public/assets/home/desktop/image-hero.jpg'
 
 export const Hero = () => {
   return (

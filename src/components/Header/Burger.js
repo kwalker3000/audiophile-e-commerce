@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import Image from 'next/image'
 
-import burger from '../../public/assets/shared/tablet/icon-hamburger.svg'
+import burger from '../../../public/assets/shared/tablet/icon-hamburger.svg'
 
 export const Burger = ({ toggleMenu, isMenuOpen }) => {
   return (

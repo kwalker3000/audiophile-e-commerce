@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { CartList } from '../components/Cart/CartList'
+import { CartList } from './CartList'
 
 export const Summary = ({ cart, hasRates, rates, cartTotal, shippingCost }) => {
   const [isOpen, setIsOpen] = React.useState(false)

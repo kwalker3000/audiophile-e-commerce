@@ -3,7 +3,7 @@ import { useAppContext } from '../../../src/context/appContext'
 
 import { Img } from '../Img'
 import { AddCart } from './AddCart'
-import { Counter } from '../../components/Counter'
+import { Counter } from '../Cart/Counter'
 
 export const ProductOvView = ({ product, renderCart }) => {
   const [orderSize, setOrderSize] = useState(1)

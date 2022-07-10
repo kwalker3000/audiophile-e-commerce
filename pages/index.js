@@ -3,14 +3,14 @@ import Head from 'next/head'
 
 import styles from '../styles/modules/Home.module.css'
 
-import { Header } from '../src/components/Header'
-import { Hero } from '../src/components/Hero'
-import { Menu } from '../src/components/Menu'
-import { FeatureProductA } from '../src/components/FeatureProductA'
-import { FeatureProductB } from '../src/components/FeatureProductB'
-import { FeatureProductC } from '../src/components/FeatureProductC'
+import { Header } from '../src/components/Header/Header'
+import { Hero } from '../src/components/Home/Hero'
+import { Menu } from '../src/components/Menu/Menu'
+import { FeatureProductA } from '../src/components/Home/FeatureProductA'
+import { FeatureProductB } from '../src/components/Home/FeatureProductB'
+import { FeatureProductC } from '../src/components/Home/FeatureProductC'
 import { About } from '../src/components/About'
-import { Footer } from '../src/components/Footer'
+import { Footer } from '../src/components/Footer/Footer'
 
 import { useAppContext } from '../src/context/appContext'
 

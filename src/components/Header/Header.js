@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react'
 
-import { Logo } from './Logo'
+import { Logo } from '../Logo'
 import { MobileNav } from './MobileNav'
-import { PrimaryNav } from './PrimaryNav'
-import { Cart } from './Cart/Cart'
-import { Overlay } from './Overlay'
+import { PrimaryNav } from '../PrimaryNav'
+import { Cart } from '../Cart/Cart'
+import { Overlay } from '../Overlay'
 
 export const Header = ({ isCartUpdate, renderCart }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)

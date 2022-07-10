@@ -1,7 +1,7 @@
 import React from 'react'
 
-import { PrimaryNav } from './PrimaryNav'
-import { Logo } from './Logo'
+import { PrimaryNav } from '../PrimaryNav'
+import { Logo } from '../Logo'
 import { Social } from './Social'
 
 export const Footer = ({ className }) => {

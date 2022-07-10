@@ -2,12 +2,12 @@ import React from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 
-import { Img } from './Img'
-import { LinkBtn } from './LinkBtn'
+import { Img } from '../Img'
+import { LinkBtn } from '../LinkBtn'
 
-import zx7M from '../../public/assets/home/mobile/image-speaker-zx7.jpg'
-import zx7T from '../../public/assets/home/tablet/image-speaker-zx7.jpg'
-import zx7D from '../../public/assets/home/desktop/image-speaker-zx7.jpg'
+import zx7M from '../../../public/assets/home/mobile/image-speaker-zx7.jpg'
+import zx7T from '../../../public/assets/home/tablet/image-speaker-zx7.jpg'
+import zx7D from '../../../public/assets/home/desktop/image-speaker-zx7.jpg'
 
 export const FeatureProductB = () => {
   return (

@@ -1,7 +1,8 @@
+
 import React, { useState } from 'react'
 import { useAppContext } from '../../../context/appContext'
 import { LinkBtn } from '../../../components/LinkBtn'
-import { Summary } from '../../../components/Summary'
+import { Summary } from '../../Cart/Summary'
 
 import { useRouter } from 'next/router'
 

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 
 import { useAppContext } from '../../context/appContext'
 import { Img } from '../../components/Img'
-import { Counter } from '../../components/Counter'
+//import { Counter } from '../../components/Counter'
 
 export const CheckoutCartList = ({ cart }) => {
   let cartItems = cart.map((item, index) => (
