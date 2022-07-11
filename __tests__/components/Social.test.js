@@ -1,7 +1,7 @@
 import { render, screen, cleanup } from '@testing-library/react'
 import '@testing-library/jest-dom'
 
-import { Social } from '../../src/components/Social'
+import { Social } from '../../src/components/Footer/Social'
 
 describe('Social', () => {
   it('renders Social component', () => {

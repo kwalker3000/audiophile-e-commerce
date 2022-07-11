@@ -4,7 +4,7 @@ import {
   useAppContext,
   AppWrapper,
 } from '../../src/context/appContext'
-import { Category } from '../../src/components/Category'
+import { Category } from '../../src/components/Menu/Category'
 
 import { render, screen, cleanup } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'

@@ -1,7 +1,7 @@
 import { render, screen, cleanup } from '@testing-library/react'
 import '@testing-library/jest-dom'
 
-import { Footer } from '../../src/components/Footer'
+import { Footer } from '../../src/components/Footer/Footer'
 
 describe('Footer', () => {
   it('renders Footer component', () => {

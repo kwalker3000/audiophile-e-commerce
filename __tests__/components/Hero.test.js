@@ -1,7 +1,7 @@
 import { render, screen, cleanup } from '@testing-library/react'
 import '@testing-library/jest-dom'
 
-import { Hero } from '../../src/components/Hero'
+import { Hero } from '../../src/components/Home/Hero'
 
 describe('Hero', () => {
   it('renders Hero component', () => {

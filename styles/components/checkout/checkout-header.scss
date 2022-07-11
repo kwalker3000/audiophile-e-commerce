@@ -1,0 +1,64 @@
+
+@use '../../util/util';
+
+.checkout-header {
+    background-color: util.$black;
+    color: util.$white;
+    text-align: center;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    @include util.extension;
+}
+
+    .checkout-header__logo {
+	padding: 2rem 0;
+	width: 100%;
+	
+    }
+
+    .checkout-header__logo::before {
+	content: '';
+	margin-right: 1.5rem;
+    }
+
+    .svg {
+	color: white;
+	justify-self: flex-end;
+    }
+
+@media (min-width: util.$tablet) {
+
+    .checkout-header {
+	text-align: left;
+    }
+
+
+	.checkout-header__logo {
+	}
+
+	.checkout-header__logo::before {
+	    content: '';
+	    margin-right: 0;
+	}
+
+}
+
+@media (min-width: util.$desktop) {
+
+    .checkout-header__head {
+	display: flex;
+	justify-content: space-between;
+
+	padding: 4.375rem 0 2rem;
+	width: 100%;
+    }
+
+	.checkout-header__logo {
+	}
+
+}
+
+

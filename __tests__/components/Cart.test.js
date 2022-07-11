@@ -2,7 +2,7 @@ import { render, screen, cleanup } from '@testing-library/react'
 import { AppContext } from '../../src/context/appContext'
 import '@testing-library/jest-dom'
 
-import { Cart } from '../../src/components/Cart'
+import { Cart } from '../../src/components/Cart/Cart'
 
 describe('Cart', () => {
   let state = {

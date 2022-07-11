@@ -1,7 +1,7 @@
 import { render, screen, cleanup } from '@testing-library/react'
 import '@testing-library/jest-dom'
 
-import { FeatureProductC } from '../../src/components/FeatureProductC'
+import { FeatureProductC } from '../../src/components/Home/FeatureProductC'
 
 describe('FeatureProductC', () => {
   it('renders FeatureProductC component', () => {
