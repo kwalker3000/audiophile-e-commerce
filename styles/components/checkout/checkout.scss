@@ -1,0 +1,22 @@
+
+@use '../../util/util';
+@use '../../typography/typography' as font;
+
+
+.head_level-1 {
+    @include font.h4;
+    letter-spacing: 0.036em;
+}
+
+.head_level-2 {
+    @include font.sub-title;
+    color: util.$dark-orange;
+}
+
+.checkout__head {
+    margin-bottom: 2rem;
+}
+
+.form__head {
+    margin-bottom: 1rem;
+}

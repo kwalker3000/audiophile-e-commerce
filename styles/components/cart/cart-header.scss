@@ -1,0 +1,31 @@
+
+@use '../../util/util';
+@use '../../typography/typography' as font;
+
+
+.head_level-2 {
+    @include font.h6;
+}
+
+
+.btn_cart {
+    padding: 0;
+    opacity: 0.55;
+    text-decoration: underline;
+}
+
+.btn_cart:hover,
+.btn_cart:focus {
+    color: util.$dark-orange;
+    opacity: 1;
+}
+
+.title {
+    display: flex;
+    justify-content:  space-between;
+}
+
+.cart__title {
+    margin-bottom: 1.5rem;
+}
+

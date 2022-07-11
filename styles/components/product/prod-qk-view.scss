@@ -1,0 +1,115 @@
+
+@use '../../util/util';
+@use '../../typography/typography' as font;
+
+.overline {
+    @include font.overline;
+    color: util.$dark-orange;
+    margin-left: 0.714em;
+}
+
+.head_level-2 {
+    @include font.h4;
+    letter-spacing: 0.036em;
+    @media (min-width: util.$tablet) {
+	@include font.h2;
+    }
+}
+
+.paragraph {
+    @include font.body;
+}
+
+
+.prod-qk-view__img {
+    margin-bottom: 2rem;
+}
+
+.prod-qk-view__overline {
+    margin-bottom: 1.5rem;
+}
+
+.prod-qk-view__head {
+    margin-bottom: 1.5rem;
+    width: min-content;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.prod-qk-view__body {
+    margin-bottom: 1.5rem;
+}
+
+
+.content-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items:  center;
+}
+
+.text-wrapper {
+    text-align: center;
+}
+
+.img-wrapper {
+    position: relative;
+    width: 100%;
+    padding-bottom: 107.64%;
+    @include util.img-radius;
+    @media(min-width: util.$tablet) {
+	padding-bottom: 51.08%;
+    }
+}
+
+
+@media (min-width: util.$tablet) {
+
+    .text-wrapper {
+	padding: 0 3.68rem;
+    }
+
+    .prod-qk-view__img {
+	margin-bottom: 3.25rem;
+    }
+
+    .prod-qk-view__overline {
+	margin-bottom: 1rem;
+    }
+
+    .prod-qk-view__head {
+	margin-bottom: 2rem;
+    }
+
+}
+
+
+@media (min-width: util.$desktop) {
+
+    .prod-qk-view {
+	display: flex;
+	justify-content:  space-between;
+   } 
+
+    .content-wrapper {
+	align-items: flex-start;
+	align-self: center;
+
+	width: 40.1%;
+    }
+
+    .text-wrapper {
+	text-align: left;
+	padding: 0;
+    }
+
+    .prod-qk-view__head {
+	margin-right: 0;
+	margin-left: 0;
+    }
+
+    .img-wrapper {
+	margin-bottom: 0;
+
+	width: 48.65%;
+    }
+}

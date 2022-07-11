@@ -1543,12 +1543,6 @@ body {
 }
 
 #stripe-payment-form {
-  /* #stripe-payment-form {
-     border-radius: 8px;
-     padding: 20px;
-     background-color: util.$off-white;
-     }
-   */
   /* Buttons and links */
   /* spinner/processing state, errors */
   /* @media only screen and (max-width: 600px) {

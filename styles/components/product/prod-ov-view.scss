@@ -1,0 +1,104 @@
+
+@use '../../util/util';
+@use '../../typography/typography' as font;
+
+.overline {
+    @include font.overline;
+    color: util.$dark-orange;
+}
+
+.head_level-2 {
+    @include font.h4;
+    letter-spacing: 0.036em;
+    @media (min-width: util.$tablet) {
+	@include font.h2;
+    }
+}
+
+.paragraph {
+    @include font.body;
+}
+
+.price {
+    font-size: 1.125rem;
+    font-weight: 700;
+    letter-spacing:  0.071em;
+}
+
+
+.prod-ov-view__price,
+.prod-ov-view__img {
+    margin-bottom: 2rem;
+}
+
+.prod-ov-view__head,
+.prod-ov-view__body,
+.prod-ov-view__overline {
+    margin-bottom: 1.5rem;
+}
+
+.prod-ov-view__count {
+    margin-right: 1rem;
+}
+
+.btn-container {
+    display: flex;
+}
+
+.img-wrapper {
+    @include util.img-radius;
+    position: relative;
+    width: 100%;
+    padding-bottom: 100%;
+    @media(min-width: util.$tablet) {
+	padding: 35% 0;
+    }
+    @media(min-width: util.$desktop) {
+	padding: 21.5% 0;
+    }
+}
+
+@media (min-width: util.$tablet) {
+
+    .prod-ov-view {
+	display: flex;
+	justify-content:  space-between;
+    }
+
+    .prod-ov-view__img {
+	margin-bottom: 0;
+    }
+
+    .prod-ov-view__overline {
+	margin-bottom: 1rem;
+    }
+
+    .prod-ov-view__body,
+    .prod-ov-view__head {
+	margin-bottom: 2rem;
+    }
+
+    .img-wrapper {
+	width: 40.72%;
+    }
+
+    .content-wrapper {
+	width: 49.28%;
+	align-self:  center;
+    }
+}
+
+@media (min-width: util.$desktop) {
+
+    .prod-ov-view__price {
+	margin-bottom: 2.938rem;
+    }
+}
+
+.out-of-stock {
+    @include font.body;
+    font-size: 1.125rem;
+    opacity: 0.85;
+    color: #CD2C2C;
+    width: 300px;
+}

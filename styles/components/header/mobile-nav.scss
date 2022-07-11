@@ -1,0 +1,24 @@
+
+@use '../../util/util';
+
+
+
+.mobile-nav__menu {
+    width: 100%;
+    position: absolute;
+    right: 0;
+    transform: translateY(2rem);
+
+    z-index: 2;
+}
+
+.burger {
+    border: none;
+    background-color: util.$black;
+    cursor: pointer;
+    padding: 0;
+
+    position: relative;
+    z-index: 1;
+}
+
