@@ -1,0 +1,14 @@
+
+.chatHolder {
+    display: grid;
+}
+
+.chatText {}
+
+.form {}
+
+.textarea {}
+
+.button {
+    background-color: beige;
+}

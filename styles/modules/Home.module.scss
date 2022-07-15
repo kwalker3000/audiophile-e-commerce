@@ -97,6 +97,40 @@
     grid-area: about;
 }
 
+
+.mainChat {
+    position: fixed;
+    z-index: 3;
+    right: 1rem;
+    bottom: 1rem;
+
+    cursor: pointer;
+
+    background-color: #555555;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+
+    box-shadow: -2px 9px 22px -1px rgba(0,0,0,0.29);
+    -webkit-box-shadow: -2px 9px 22px -1px rgba(0,0,0,0.29);
+    -moz-box-shadow: -2px 9px 22px -1px rgba(0,0,0,0.29);
+    
+}
+
+.mainChat > svg {
+    position: absolute;
+    right: 11.5px;
+    bottom: 10.5px;
+    width: 36px;
+    height: 36px;
+
+    fill: util.$dark-orange;
+    fill: util.$off-white;
+
+    transform: scaleX(-1);
+    
+}
+
 .ftProdA {
     grid-area: ft-1;
 }
@@ -112,3 +146,11 @@
 
 
 
+.chatPage {
+    width: 100vw;
+    height: 100vh;
+    background-color: util.$off-white;
+
+    display: flex;
+    justify-content: center;
+}

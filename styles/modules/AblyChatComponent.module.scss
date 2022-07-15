@@ -1,0 +1,133 @@
+
+@use '../util/util';
+@use '../typography/typography' as font;
+
+.chatHolder {
+    display: flex;
+    flex-direction: column;
+    height: 80vh;
+
+    border-radius: 8px;
+
+    box-shadow: -2px 9px 22px -6px rgba(0,0,0,0.19);
+    -webkit-box-shadow: -2px 9px 22px -6px rgba(0,0,0,0.19);
+    -moz-box-shadow: -2px 9px 22px -6px rgba(0,0,0,0.19);
+}
+
+.chatHeader {
+    background-color: util.$black;
+    border-radius: 8px 8px 0 0;
+
+}
+
+.logoWrap {
+    padding: 1.5rem 1.5rem 1rem;
+}
+
+.chatText {
+    background-color: util.$white;
+
+    display: flex;
+    flex-direction:  column;
+    align-items:  flex-end;
+
+    height: 80%;
+    width: 75vw;
+
+    padding: 1.5rem;
+
+    border-bottom: 2px solid rgba(0, 0, 0, 0.1);
+
+    }
+
+.message {
+    @include font.body;
+    font-size: 0.825rem;
+    opacity: 1;
+
+    border-radius: 8px 0 8px 8px;
+    background-color: util.$off-black;
+    color: util.$gray;
+
+    padding: 0.85em 1.2em;
+    margin-bottom: 1rem;
+}
+
+.form {
+    box-sizing: border-box;
+   display:  flex;
+
+}
+
+
+.textarea {
+    width: 70%;
+    height: auto;
+    all: unset;
+    @include font.body;
+    opacity: 1;
+    border-radius: 0 0 0 8px;
+
+    padding: 1.5rem 3rem 1.5rem 1.5rem;
+
+    word-wrap: break-word;
+}
+
+.button {
+    all: unset;
+    padding: 0;
+    height: 100%;
+
+    cursor: pointer;
+}
+
+.button:disabled {
+    cursor: not-allowed;
+}
+
+.outline {
+    border-bottom: 4px solid util.$dark-orange;
+    width: 100px;
+    margin-left: 1.5rem;
+}
+
+
+.planeWrap > svg {
+    fill: util.$off-black;
+}
+
+.closeWrap button {
+}
+
+.closeWrap {
+    all: unset;
+
+    position: fixed;
+    z-index: 3;
+    right: 1rem;
+    bottom: 1rem;
+
+    cursor: pointer;
+
+    background-color: #555555;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+
+    box-shadow: -2px 9px 22px -1px rgba(0,0,0,0.29);
+    -webkit-box-shadow: -2px 9px 22px -1px rgba(0,0,0,0.29);
+    -moz-box-shadow: -2px 9px 22px -1px rgba(0,0,0,0.29);
+
+}
+
+.closeWrap svg {
+    position: absolute;
+    right: 9px;
+    bottom: 9px;
+    width: 42px;
+    height: 42px;
+
+    fill: util.$off-white;
+
+}
+
