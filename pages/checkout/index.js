@@ -48,10 +48,30 @@ export default function CheckoutPage({ prices }) {
   })
 
   React.useEffect(() => {
+      // if customer doesn't exist ... 
+      let customer;
+      
+      fetch('/api/create-customer', {
+	  method: 'POST',
+	  headers: { 'Content-Type': 'application/json' },
+	  body: JSON.stringify({ address }),
+      })
+	  .then((res) => res.json())
+	  .then((data) => {
+	      customer = data.id
+	  })
+	  .catch((err) => console.log(err))
+
     fetch('/api/create-order', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ items: cartCheckout, address, invoice }),
+	body: JSON.stringify(
+	    {
+		items: cartCheckout,
+		address,
+		invoice,
+		customer
+	    }),
     })
       .then((res) => res.json())
       .then((data) => {

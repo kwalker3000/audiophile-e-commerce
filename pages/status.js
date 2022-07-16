@@ -96,6 +96,8 @@ function OrderStatus() {
       stripe.retrieveOrder(clientSecret).then(({ order }) => {
         switch (order.payment.payment_intent.status) {
           case 'succeeded':
+            //TODO save order to database
+            // TODO order_id and product_id associative table
             emptyCart()
             setMessage('Payment succeeded!')
             break

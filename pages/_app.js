@@ -1,15 +1,26 @@
-import '../styles/globals.css'
+import '../styles/globals.css';
+import { SessionProvider } from 'next-auth/react';
 
-import useScrollRestoration from '../src/hooks/useScrollRestoration'
-import { AppWrapper } from '../src/context/appContext'
+import useScrollRestoration from '../src/hooks/useScrollRestoration';
+import { AppWrapper } from '../src/context/appContext';
 
-function MyApp({ Component, pageProps, router }) {
+export default function MyApp(
+    {
+        Component,
+        pageProps: {
+            session,
+            ...pageProps
+        },
+        router
+    }
+) {
   useScrollRestoration(router)
   return (
-    <AppWrapper>
-      <Component {...pageProps} />
-    </AppWrapper>
+      <SessionProvider session={session}>
+	<AppWrapper>
+	    <Component {...pageProps} />
+	</AppWrapper>
+      </SessionProvider>
   )
 }
 
-export default MyApp
