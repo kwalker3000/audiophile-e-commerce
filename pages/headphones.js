@@ -1,19 +1,19 @@
-import { useEffect } from 'react';
-import { useAppContext } from '../src/context/appContext';
-import Head from 'next/head';
-import styles from '../styles/modules/Category.module.css';
+import { useEffect } from 'react'
+import { useAppContext } from '../src/context/appContext'
+import Head from 'next/head'
+import styles from '../styles/modules/Category.module.css'
 
-import { MongoClient } from 'mongodb';
+import { MongoClient } from 'mongodb'
 
-import { Headline } from '../src/components/Headline';
-import { ProductQkView } from '../src/components/Product/ProductQkView';
-import { Header } from '../src/components/Header/Header';
-import { Menu } from '../src/components/Menu/Menu';
-import { About } from '../src/components/About';
-import { Footer } from '../src/components/Footer/Footer';
+import { Headline } from '../src/components/Headline'
+import { ProductQkView } from '../src/components/Product/ProductQkView'
+import { Header } from '../src/components/Header/Header'
+import { Menu } from '../src/components/Menu/Menu'
+import { About } from '../src/components/About'
+import { Footer } from '../src/components/Footer/Footer'
 
 export default function Headphones({ data }) {
-    data = data.sort((a, b) => b.new - a.new);
+  data = data.sort((a, b) => b.new - a.new)
 
   return (
     <div className={styles.page}>

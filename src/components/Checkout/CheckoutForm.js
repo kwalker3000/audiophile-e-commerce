@@ -25,7 +25,7 @@ export default function CheckoutForm({ address, order }) {
         // Make sure to change this to your payment completion page
         return_url: `${
           process.env.NODE_ENV == 'development'
-            ? 'http://localhost/status'
+            ? 'http://localhost:3000/status'
             : 'https://audiophile-tan.vercel.app/status'
         }`,
         receipt_email: address.email,

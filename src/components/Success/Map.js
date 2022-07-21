@@ -1,5 +1,5 @@
 
-import {useState} from "react";
+import React, {useState, useEffect, useRef} from "react";
 
 import StaticMap from 'react-map-gl';
 import { IconLayer, ArcLayer, ScatterplotLayer, } from "@deck.gl/layers";
@@ -7,50 +7,66 @@ import DeckGL from "deck.gl";
 
 import 'mapbox-gl/dist/mapbox-gl.css';
 
-import {markers} from '../../../lib/markers';
-
-const MAPBOX_ACCESS_TOKEN = 'pk.eyJ1Ijoia2V2aW53NDE1IiwiYSI6ImNsNWhkNnFkOTA2dmQza28yenRrcG8ydTYifQ.7qfnsMUxHQmvZwaPeLP3xg';
-
 const ICON_MAPPING = {
-  marker: {x: 0, y: 0, width: 128, height: 275, mask: true}
+  marker: {x: 128, y: 0, width: 128, height: 275, mask: true}
 };
 
 
-export const Map = () => {
+export const Map = ({ token, removeOverlay, store, user }) => {
+
+    let from;
+    let to;
+    const markers = [
+
+        from = {
+	    name: `store #${store.id}`,
+	    address: store.city + ' ' + store.postal_code,
+            coordinates: [store.lon, store.lat]
+        },
+        to = {
+            name: user.name,
+            address: `${user.address.line1}, ${user.address.city} ${user.address.postal_code}`,
+            coordinates: [user.coord.lon, user.coord.lat]
+        }
+    ]
+
+    let [ source, target ] = markers
 
     let data = markers.map(marker => (
         {
-            name: marker.city,
-            coordinates: [marker.longCoord, marker.latCoord]
+            name: marker.name,
+            coordinates: marker.coordinates
         }
     ))
 
 const dataLine = [
-    {sourcePosition: [126.9780, 37.5665], targetPosition: [4.9041, 52.3676]}
+    {sourcePosition: source.coordinates, targetPosition: target.coordinates}
 ];
 
-    // const data = markers
+    const mapRef = useRef();
+    const onMapLoad = React.useCallback(() => {
+        mapRef.current.on('render', () => removeOverlay())
+    })
+
     const [viewport, setViewport] = useState({
-        // width: 400,
-        // height: 400,
-        latitude: 35.681236,
-        longitude: 139.767125,
-        zoom: 1.2
+        longitude: target.coordinates[0],
+        latitude: target.coordinates[1],
+        zoom: 5
     });
 
     return (
         <DeckGL
-            width={"90vw"}
-            height={"50vh"}
+            width={"100%"}
+            height={"100%"}
             controller
-            /* layers={layer} */
             viewState={viewport}
+	  getTooltip={({object}) => object && `${object.name}\n${object.address}`}
             onViewStateChange={(viewState) => setViewport(viewState.viewState)}
         >
           <ScatterplotLayer
             id='scatterplot-layer'
-            data={data}
-            pickable={true}
+            data={markers}
+            pickable={false}
             opacity={0.8}
             stroked={true}
 	    filled={true}
@@ -66,15 +82,14 @@ const dataLine = [
           <ArcLayer
             id="arc-layer"
             data={dataLine}
+            onHover={(e) => console.log(e)}
             greatCircle={true}
             getHeight={0}
             getWidth={2.5} />
           <IconLayer
             id='icon-layer'
-            data={data}
+            data={markers}
             pickable={true}
-	    // iconAtlas and iconMapping are required
-	   // getIcon: return a string
 	   iconAtlas= 'https://raw.githubusercontent.com/visgl/deck.gl-data/master/website/icon-atlas.png'
 	    iconMapping={ICON_MAPPING}
 	    getIcon={d => 'marker'}
@@ -83,13 +98,16 @@ const dataLine = [
 	    getPosition={d => d.coordinates}
 	    getSize={d => 4}
 	    getColor={d => [255, 140, 0]}
+            getTooltip={({data}) => data && `${data.name}\n{data.coordinates}`}
 
           />
             <StaticMap
                 width={100}
                 height={100}
                 mapStyle='mapbox://styles/mapbox/light-v10'
-              mapboxAccessToken={MAPBOX_ACCESS_TOKEN}
+              mapboxAccessToken={token}
+              ref={mapRef}
+              onLoad={onMapLoad}
             />
         </DeckGL>
     )

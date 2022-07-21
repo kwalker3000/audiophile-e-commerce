@@ -1,0 +1,11 @@
+
+export const createOrderLog = async (userId, order) => {
+
+  let rates = await fetch('/api/create-order-log', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ userId, order }),
+  })
+
+    return
+}

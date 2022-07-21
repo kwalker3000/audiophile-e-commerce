@@ -8,17 +8,25 @@ import { Summary } from '../../Cart/Summary'
 import { validateAddress } from '../../../../lib/validateAddress'
 import { getShipRates } from '../../../../lib/getShipRates'
 
-export const ShipEstimate = ({ cartTotal, getShipValue, acceptShipRate }) => {
+export const ShipEstimate = (
+    {
+	cartTotal,
+	getShipValue,
+	acceptShipRate,
+	getStoreId,
+	getGeoloc
+    }) => {
   const [isValid, setIsValid] = useState(true)
   const [hasRates, setHasRates] = useState(false)
   const [rates, setRates] = useState([])
   const [isLoading, setIsLoading] = useState(false)
   const [shippingCost, setShippingCost] = useState(null)
 
-  let { address, inputAction, replaceAction, countryList, cart } =
+	let { address, inputAction, replaceAction,
+	countryList, cart } =
     useAppContext()
-
-  let { zip, country, state } = address
+	
+  let { zip, country } = address
 
   let countries = countryList.map((country, index) => (
     <option className="options" value={`${country[1]}`} key={index}>
@@ -40,6 +48,7 @@ export const ShipEstimate = ({ cartTotal, getShipValue, acceptShipRate }) => {
           replaceAction('')
           throw new Error('error')
         } else {
+	    getGeoloc(geoCord)
           setIsValid(true)
           let city = geoCord.name
           replaceAction(city)
@@ -47,7 +56,9 @@ export const ShipEstimate = ({ cartTotal, getShipValue, acceptShipRate }) => {
         }
       })
       .then((geoCord) => getShipRates(geoCord, address, shopCart))
-      .then((rates) => {
+      .then((response) => {
+	  let { from, result: rates } = response
+	  getStoreId(from.id)
         setRates(rates)
         setHasRates(true)
         setIsLoading(false)
@@ -137,7 +148,7 @@ export const ShipEstimate = ({ cartTotal, getShipValue, acceptShipRate }) => {
                 width: '225px',
               }}
             >
-              Unfortunately, we currently cannot deliver to this area.
+		Unfortunately, we currently cannot deliver to {address.city ? `${address.city}, ${address.country}` : 'this area'}.
             </p>
           </div>
         ) : (

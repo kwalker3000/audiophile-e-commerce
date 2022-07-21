@@ -3,7 +3,8 @@ const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY, {
 })
 
 export default async function handler(req, res) {
-    const { items, address, invoice, customer } = req.body
+    
+  const { items, address, invoice, customer } = req.body
 
   const order = await stripe.orders.create({
     currency: 'usd',

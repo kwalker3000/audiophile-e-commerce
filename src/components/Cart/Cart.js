@@ -90,6 +90,7 @@ export const Cart = ({ toggleCart, isCartOpen, renderCart }) => {
                 isUpdateCart={isUpdateCart}
                 isCheckout={isCheckout}
                 checkoutCart={checkoutCart}
+                isEmpty={isEmpty}
               />
             </>
           ) : (

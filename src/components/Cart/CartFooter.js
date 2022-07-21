@@ -11,6 +11,7 @@ export const CartFooter = ({
   isUpdateCart,
   isCheckout,
   checkoutCart,
+  isEmpty
 }) => {
   return (
     <>
@@ -30,7 +31,7 @@ export const CartFooter = ({
           <button
             className="btn btn-text btn-dark btn-dark_active"
             onClick={checkoutCart}
-            disabled={cart.length == 0}
+            disabled={isEmpty}
           >
             checkout
           </button>

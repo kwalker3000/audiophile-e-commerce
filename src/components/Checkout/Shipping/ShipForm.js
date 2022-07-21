@@ -1,26 +1,41 @@
 
 import React, { useState } from 'react'
+
+import { useSession } from 'next-auth/react'
 import { useAppContext } from '../../../context/appContext'
 import { LinkBtn } from '../../../components/LinkBtn'
 import { Summary } from '../../Cart/Summary'
 
 import { useRouter } from 'next/router'
 
-export const ShipForm = ({ cart, cartTotal, shipTotal }) => {
-  const router = useRouter()
-  let { address, countryList, inputAction } = useAppContext()
+import { initiateOrder } from '../../../../lib/initiateOrder'
 
-  let { name, email, phone, line1, line2, zip, city, country, state } = address
+export const ShipForm = (
+    {
+	cart,
+	cartTotal,
+	shipTotal,
+	storeId,
+	geoloc
+    }) => {
+    const router = useRouter();
+    let { address, countryList, inputAction } = useAppContext();
+    let { data } = useSession();
 
-  let countries = countryList.map((country, index) => (
-    <option className="options" value={`${country[1]}`} key={index}>
-      {country[0]}
-    </option>
-  ))
+  let { name, email, phone, line1, line2, zip, city, country, region } = address
+
+  // let countries = countryList.map((country, index) => (
+  //   <option className="options" value={`${country[1]}`} key={index}>
+  //     {country[0]}
+  //   </option>
+  // ))
 
   let handleSubmit = (e) => {
     e.preventDefault()
     //validate
+      // TODO
+
+      initiateOrder(storeId, data.user.id, geoloc)
     router.push('/checkout')
   }
 
@@ -120,10 +135,10 @@ export const ShipForm = ({ cart, cartTotal, shipTotal }) => {
           <input
             className="form__input input"
             type="text"
-            id="state"
-            name="state"
+            id="region"
+            name="region"
             placeholder="Michigan"
-            value={state}
+            value={region}
             onChange={(e) => inputAction(e)}
             required
           />

@@ -7,6 +7,8 @@ import React, {
 } from 'react'
 import { parseCookies, setCookie, destroyCookie } from 'nookies'
 
+import { useAddress, input, replace } from '../hooks/useAddress'
+
 const AppContext = createContext()
 
 export const AppWrapper = ({ children }) => {
@@ -17,49 +19,7 @@ export const AppWrapper = ({ children }) => {
   })
   const [cart, setCart] = useState([])
   const [stockWarn, setStockWarn] = useState(false)
-  const [address, setAddress] = useReducer(
-    (state, action) => {
-      switch (action.type) {
-        case 'UPDATE':
-          return {
-            ...state,
-            [action.payload.key]: action.payload.value,
-          }
-        case 'REPLACE CITY':
-          return {
-            ...state,
-            [action.payload.key]: action.payload.value,
-          }
-        default:
-          throw new Error(`Unknown action ${action.type}`)
-      }
-    },
-    {
-      name: '',
-      email: '',
-      phone: '',
-      line1: '',
-      line2: '',
-      zip: '',
-      city: '',
-      country: '',
-      state: '',
-    }
-  )
-
-  const inputAction = (event) => {
-    setAddress({
-      type: 'UPDATE',
-      payload: { key: event.target.name, value: event.target.value },
-    })
-  }
-
-  const replaceAction = (city) => {
-    setAddress({
-      type: 'REPLACE CITY',
-      payload: { key: 'city', value: city },
-    })
-  }
+    const [address, {inputAction, replaceAction}] = useAddress();
 
   let setCountries = (list) => {
     let countries = []
@@ -169,7 +129,7 @@ export const AppWrapper = ({ children }) => {
         emptyCart,
         stockWarn,
         resetWarn,
-        address,
+            address,
         inputAction,
         replaceAction,
         setCountries,

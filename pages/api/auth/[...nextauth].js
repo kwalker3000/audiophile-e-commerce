@@ -1,43 +1,33 @@
+import NextAuth from 'next-auth'
 
-import NextAuth from 'next-auth';
-import GoogleProvider from 'next-auth/providers/google';
-import GitHubProvider from 'next-auth/providers/github';
-import PostgresAdapter from '../../../lib/adapter';
+import GoogleProvider from 'next-auth/providers/google'
+import GitHubProvider from 'next-auth/providers/github'
 
-const pgp = require('pg-promise')()
-const cn = {
-  host: 'hansken-01.db.elephantsql.com',
-  port: 5432,
-  database: 'llblthaj',
-  user: 'llblthaj',
-  password: `${process.env.ELEPHANT_PASS}`,
-  max: 5,
+import PostgresAdapter from '../../../lib/adapter'
+
+import { db } from '../../../lib/database'
+
+export const authOptions = {
+  providers: [
+    GoogleProvider({
+      clientId: process.env.GOOGLE_CLIENT_ID,
+      clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+    }),
+    GitHubProvider({
+      clientId: process.env.GITHUB_ID,
+      clientSecret: process.env.GITHUB_SECRET,
+    }),
+  ],
+  adapter: PostgresAdapter(db),
+  callbacks: {
+    session: async ({ session, user }) => {
+      return {
+        // ...session,
+        // user: user,
+        user,
+      }
+    },
+  },
 }
 
-const db = pgp(cn)
-
-export default NextAuth({
-    providers: [
-	GoogleProvider({
-	    clientId: process.env.GOOGLE_CLIENT_ID,
-	    clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-	    
-	}),
-	GitHubProvider({
-	    clientId: process.env.GITHUB_ID,
-	    clientSecret: process.env.GITHUB_SECRET,
-	}),
-    ],
-    adapter: PostgresAdapter(db),
-    callbacks: {
-	session: async ({ session, user }) => {
-	return {
-	    // ...session,
-	    // user: user,
-	    user
-	};
-	},
-	signIn: async ({ user, account, profile, email, credentials })
-    },
-});
-
+export default NextAuth(authOptions)

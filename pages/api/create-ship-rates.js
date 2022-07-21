@@ -1,28 +1,35 @@
 const axios = require('axios')
+const { db } = require('../../lib/database')
 
 export default async function handler(req, res) {
   let api = `${process.env.SHIP_KEY}`
   let { geo, address, cart } = req.body
+  let stores
 
-  let loc1 = {
-    country: 'DE',
-    zip: '80331',
-    city: 'Munich',
-    lat: 48.1345,
-    lon: 11.571,
+  try {
+    stores = await db.many({
+      name: 'get-stores',
+      text: 'SELECT * FROM stores',
+    })
+  } catch (err) {
+    console.log(err)
+    return
   }
 
-  let loc2 = {
-    country: 'US',
-    zip: '10024',
-    city: 'New York',
-    lat: 40.7864,
-    lon: -73.9764,
-  }
+    let nearest;
+  let updatedStoresArr = stores.filter((store) => {
 
-  let distanceA = distance(loc1.lat, geo.lat, loc1.lon, geo.lon)
-  let distanceB = distance(loc2.lat, geo.lat, loc2.lon, geo.lon)
-  let from = Math.min(distanceA, distanceB) == distanceA ? loc1 : loc2
+    let breadth = distance(store.lat, geo.lat, store.lon, geo.lon)
+
+      if (nearest && (breadth < nearest)) {
+      return store
+    } else if (nearest == undefined) {
+        nearest = breadth
+      return store
+    }
+  })
+
+  let from = updatedStoresArr[updatedStoresArr.length - 1]
 
   let getWeight = (cart) => {
     let total = 0
@@ -38,8 +45,8 @@ export default async function handler(req, res) {
 
   let data = JSON.stringify({
     carrier_ids: carriers,
-    from_country_code: from.country,
-    from_postal_code: from.zip,
+    from_country_code: from.country_code,
+    from_postal_code: from.postal_code,
     to_country_code: address.country,
     to_postal_code: address.zip,
     weight: {
@@ -60,7 +67,7 @@ export default async function handler(req, res) {
 
   let result = await axios(config)
     .then((response) => {
-      if (weight < 120 && from.country == 'US') {
+      if (weight < 120 && from.country_code == 'US') {
         return [
           response.data.find(
             (rate) =>
@@ -68,8 +75,7 @@ export default async function handler(req, res) {
               rate.service_code == 'usps_priority_mail'
           ),
         ]
-      } else if (from.country == 'US') {
-        console.log('in else')
+      } else if (from.country_code == 'US') {
         return response.data.filter(
           (rate) =>
             rate.service_code == 'ups_ground' ||
@@ -82,13 +88,13 @@ export default async function handler(req, res) {
             rate.service_code == 'ups_express'
         )
       }
-      //return response.data
     })
     .catch(function (error) {
       console.log(error)
     })
+    result === undefined ? result = [] : result = result 
 
-  res.send(result)
+  res.send({ result, from })
 }
 
 const distance = (lat1, lat2, lon1, lon2) => {

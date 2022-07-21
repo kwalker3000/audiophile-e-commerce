@@ -9,12 +9,15 @@ import { Elements } from '@stripe/react-stripe-js'
 import { appearance } from '../../lib/appearance'
 
 import { useAppContext } from '../../src/context/appContext'
-
+import { useSession } from 'next-auth/react'
+//
 import { Stepper } from '../../src/components/Checkout/Stepper'
 import { CheckoutSummary } from '../../src/components/Checkout/CheckoutSummary'
 import CheckoutForm from '../../src/components/Checkout/CheckoutForm'
 import { Footer } from '../../src/components/Footer/Footer'
 import { CheckoutHeader } from '../../src/components/Checkout/CheckoutHeader'
+
+import { updateOrder } from '../../lib/updateOrder'
 
 const stripePromise = loadStripe(
   process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY,
@@ -28,6 +31,7 @@ export default function CheckoutPage({ prices }) {
   const [clientSecret, setClientSecret] = React.useState('')
   const [order, setOrder] = React.useState()
 
+    let { data: userData } = useSession();
   let { data } = prices
   let { cart, address, invoice } = useAppContext()
   let cartCheckout = []
@@ -48,37 +52,54 @@ export default function CheckoutPage({ prices }) {
   })
 
   React.useEffect(() => {
-      // if customer doesn't exist ... 
-      let customer;
-      
-      fetch('/api/create-customer', {
-	  method: 'POST',
-	  headers: { 'Content-Type': 'application/json' },
-	  body: JSON.stringify({ address }),
-      })
-	  .then((res) => res.json())
-	  .then((data) => {
-	      customer = data.id
-	  })
-	  .catch((err) => console.log(err))
 
-    fetch('/api/create-order', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-	body: JSON.stringify(
-	    {
-		items: cartCheckout,
-		address,
-		invoice,
-		customer
-	    }),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        setOrder(data.order)
-        setClientSecret(data.clientSecret)
-      })
-      .catch((err) => console.log(err))
+      let getCustomer = async () => {
+
+	let res = await fetch('/api/create-customer', {
+	    method: 'POST',
+	    headers: { 'Content-Type': 'application/json' },
+	    body: JSON.stringify({ address }),
+	})
+
+	  if (res.ok) {
+	      let data = await res.json();
+	      return data.customer.id;
+	  }
+	  else {
+	      throw new Error(res.status);
+	  }
+
+      }
+      
+
+      let getOrder = async (customer) => {
+
+	let res = await fetch('/api/create-order', {
+	method: 'POST',
+	headers: { 'Content-Type': 'application/json' },
+	    body: JSON.stringify(
+		{
+		    items: cartCheckout,
+		    address,
+		    invoice,
+		    customer
+		}),
+	})
+
+	  if (res.ok) {
+	      let data = await res.json();
+              updateOrder(userData.user.id, data.order)
+	      setOrder(data.order);
+	      setClientSecret(data.clientSecret);
+	  }
+	  else {
+	      throw new Error(res.status);
+	  }
+	  
+      }
+
+      getCustomer().then(customer => getOrder(customer))
+      
   }, [])
 
   const options = {

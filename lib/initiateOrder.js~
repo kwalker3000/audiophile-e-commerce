@@ -1,0 +1,10 @@
+export const createShipLog = async (storeId, userId, geoloc) => {
+    console.log('createNewOrder', geoloc)
+  let rates = await fetch('/api/create-ship-log', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ storeId, userId, geoloc }),
+  })
+
+    return
+}
