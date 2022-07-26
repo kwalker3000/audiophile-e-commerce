@@ -14,7 +14,7 @@ import { Footer } from '../src/components/Footer/Footer'
 
 import { Overlay } from '../src/components/Overlay'
 
-export default function Earphones({ data }) {
+export default function Earphones({ data, user }) {
   data = data.sort((a, b) => b.new - a.new)
 
   return (
@@ -25,7 +25,7 @@ export default function Earphones({ data }) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <header className={styles.pageHeader}>
-        <Header />
+        <Header user={user}/>
       </header>
       <main className={`${styles.pageMain} ${styles.main}`}>
         <section className={styles.mainHeadline}>
@@ -48,7 +48,17 @@ export default function Earphones({ data }) {
   )
 }
 
-export const getServerSideProps = async () => {
+export const getServerSideProps = async (ctx) => {
+    let { authOptions } = require('./api/auth/[...nextauth]');
+    let { unstable_getServerSession } = require('next-auth/next');
+
+    let session = await unstable_getServerSession(ctx.req, ctx.res, authOptions);
+
+    let user = session === null ? {} : session.user
+    user.id = user.id === undefined ? null : user.id
+    user.name = user.name === undefined ? null : user.name
+    user.image = user.image === undefined ? null : user.image
+
   const client = await MongoClient.connect(process.env.MONGODB_URI)
 
   const db = client.db('audiophile')
@@ -68,6 +78,12 @@ export const getServerSideProps = async () => {
   return {
     props: {
       data,
+      user: {
+	id: user.id,
+	name: user.name,
+	img: user.image
+      }
+
     },
   }
 }

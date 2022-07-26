@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
 
-export const Overlay = ({ isMenuOpen, isCartOpen }) => {
-  const display = isMenuOpen || isCartOpen ? 'block' : 'none'
+export const Overlay = ({ isMenuOpen, isCartOpen, isAccountOpen }) => {
+    const display = isMenuOpen || isCartOpen || isAccountOpen
+	  ? 'block' : 'none'
   return (
     <div
       className="overlay"

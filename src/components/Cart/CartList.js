@@ -4,12 +4,16 @@ import PropTypes from 'prop-types'
 import { useAppContext } from '../../context/appContext'
 import { Img } from '../../components/Img'
 import { Counter } from './Counter'
+import { TrashIcon } from './TrashIcon'
 
 export const CartList = ({ cart, isCheckout, orderSize, updateOrderSize }) => {
+
   let cartItems = cart.map((item, index) => (
     <div className="list__item item-wrapper" key={item.id}>
       <div className="misc-wrapper">
-        <div className="list__img img-wrapper">
+        <div
+          className="list__img img-wrapper"
+        >
           <Img defaultImg={item.img} descr={item.name} remote={true} />
         </div>
         <div className="list__text text-wrapper">
@@ -28,6 +32,7 @@ export const CartList = ({ cart, isCheckout, orderSize, updateOrderSize }) => {
             updateOrderSize={updateOrderSize}
             index={index}
             adjustment={orderSize[index]}
+            isInCart={true}
           />
         ) : (
           <p className="paragraph">

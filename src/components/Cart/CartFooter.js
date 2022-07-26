@@ -1,6 +1,11 @@
 import React from 'react'
+import { useSession } from 'next-auth/react'
 
 import { UpdateCart } from './UpdateCart'
+import { Img } from '../Img'
+import { logIn } from '../../../pages/index'
+
+import githubIcon from '../../../public/assets/shared/GitHub-Mark/PNG/GitHub-Mark-Light-64px.png'
 
 export const CartFooter = ({
   invoice,
@@ -11,8 +16,12 @@ export const CartFooter = ({
   isUpdateCart,
   isCheckout,
   checkoutCart,
-  isEmpty
+    isEmpty,
 }) => {
+
+
+    let { data } = useSession();
+
   return (
     <>
       {isUpdateCart ? (
@@ -33,8 +42,36 @@ export const CartFooter = ({
             onClick={checkoutCart}
             disabled={isEmpty}
           >
-            checkout
+            {(data && data.user) ? "checkout" : "checkout as guest"}
           </button>
+          {!data && <button
+            className="btn btn-text btn-contrast btn-contrast_active"
+            onClick={() => logIn()}
+            style={
+                {
+                    border: 'none',
+                    marginTop: '1.5rem',
+                    display: `${(data && data.user) ? 'block' : 'flex'}`,
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                }
+            }
+          >
+            <span
+              style={
+                  {
+                      marginRight: `${(data && data.user) ? 0 : '0.5rem'}`,
+                      position: 'relative',
+                      width: '22px',
+                      height: '22px'
+                  }
+              }>
+              {(!data) && <Img
+                defaultImg={githubIcon}
+                descr="github icon"/>}
+            </span> {(data && data.user) ? "checkout as guest" : "checkout with github"}
+          </button>}
+
         </div>
       )}
     </>

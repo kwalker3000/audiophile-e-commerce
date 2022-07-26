@@ -5,6 +5,7 @@ import { loadStripe } from '@stripe/stripe-js'
 import { Elements, useStripe } from '@stripe/react-stripe-js'
 
 import { finalizeOrder } from '../lib/finalizeOrder'
+import { createGuestOrderLog } from '../lib/createGuestOrderLog'
 
 import styles from '../styles/modules/Checkout.module.css'
 
@@ -16,6 +17,8 @@ import { Map } from '../src/components/Success/Map'
 import { MapOverlay } from '../src/components/Success/MapOverlay'
 
 import { useAppContext } from '../src/context/appContext'
+
+import { parseCookies, setCookie } from 'nookies'
 
 // Make sure to call loadStripe outside of a component’s render to avoid
 // recreating the Stripe object on every render.
@@ -32,11 +35,67 @@ let img = '../public/assets/map/map-marker.png'
 
 export default function OrderStatusPage({ token, store, user }) {
 
+    let { address } = useAppContext();
+
   const [isLoading, setIsLoading] = useState(true)
+    const [userData, setUserData] = useState({
+        name: address.name,
+        address: {
+            city: address.city,
+            country: address.country,
+            postal_code: address.zip,
+        },
+        coord: {
+            lon: null,
+            lat: null
+        }
+    })
+    const [storeData, setStoreData] = useState({
+        id: null,
+        country_code: "",
+        postal_code: "",
+        city: "",
+        lat: null,
+        lon: null
+    })
 
   let removeOverlay = () => {
     setIsLoading(false)
   }
+
+    useEffect(() => {
+
+        // store will be set to 0 if user is 'guest'
+        if (store == 0) {
+	    let cookies = parseCookies()
+	    let { guest } = cookies
+	    guest = JSON.parse(guest)
+
+            let getShippingData = async (guest) => {
+
+		let data = await createGuestOrderLog(guest)
+                return data
+            }
+
+            getShippingData(guest)
+                .then(res => {
+                    setStoreData(res)
+                })
+	    setUserData(prevData => ({...prevData, coord: {
+                lon: guest.coord.lon,
+                lat: guest.coord.lat
+            }}))
+
+        }
+        else {
+            setUserData(prevData => ({...prevData, coord: {
+                lon: user.coord.lon,
+                lat: user.coord.lat
+            }}))
+            setStoreData(store)
+        }
+	
+    }, [])
 
   return (
     <div className={styles.page}>
@@ -69,13 +128,14 @@ export default function OrderStatusPage({ token, store, user }) {
                 height: '400px',
               }}
             >
-              {isLoading && <MapOverlay />}
-              <Map
-                token={token}
-                store={store}
-                user={user}
-                removeOverlay={removeOverlay}/>
-              {/* <Deck /> */}
+              { isLoading &&
+                <MapOverlay />}
+              { userData.coord.lon &&
+                <Map
+                  token={token}
+                  store={storeData}
+                  user={userData}
+                  removeOverlay={removeOverlay}/>}
               <OrderStatus />
             </section>
           </div>
@@ -100,22 +160,46 @@ export async function getServerSideProps(ctx) {
     let session = await unstable_getServerSession(ctx.req, ctx.res, authOptions);
 
     let token = process.env.MAPBOX_TOKEN;
-    let data = await finalizeOrder(session.user.id)
-    let { store, orderLog } = data
 
-    let order = await stripe.orders.retrieve(orderLog.stripe_order)
+    let orderData
+
+    let getData = async () => {
+        
+	if (session) {
+     
+	    let data = await finalizeOrder(session.user.id)
+	    let { store, orderLog } = data
+
+	    let order = await stripe.orders.retrieve(orderLog.stripe_order)
+
+            return { store, order, orderLog}
+	}
+        else {
+            let store = 0
+            let orderLog = {
+                lon: 0,
+                lat: 0
+            }
+            
+            return {store, orderLog}
+        }
+
+    }
+    
+    let { store, order, orderLog } = await getData()
+    console.log(store)
+    console.log(order)
+    console.log(orderLog)
 
   return {
     props: {
       token,
         store,
         user: {
-            name: order.shipping_details.name,
             coord: {
                 lon: orderLog.lon,
                 lat: orderLog.lat
             },
-            address: order.shipping_details.address 
         },
     },
   }

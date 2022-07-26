@@ -1,0 +1,68 @@
+.orders {
+  font-family: "Manrope", sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin: 0;
+  font-size: 1.125rem;
+  line-height: 1.333em;
+  letter-spacing: 0.072em;
+  color: black;
+  border-bottom: 1px solid #000;
+  padding-bottom: 0.5rem;
+}
+
+.orders:hover,
+.orders:focus {
+  color: #d87d4a;
+}
+
+.btn_user {
+  display: block;
+  opacity: 0.55;
+  cursor: pointer;
+}
+
+.btn_user:hover,
+.btn_user:focus {
+  color: #d87d4a;
+  opacity: 1;
+}
+
+.dropdown {
+  background-color: #fff;
+  border-radius: 8px;
+  padding: 0 1rem;
+  width: max-content;
+  position: absolute;
+  top: 5rem;
+  right: 0;
+  z-index: 10;
+}
+
+.avatar {
+  display: block;
+  border-radius: 50%;
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+  padding-top: 100%;
+}
+
+.icon-wrapper {
+  cursor: pointer;
+  width: 100%;
+}
+
+.dropdown__list {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+}
+
+.pos {
+  margin-bottom: 1rem;
+}
+
+/*# sourceMappingURL=user.css.map */

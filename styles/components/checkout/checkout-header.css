@@ -16,11 +16,10 @@
   width: 100%;
 }
 
-.checkout-header__logo::before {
-  content: "";
-  margin-right: 1.5rem;
-}
-
+/* .checkout-header__logo::before {
+   content: '';
+   margin-right: 1.5rem;
+   } */
 .svg {
   color: white;
   justify-self: flex-end;

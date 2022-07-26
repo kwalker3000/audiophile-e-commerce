@@ -19,7 +19,7 @@ import { Footer } from '../../src/components/Footer/Footer'
 import { Overlay } from '../../src/components/Overlay'
 import { useAppContext } from '../../src/context/appContext'
 
-export default function Product({ data }) {
+export default function Product({ data, user }) {
   const [isCartUpdate, setIsCartUpdate] = useState(false)
 
   let { cart } = useAppContext()
@@ -42,7 +42,7 @@ export default function Product({ data }) {
       </Head>
 
       <header className={styles.pageHeader}>
-        <Header isCartUpdate={isCartUpdate} renderCart={renderCart} />
+        <Header isCartUpdate={isCartUpdate} renderCart={renderCart} user={user}/>
       </header>
 
       <main className={`${styles.pageMain} ${styles.main}`}>
@@ -81,7 +81,17 @@ export default function Product({ data }) {
   )
 }
 
-export const getServerSideProps = async () => {
+export const getServerSideProps = async (ctx) => {
+    let { authOptions } = require('../api/auth/[...nextauth]');
+    let { unstable_getServerSession } = require('next-auth/next');
+
+    let session = await unstable_getServerSession(ctx.req, ctx.res, authOptions);
+
+    let user = session === null ? {} : session.user
+    user.id = user.id === undefined ? null : user.id
+    user.name = user.name === undefined ? null : user.name
+    user.image = user.image === undefined ? null : user.image
+
   const client = await MongoClient.connect(process.env.MONGODB_URI)
 
   const db = client.db('audiophile')
@@ -101,6 +111,12 @@ export const getServerSideProps = async () => {
   return {
     props: {
       data,
+      user: {
+	id: user.id,
+	name: user.name,
+	img: user.image
+      }
+
     },
   }
 }

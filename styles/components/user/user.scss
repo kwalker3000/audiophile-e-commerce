@@ -1,0 +1,74 @@
+
+@use '../../util/util';
+@use '../../typography/typography' as font;
+
+
+.orders {
+    @include font.h6;
+    color: black;
+
+    border-bottom: 1px solid util.$black;
+    padding-bottom: .5rem;
+}
+
+.orders:hover,
+.orders:focus {
+    color: util.$dark-orange;
+}
+
+.btn_user {
+    display: block;
+
+    opacity: 0.55;
+    cursor: pointer;
+}
+
+
+.btn_user:hover,
+.btn_user:focus {
+    color: util.$dark-orange;
+    opacity: 1;
+}
+
+.dropdown {
+    background-color: util.$white;
+    border-radius: 8px;
+    padding: 0 1rem; 
+
+    width: max-content;
+
+    position: absolute;
+    top: 5rem;
+    right: 0;
+    z-index: 10;
+
+}
+
+
+.avatar {
+    display: block;
+    border-radius: 50%;
+    overflow: hidden;
+
+    position: relative;
+    width: 100%;
+    padding-top: 100%;
+}
+.icon-wrapper {
+    cursor: pointer;
+    width: 100%;
+}
+
+.dropdown__list {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    padding: 1rem;
+}
+
+
+.pos {
+    margin-bottom: 1rem;
+}

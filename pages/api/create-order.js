@@ -9,7 +9,7 @@ export default async function handler(req, res) {
   const order = await stripe.orders.create({
     currency: 'usd',
     line_items: items,
-    customer: customer,
+    [`${customer ? 'customer' : ''}`]: customer || null,
     shipping_details: {
       name: address.name,
       address: {

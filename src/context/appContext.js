@@ -83,11 +83,11 @@ export const AppWrapper = ({ children }) => {
   }
 
   let updateCart = (pendingCount) => {
-    setCart((prevCart) =>
-      prevCart.map((item, index) => {
+      setCart((prevCart) => prevCart.map((item, index) => {
         return { ...item, quantity: item.quantity + pendingCount[index] }
-      })
+      }).filter((item,index) => item.quantity !== 0)
     )
+    destroyCookie(null, 'shoppingCart', { path: '/' })
   }
 
   let emptyCart = () => {
@@ -118,6 +118,8 @@ export const AppWrapper = ({ children }) => {
     if (countryArr && countryList.length == 0) {
       setCountryList(countryArr || countryList)
     }
+
+      
   }, [cart])
 
   return (

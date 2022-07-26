@@ -51,18 +51,13 @@ body {
 .header {
   background-color: #000;
   padding: 2.1rem 0 1.75rem;
-  /* display: flex;
-     justify-content: space-between;
-     align-items: flex-end; */
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: repeat(3, 1fr);
   align-items: flex-end;
   padding-left: 100vw;
   padding-right: 100vw;
   margin-left: -100vw;
   margin-right: -100vw;
-  /* z-index: 5;
-     position: relative; */
 }
 
 .header-desk__nav {
@@ -74,13 +69,22 @@ body {
   align-self: center;
 }
 
-.header__cart {
+.header__container {
   justify-self: end;
+  display: flex;
 }
 
 .header__logo {
   justify-self: center;
   min-width: 145px;
+  top: 2px;
+}
+
+.header__user {
+  width: 1.35rem;
+  height: 1.35rem;
+  margin-right: 1rem;
+  border-radius: 50%;
 }
 
 @media (min-width: 685px) {
@@ -1905,6 +1909,65 @@ body {
   padding: 0 0.75rem;
 }
 
+#user .orders {
+  font-family: "Manrope", sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin: 0;
+  font-size: 1.125rem;
+  line-height: 1.333em;
+  letter-spacing: 0.072em;
+  color: black;
+  border-bottom: 1px solid #000;
+  padding-bottom: 0.5rem;
+}
+#user .orders:hover,
+#user .orders:focus {
+  color: #d87d4a;
+}
+#user .btn_user {
+  display: block;
+  opacity: 0.55;
+  cursor: pointer;
+}
+#user .btn_user:hover,
+#user .btn_user:focus {
+  color: #d87d4a;
+  opacity: 1;
+}
+#user .dropdown {
+  background-color: #fff;
+  border-radius: 8px;
+  padding: 0 1rem;
+  width: max-content;
+  position: absolute;
+  top: 5rem;
+  right: 0;
+  z-index: 10;
+}
+#user .avatar {
+  display: block;
+  border-radius: 50%;
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+  padding-top: 100%;
+}
+#user .icon-wrapper {
+  cursor: pointer;
+  width: 100%;
+}
+#user .dropdown__list {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+}
+#user .pos {
+  margin-bottom: 1rem;
+}
+
 .container {
   display: flex;
   justify-content: center;
@@ -1959,11 +2022,10 @@ body {
   width: 100%;
 }
 
-.checkout-header__logo::before {
-  content: "";
-  margin-right: 1.5rem;
-}
-
+/* .checkout-header__logo::before {
+   content: '';
+   margin-right: 1.5rem;
+   } */
 .svg {
   color: white;
   justify-self: flex-end;

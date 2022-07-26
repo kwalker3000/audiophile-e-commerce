@@ -10,6 +10,8 @@ import { useRouter } from 'next/router'
 
 import { initiateOrder } from '../../../../lib/initiateOrder'
 
+import { parseCookies, setCookie, destroyCookie } from 'nookies'
+
 export const ShipForm = (
     {
 	cart,
@@ -24,18 +26,31 @@ export const ShipForm = (
 
   let { name, email, phone, line1, line2, zip, city, country, region } = address
 
-  // let countries = countryList.map((country, index) => (
-  //   <option className="options" value={`${country[1]}`} key={index}>
-  //     {country[0]}
-  //   </option>
-  // ))
-
   let handleSubmit = (e) => {
     e.preventDefault()
     //validate
       // TODO
 
-      initiateOrder(storeId, data.user.id, geoloc)
+      if (data) {
+	  initiateOrder(storeId, data.user.id, geoloc)
+      }
+      else {
+
+	  let guest = {
+	      store: storeId,
+	      coord: {
+		  lon: geoloc.lon,
+		  lat: geoloc.lat
+	      }
+	      
+	  }
+	  guest = JSON.stringify(guest)
+	  setCookie(null, 'guest', guest, {
+	      maxAge: 24 * 60 * 80,
+	      path: '/',
+	  })
+      }
+
     router.push('/checkout')
   }
 

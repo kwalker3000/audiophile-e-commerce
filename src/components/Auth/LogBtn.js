@@ -7,7 +7,7 @@ export const LogBtn = () => {
     if (session) {
         return (
             <>
-            Signed in as { session.user.email } <br />
+            Signed in as { session.user } <br />
               <button onClick={() => signOut()}>Sign out</button>
             </>
         )

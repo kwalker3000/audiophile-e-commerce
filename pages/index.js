@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import { useSession, signIn, signOut } from 'next-auth/react'
 import Head from 'next/head'
 import dynamic from 'next/dynamic'
 
@@ -20,8 +21,22 @@ const AblyChatComponent = dynamic(
   () => import('../src/components/Ably/AblyChatComponent'),
   { ssr: false }
 )
+export const logIn = () => {
+    signIn();
+    return
+}
 
-export default function Home({ countryList }) {
+export const logOut = () => {
+    signOut();
+    return
+}
+
+// export const sessionInfo = () => {
+//     return userSession();
+// }
+
+
+export default function Home({ countryList, user }) {
   let { setCountries } = useAppContext()
 
   const [isOpenChat, setIsOpenChat] = useState(false)
@@ -55,7 +70,7 @@ export default function Home({ countryList }) {
       ) : (
         <>
           <header className={styles.pageHeader}>
-            <Header />
+            <Header user={user}/>
           </header>
 
           <main className={`${styles.pageMain} ${styles.main}`}>
@@ -97,7 +112,17 @@ export default function Home({ countryList }) {
   )
 }
 
-export async function getStaticProps() {
+export async function getServerSideProps(ctx) {
+    let { authOptions } = require('./api/auth/[...nextauth]');
+    let { unstable_getServerSession } = require('next-auth/next');
+
+    let session = await unstable_getServerSession(ctx.req, ctx.res, authOptions);
+
+    let user = session === null ? {} : session.user
+    user.id = user.id === undefined ? null : user.id
+    user.name = user.name === undefined ? null : user.name
+    user.image = user.image === undefined ? null : user.image
+
   const fs = require('fs/promises')
   const fileName = 'public/assets/static/data.csv'
 
@@ -118,7 +143,13 @@ export async function getStaticProps() {
 
   return {
     props: {
-      countryList,
+        countryList,
+        user: {
+            id: user.id,
+            name: user.name,
+            img: user.image
+        }
     },
   }
+
 }
