@@ -100,3 +100,21 @@
 	order: -1;
     }
 }
+
+
+
+
+.mainChat {
+    position: fixed;
+    top: 195px;
+    right: 0;
+    left: 66px;
+    z-index: 3;
+}
+
+.chatButton {
+    position: fixed;
+    z-index: 3;
+    right: 1rem;
+    bottom: 1rem;
+}

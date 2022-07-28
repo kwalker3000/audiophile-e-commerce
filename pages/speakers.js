@@ -1,5 +1,6 @@
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import Head from 'next/head'
+import dynamic from 'next/dynamic'
 import styles from '../styles/modules/Category.module.css'
 
 import { MongoClient } from 'mongodb'
@@ -11,10 +12,20 @@ import { Menu } from '../src/components/Menu/Menu'
 import { About } from '../src/components/About'
 import { Footer } from '../src/components/Footer/Footer'
 
-import { Overlay } from '../src/components/Overlay'
+import { ChatIcon } from '../src/components/Ably/ChatIcon'
+const AblyChatComponent = dynamic(
+  () => import('../src/components/Ably/AblyChatComponent'),
+  { ssr: false }
+)
 
 export default function Speakers({ data, user }) {
   data = data.sort((a, b) => b.new - a.new)
+
+  const [isOpenChat, setIsOpenChat] = useState(false)
+
+  let toggleChat = () => {
+    setIsOpenChat(!isOpenChat)
+  }
 
   return (
     <div className={styles.page}>
@@ -27,6 +38,13 @@ export default function Speakers({ data, user }) {
         <Header user={user}/>
       </header>
       <main className={`${styles.pageMain} ${styles.main}`}>
+            <div className={`${styles.mainChat}`} >
+	      {isOpenChat && <AblyChatComponent />}
+            </div>
+            <div className={`${styles.chatButton}`} onClick={toggleChat} aria-label={`${isOpenChat ? 'close chat' : 'open chat'}`}>
+              <ChatIcon isOpenChat={isOpenChat}/>
+            </div>
+
         <section className={styles.mainHeadline}>
           <Headline title="speakers" />
         </section>

@@ -4,7 +4,6 @@ import PropTypes from 'prop-types'
 import { useAppContext } from '../../context/appContext'
 import { Img } from '../../components/Img'
 import { Counter } from './Counter'
-import { TrashIcon } from './TrashIcon'
 
 export const CartList = ({ cart, isCheckout, orderSize, updateOrderSize }) => {
 

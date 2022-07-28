@@ -1,6 +1,7 @@
-import Head from 'next/head'
-import { useRouter } from 'next/router'
 import { useEffect, useState } from 'react'
+import Head from 'next/head'
+import dynamic from 'next/dynamic'
+import { useRouter } from 'next/router'
 
 import styles from '../../styles/modules/Product.module.css'
 
@@ -16,11 +17,20 @@ import { Menu } from '../../src/components/Menu/Menu'
 import { About } from '../../src/components/About'
 import { Footer } from '../../src/components/Footer/Footer'
 
-import { Overlay } from '../../src/components/Overlay'
 import { useAppContext } from '../../src/context/appContext'
+import { ChatIcon } from '../src/components/Ably/ChatIcon'
+const AblyChatComponent = dynamic(
+  () => import('../src/components/Ably/AblyChatComponent'),
+  { ssr: false }
+)
 
 export default function Product({ data, user }) {
   const [isCartUpdate, setIsCartUpdate] = useState(false)
+  const [isOpenChat, setIsOpenChat] = useState(false)
+
+  let toggleChat = () => {
+    setIsOpenChat(!isOpenChat)
+  }
 
   let { cart } = useAppContext()
 
@@ -46,6 +56,13 @@ export default function Product({ data, user }) {
       </header>
 
       <main className={`${styles.pageMain} ${styles.main}`}>
+            <div className={`${styles.mainChat}`} >
+	      {isOpenChat && <AblyChatComponent />}
+            </div>
+            <div className={`${styles.chatButton}`} onClick={toggleChat} aria-label={`${isOpenChat ? 'close chat' : 'open chat'}`}>
+              <ChatIcon isOpenChat={isOpenChat}/>
+            </div>
+
         <section className={styles.mainNavBack}>
           <NavBack />
         </section>

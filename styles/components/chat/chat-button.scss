@@ -1,0 +1,53 @@
+
+@use '../../util/util';
+@use '../../typography/typography' as font;
+
+.chat-button {
+    background-color: #555555;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+
+    width: 60px;
+    height: 60px;
+
+    box-shadow: -2px 9px 22px -1px rgba(0,0,0,0.29);
+    -webkit-box-shadow: -2px 9px 22px -1px rgba(0,0,0,0.29);
+    -moz-box-shadow: -2px 9px 22px -1px rgba(0,0,0,0.29);
+
+    position: relative;
+}
+
+.chat-open {
+    display: block;
+    width: 36px;
+    height: 36px;
+
+    fill: util.$dark-orange;
+    fill: util.$off-white;
+
+    transform: scaleX(-1);
+   
+    position: absolute;
+    right: 11.5px;
+    bottom: 10.5px;
+
+}
+
+.chat-close {
+        position: absolute;
+    right: 9px;
+    bottom: 9px;
+    width: 42px;
+    height: 42px;
+
+    fill: util.$off-white;
+
+}
+
+.chat-button:hover > .chat-close,
+.chat-button:focus-visible > chat-open,
+.chat-button:hover > .chat-open {
+    fill: util.$dark-orange;
+}
+

@@ -5,9 +5,8 @@ import styles from '../../../styles/modules/AblyChatComponent.module.css';
 
 import { Logo } from '../Logo';
 import { PlaneIcon } from './PlaneIcon';
-import { CloseIcon } from './CloseIcon';
 
-export default function AblyChatComponent({ toggleChat }) {
+export default function AblyChatComponent() {
 
     let inputBox = null;
     let messageEnd = null;
@@ -43,13 +42,17 @@ export default function AblyChatComponent({ toggleChat }) {
 
     const messages = receivedMessages.map((message, index) => {
         const author = message.connectionId === ably.connection.id
-              ? "me" : "other";
+              ? "me" : "customer care";
         return (
+	    <>
             <span
               key={index}
-              className={styles.message}
+              className={`${author == 'me' ? styles.me : styles.other} ${styles.message}`}
               data-author={author}
             >{message.data}</span>
+              <span className={`${author !== 'me' && styles.care} ${styles.author}`}
+              >{author}</span>
+            </>
         )
     });
 
@@ -65,13 +68,13 @@ export default function AblyChatComponent({ toggleChat }) {
               <Logo />
             </div>
             <div className={styles.outline}></div>
-            {/* <h5 className={`${styles.chatHead} ${styles.head}`}>Audiophile Team</h5> */}
           </div>
 	    <div className={styles.chatText}>
 		{messages}
 	      <div ref={(element) => { messageEnd = element; }}>
               </div>
 	    </div>
+
 	    <form onSubmit={handleFormSubmit} className={styles.form}>
 		<textarea
                   rows={1}
@@ -88,11 +91,6 @@ export default function AblyChatComponent({ toggleChat }) {
                 </span>
               </button>
 	    </form>
-          <button onClick={toggleChat} className={styles.closeWrap}>
-            <span>
-		<CloseIcon />
-            </span>
-          </button>
 
 	</div>
     )

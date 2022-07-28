@@ -1,16 +1,19 @@
 .chatHolder {
+  border-radius: 8px;
+  height: 65vh;
+  min-width: 275px;
+  max-width: 410px;
   display: flex;
   flex-direction: column;
-  height: 80vh;
-  border-radius: 8px;
-  box-shadow: -2px 9px 22px -6px rgba(0, 0, 0, 0.19);
-  -webkit-box-shadow: -2px 9px 22px -6px rgba(0, 0, 0, 0.19);
-  -moz-box-shadow: -2px 9px 22px -6px rgba(0, 0, 0, 0.19);
+  box-shadow: 0px 9px 32px -6px rgba(0, 0, 0, 0.59);
+  -webkit-box-shadow: 0px 9px 32px -6px rgba(0, 0, 0, 0.59);
+  -moz-box-shadow: 0px 9px 32px -6px rgba(0, 0, 0, 0.59);
 }
 
 .chatHeader {
   background-color: #000;
   border-radius: 8px 8px 0 0;
+  width: 100%;
 }
 
 .logoWrap {
@@ -19,13 +22,13 @@
 
 .chatText {
   background-color: #fff;
+  border-bottom: 2px solid rgba(0, 0, 0, 0.1);
+  height: 80%;
+  padding: 1.5rem;
   display: flex;
   flex-direction: column;
   align-items: flex-end;
-  height: 80%;
-  width: 75vw;
-  padding: 1.5rem;
-  border-bottom: 2px solid rgba(0, 0, 0, 0.1);
+  overflow: scroll;
 }
 
 .message {
@@ -36,23 +39,48 @@
   line-height: 1.667em;
   opacity: 0.55;
   font-size: 0.825rem;
-  opacity: 1;
   border-radius: 8px 0 8px 8px;
   background-color: #101010;
   color: #f1f1f1;
+  opacity: 1;
   padding: 0.85em 1.2em;
-  margin-bottom: 1rem;
+  /* margin-bottom: 1rem; */
+}
+
+.other {
+  background-color: #dadada;
+  border-radius: 0 8px 8px 8px;
+  color: #101010;
+  align-self: flex-start;
+}
+
+.author {
+  font-family: "Manrope", sans-serif;
+  margin: 0;
+  font-size: 0.938rem;
+  font-weight: 500;
+  line-height: 1.667em;
+  opacity: 0.55;
+  font-size: 0.75rem;
+  margin-right: 4px;
+}
+
+.care {
+  align-self: flex-start;
+  margin-left: 4px;
 }
 
 .form {
   box-sizing: border-box;
+  border-radius: 0 0 8px 8px;
+  background-color: #fff;
+  padding: 0 1.5rem 0 0;
   display: flex;
 }
 
 .textarea {
-  width: 70%;
-  height: auto;
-  all: unset;
+  border-radius: 0 0 0 8px;
+  border: none;
   font-family: "Manrope", sans-serif;
   margin: 0;
   font-size: 0.938rem;
@@ -60,13 +88,17 @@
   line-height: 1.667em;
   opacity: 0.55;
   opacity: 1;
-  border-radius: 0 0 0 8px;
-  padding: 1.5rem 3rem 1.5rem 1.5rem;
+  padding: 1.5rem 0 1.5rem 1.5rem;
+  width: 100%;
+  resize: none;
   word-wrap: break-word;
+  background-color: #fff;
 }
 
 .button {
-  all: unset;
+  background-color: #fff;
+  border: none;
+  border-radius: 0 0 8px 0;
   padding: 0;
   height: 100%;
   cursor: pointer;
@@ -84,31 +116,6 @@
 
 .planeWrap > svg {
   fill: #101010;
-}
-
-.closeWrap {
-  all: unset;
-  position: fixed;
-  z-index: 3;
-  right: 1rem;
-  bottom: 1rem;
-  cursor: pointer;
-  background-color: #555555;
-  border-radius: 50%;
-  width: 60px;
-  height: 60px;
-  box-shadow: -2px 9px 22px -1px rgba(0, 0, 0, 0.29);
-  -webkit-box-shadow: -2px 9px 22px -1px rgba(0, 0, 0, 0.29);
-  -moz-box-shadow: -2px 9px 22px -1px rgba(0, 0, 0, 0.29);
-}
-
-.closeWrap svg {
-  position: absolute;
-  right: 9px;
-  bottom: 9px;
-  width: 42px;
-  height: 42px;
-  fill: #fafafa;
 }
 
 /*# sourceMappingURL=AblyChatComponent.module.css.map */

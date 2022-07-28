@@ -34,7 +34,6 @@ export const User = ({ user, isAccountOpen, toggleAccount }) => {
              <div className="account__dropdown dropdown">
               <div className="dropdown__list list">
                 <div className="dropdown__item item">
-                  head_level-2
                   {user.id && <Link href="/">
                     <a className="link orders">
                       Orders
