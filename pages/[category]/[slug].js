@@ -18,9 +18,9 @@ import { About } from '../../src/components/About'
 import { Footer } from '../../src/components/Footer/Footer'
 
 import { useAppContext } from '../../src/context/appContext'
-import { ChatIcon } from '../src/components/Ably/ChatIcon'
+import { ChatIcon } from '../../src/components/Ably/ChatIcon'
 const AblyChatComponent = dynamic(
-  () => import('../src/components/Ably/AblyChatComponent'),
+  () => import('../../src/components/Ably/AblyChatComponent'),
   { ssr: false }
 )
 

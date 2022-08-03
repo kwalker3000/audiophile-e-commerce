@@ -26,10 +26,6 @@
 }
 
 @media (min-width: 685px) {
-  .checkout-header {
-    text-align: left;
-  }
-
   .checkout-header__logo::before {
     content: "";
     margin-right: 0;

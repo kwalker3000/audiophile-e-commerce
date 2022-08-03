@@ -27,7 +27,9 @@
 .header__logo {
   justify-self: center;
   min-width: 145px;
+  position: relative;
   top: 2px;
+  z-index: 2;
 }
 
 .header__user {
@@ -35,6 +37,8 @@
   height: 1.35rem;
   margin-right: 1rem;
   border-radius: 50%;
+  position: relative;
+  z-index: 2;
 }
 
 @media (min-width: 685px) {

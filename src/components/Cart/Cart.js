@@ -68,7 +68,7 @@ export const Cart = ({ toggleCart, isCartOpen, renderCart, }) => {
 
   return (
     <div id="cart">
-      <CartIcon handleDropDown={handleDropDown} isEmpty={isEmpty} />
+	<CartIcon handleDropDown={handleDropDown} isEmpty={isEmpty} isCartOpen={isCartOpen}/>
 
       {isCartOpen && (
         <div className="cart__dropdown dropdown">

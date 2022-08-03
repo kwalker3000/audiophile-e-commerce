@@ -38,7 +38,6 @@ export const Header = ({ isCartUpdate, renderCart, user }) => {
       <div className="header">
         <div
           className="header__logo"
-          style={{ position: 'relative', zIndex: '1' }}
         >
           <Logo />
         </div>
@@ -50,7 +49,6 @@ export const Header = ({ isCartUpdate, renderCart, user }) => {
         </div>
         <div className="header__container">
           <div className="header__user"
-          style={{ position: 'relative', zIndex: '1' }}
           >
             <User
               user={user}

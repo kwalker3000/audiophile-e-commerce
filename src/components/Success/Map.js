@@ -13,8 +13,6 @@ const ICON_MAPPING = {
 
 
 export const Map = ({ token, removeOverlay, store, user }) => {
-    console.log('store', store)
-    console.log('user', user)
 
     let from;
     let to;
@@ -27,7 +25,7 @@ export const Map = ({ token, removeOverlay, store, user }) => {
         },
         to = {
             name: user.name,
-            address: `${user.address.line1}, ${user.address.city} ${user.address.postal_code}`,
+            address: `${user.address.line1} \n ${user.address.city}, ${user.address.postal_code}`,
             coordinates: [user.coord.lon, user.coord.lat]
         }
     ]
@@ -84,8 +82,6 @@ const dataLine = [
           <ArcLayer
             id="arc-layer"
             data={dataLine}
-	      // TODO
-            // onHover={(e) => console.log(e)}
             greatCircle={true}
             getHeight={0}
             getWidth={2.5} />

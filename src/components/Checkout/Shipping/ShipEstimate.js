@@ -21,6 +21,7 @@ export const ShipEstimate = (
   const [rates, setRates] = useState([])
   const [isLoading, setIsLoading] = useState(false)
   const [shippingCost, setShippingCost] = useState(null)
+  const [isValidPost, setIsValidPost] = useState(true)
 
 	let { address, inputAction, replaceAction,
 	countryList, cart } =
@@ -35,12 +36,17 @@ export const ShipEstimate = (
   ))
 
   let handleSubmit = (e, address, shopCart = cart) => {
+    e.preventDefault()
+      console.log(e)
+      if (!checkPost(address.zip)) {
+          setIsValidPost(false)
+          return
+      }
     if (shippingCost) {
       acceptShipRate()
       return
     }
     setIsLoading(true)
-    e.preventDefault()
     validateAddress(address)
       .then((geoCord) => {
         if (!geoCord) {
@@ -69,11 +75,29 @@ export const ShipEstimate = (
       })
   }
 
+        let checkPost = (value) => {
+            if (value.length <3 || value.length > 10) {
+                return false
+            }
+            if (value.length > 1) {
+		let match = value.match(/(^\w+[- ]?\w+)/gi)
+                if (match == null) {
+                    return false
+                }
+                if (match[0] !== value) {
+                    return false
+                }
+		console.log(match[0] == value)
+            }
+            return true
+        }
+
   let handleChange = (e) => {
     inputAction(e)
     setHasRates(false)
     setIsValid(true)
     setShippingCost(null)
+      setIsValidPost(true)
   }
 
   let getShippingCost = (value) => {
@@ -88,9 +112,13 @@ export const ShipEstimate = (
         <div>
           <label htmlFor="zip" className="form__label label">
             ZIP or Postal Code
+            {!isValidPost &&
+             <span
+               className='error-label'
+             >Wrong format</span>}
           </label>
           <input
-            className="form__input input"
+            className={`form__input input ${!isValidPost && 'error-input'}`}
             type="text"
             inputMode="numeric"
             id="zip"

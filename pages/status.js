@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import Head from 'next/head'
+import { useRouter } from 'next/router'
+import dynamic from 'next/dynamic'
 
 import { loadStripe } from '@stripe/stripe-js'
 import { Elements, useStripe } from '@stripe/react-stripe-js'
@@ -7,19 +9,26 @@ import { Elements, useStripe } from '@stripe/react-stripe-js'
 import { finalizeOrder } from '../lib/finalizeOrder'
 import { createGuestOrderLog } from '../lib/createGuestOrderLog'
 
-import styles from '../styles/modules/Checkout.module.css'
+import styles from '../styles/modules/Status.module.css'
 
-import { CheckoutHeader } from '../src/components/Checkout/CheckoutHeader'
+import { Header } from '../src/components/Header/Header'
 import { Stepper } from '../src/components/Checkout/Stepper'
 import { Footer } from '../src/components/Footer/Footer'
 
 import { Map } from '../src/components/Success/Map'
 import { MapOverlay } from '../src/components/Success/MapOverlay'
+import { OrderReview } from '../src/components/Success/OrderReview'
+import { DeliverySum } from '../src/components/Success/DeliverySum'
+import { Overlay } from '../src/components/Overlay'
 
 import { useAppContext } from '../src/context/appContext'
 
-import { parseCookies, setCookie } from 'nookies'
-
+import { parseCookies, setCookie, destroyCookie } from 'nookies'
+import { ChatIcon } from '../src/components/Ably/ChatIcon'
+const AblyChatComponent = dynamic(
+  () => import('../src/components/Ably/AblyChatComponent'),
+  { ssr: false }
+)
 // Make sure to call loadStripe outside of a component’s render to avoid
 // recreating the Stripe object on every render.
 // This is your test publishable API key.
@@ -33,23 +42,33 @@ const stripePromise = loadStripe(
 
 let img = '../public/assets/map/map-marker.png'
 
-export default function OrderStatusPage({ token, store, user }) {
+export default function OrderStatusPage({ token, store, user, total }) {
 
-    let { address } = useAppContext();
+    const router = useRouter();
+    let { address, emptyCart, setAction, cart } = useAppContext();
 
   const [isLoading, setIsLoading] = useState(true)
+    const [hasPopOver, setHasPopOver] = useState(true)
     const [userData, setUserData] = useState({
-        name: address.name,
+        name: user.name,
+        contact: {
+            phone: user.contact.phone,
+            email: user.contact.email
+        },
         address: {
-            city: address.city,
-            country: address.country,
-            postal_code: address.zip,
+            city: user.address.city,
+            country: user.address.country,
+            line1: user.address.line1,
+            line2: user.address.line2,
+            postal_code: user.address.postal_code,
+            state: user.address.state
         },
         coord: {
-            lon: null,
-            lat: null
+            lon: user.coord.lon,
+            lat: user.coord.lat
         }
     })
+    const [amount, setAmount] = useState(total)
     const [storeData, setStoreData] = useState({
         id: null,
         country_code: "",
@@ -58,41 +77,81 @@ export default function OrderStatusPage({ token, store, user }) {
         lat: null,
         lon: null
     })
+    const [isOpenChat, setIsOpenChat] = useState(false)
+
+    let toggleChat = () => {
+	setIsOpenChat(!isOpenChat)
+    }
+
 
   let removeOverlay = () => {
     setIsLoading(false)
   }
 
+    let handlePopOver = () => {
+        setHasPopOver(false)
+        emptyCart()
+    }
+
     useEffect(() => {
 
         // store will be set to 0 if user is 'guest'
-        if (store == 0) {
-	    let cookies = parseCookies()
-	    let { guest } = cookies
-	    guest = JSON.parse(guest)
+        try {
+	    if (store == 0) {
+		let cookies = parseCookies()
+		let { guest } = cookies
+		guest = JSON.parse(guest)
 
-            let getShippingData = async (guest) => {
+		let getShippingData = async (guest) => {
 
-		let data = await createGuestOrderLog(guest)
-                return data
-            }
+		    let data = await createGuestOrderLog(guest)
+		    return data
+		}
 
-            getShippingData(guest)
-                .then(res => {
-                    setStoreData(res)
-                })
-	    setUserData(prevData => ({...prevData, coord: {
-                lon: guest.coord.lon,
-                lat: guest.coord.lat
-            }}))
+		getShippingData(guest)
+		    .then(res => {
+			let { storeInfo, order } = res
+			setStoreData(storeInfo)
+			setUserData(prevData => (
+			    {...prevData,
+			    address: {
+				city: order.shipping_details.address.city,
+				country: order.shipping_details.address.country,
+				line1: order.shipping_details.address.line1,
+                                line2: order.shipping_details.address.line2,
+				postal_code: order.shipping_details.address.postal_code,
+                                state: order.billing_details.address.state
+			    },
+			    coord: {
+				lon: guest.coord.lon,
+				lat: guest.coord.lat
+			    },
+			    name: order.shipping_details.name,
+			    contact: {
+                                phone: order.billing_details.phone,
+                                email: order.billing_details.email
+                            }
+			    }
+                            
+			))
+                        setAmount(order.amount_total)
+		    })
+
+	    }
+	    else {
+		setStoreData(store)
+	    }
+	    setTimeout(() => {
+		destroyCookie(null, 'guest', { path: '/' })
+		destroyCookie(null, 'shoppingCart', { path: '/' })
+	    }, 500)
+
 
         }
-        else {
-            setUserData(prevData => ({...prevData, coord: {
-                lon: user.coord.lon,
-                lat: user.coord.lat
-            }}))
-            setStoreData(store)
+        catch(err) {
+            console.error(err)
+            router.push('/')
+            
         }
 	
     }, [])
@@ -107,29 +166,42 @@ export default function OrderStatusPage({ token, store, user }) {
 
       <Elements stripe={stripePromise}>
         <header className={styles.pageHeader}>
-          <CheckoutHeader />
+            <Header user={user}/>
         </header>
 
         <main className={styles.main}>
+            <div className={`${styles.mainChat}`} >
+	      {isOpenChat && <AblyChatComponent />}
+            </div>
+            <div className={`${styles.chatButton}`} onClick={toggleChat} aria-label={`${isOpenChat ? 'close chat' : 'open chat'}`}>
+              <ChatIcon isOpenChat={isOpenChat}/>
+            </div>
+
+          <Overlay hasPopOver={hasPopOver}/>
           <div className={`${styles.mainGrid} ${styles.grid}`}>
-            <section className={styles.gridStepper}>
-              <Stepper />
+            <section className={styles.gridDetails}>
+              <DeliverySum userData={userData} cart={cart}/>
             </section>
 
-            <section className={styles.gridSummary}>
+            <section className={styles.gridBar}>
               <div></div>
             </section>
 
             <section
-              className={styles.gridForm}
+              className={styles.gridMap}
               style={{
                 position: 'relative',
                 /* width: '400px', */
                 height: '400px',
               }}
             >
-              { isLoading &&
-                <MapOverlay />}
+              {hasPopOver &&
+               <div className={styles.orderReview}>
+                 <OrderReview
+                   handlePopOver={handlePopOver}
+                   total={amount}
+                   cart={cart}/>
+              </div>}
               { userData.coord.lon &&
                 <Map
                   token={token}
@@ -159,9 +231,14 @@ export async function getServerSideProps(ctx) {
 
     let session = await unstable_getServerSession(ctx.req, ctx.res, authOptions);
 
+    let user = session === null ? {} : session.user
+    user.id = user.id === undefined ? null : user.id
+    user.name = user.name === undefined ? null : user.name
+    user.image = user.image === undefined ? null : user.image
+
+
     let token = process.env.MAPBOX_TOKEN;
 
-    let orderData
 
     let getData = async () => {
         
@@ -170,7 +247,9 @@ export async function getServerSideProps(ctx) {
 	    let data = await finalizeOrder(session.user.id)
 	    let { store, orderLog } = data
 
-	    let order = await stripe.orders.retrieve(orderLog.stripe_order)
+	    let order = await stripe.orders.retrieve(orderLog.stripe_order, {
+                expand: ['line_items']
+            })
 
             return { store, order, orderLog}
 	}
@@ -180,22 +259,57 @@ export async function getServerSideProps(ctx) {
                 lon: 0,
                 lat: 0
             }
+            let order = {
+                shipping_details: {
+                    name: "",
+                    address: {
+                        city: "",
+                        country: "",
+                        line1: "",
+                        line2: "",
+                        postal_code: "",
+                    }
+                },
+                amount_total: 0,
+                billing_details: {
+                        phone: "",
+                    email: "",
+                    address: {
+                        state: "",
+                    },
+		},
+                
+            }
             
-            return {store, orderLog}
+            return {store, order, orderLog}
         }
 
     }
     
     let { store, order, orderLog } = await getData()
-    console.log(store)
-    console.log(order)
-    console.log(orderLog)
 
   return {
     props: {
       token,
         store,
+        total: order.amount_total,
         user: {
+            id: user.id,
+            img: user.image,
+            username: user.name,
+            name: order.shipping_details.name,
+            contact: {
+                phone: order.billing_details.phone,
+                email: order.billing_details.email
+            },
+            address: {
+                city: order.shipping_details.address.city,
+                country: order.shipping_details.address.country,
+                line1: order.shipping_details.address.line1,
+                line2: order.shipping_details.address.line2,
+                postal_code: order.shipping_details.address.postal_code,
+                state: order.billing_details.address.state
+            },
             coord: {
                 lon: orderLog.lon,
                 lat: orderLog.lat
@@ -223,7 +337,6 @@ function OrderStatus() {
         switch (order.payment.payment_intent.status) {
           case 'succeeded':
             // TODO order_id and product_id associative table
-            emptyCart()
             setMessage('Payment succeeded!')
             break
           case 'processing':

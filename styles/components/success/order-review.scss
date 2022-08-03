@@ -1,0 +1,142 @@
+
+@use '../../util/util';
+@use '../../typography/typography' as font;
+@use '../cart/cart-list';
+
+
+.head_level-2 {
+    @include font.h5;
+    line-height: 1.167em;
+    letter-spacing:  0.036em;
+}
+
+.head_level-5 {
+    @include font.body;
+    font-weight: 700;
+    text-transform: uppercase;
+    
+}
+
+.head_level-6 {
+    @include font.h6;
+    letter-spacing: 0;
+}
+
+
+.order-review {
+    background-color: util.$white;
+    padding: 2rem;
+    border-radius: 8px;
+    @media (min-width: util.$tablet) {
+	padding: 2.25rem;
+    }
+
+}
+
+    .order-review__svg {
+	margin-bottom: 1.25rem;
+	@media (min-width: util.$tablet) {
+	    margin-bottom: 2.125rem;
+	}
+    }
+
+    .order-review__head {
+	margin-bottom: 1rem;
+	@media (min-width: util.$tablet) {
+	    margin-bottom: 1.5rem;
+	}
+    }
+
+    .order-review__body {
+	margin-bottom: 1.5rem;
+	@media (min-width: util.$tablet) {
+	    margin-bottom: 2.125rem;
+	}
+    }
+
+.svg-wrapper {
+    display: flex;
+    justify-content: space-between;
+}
+
+.close-svg {
+    height: 2rem;
+    width: 2rem;
+    margin-right: -1rem;
+    margin-top: -1rem;
+    cursor: pointer;
+}
+
+.cartlist-wrapper {
+    background-color: util.$gray;
+    padding: 1rem 1.5rem 0 .5rem;
+    border-radius: 8px 8px 0 0;
+
+    height: 4.75rem;
+    overflow: hidden;
+}
+
+.extra-wrapper {
+    background-color: util.$gray;
+    text-align: center;
+    padding: 0 1.5rem 0 1.5rem;
+}
+
+.extra-wrapper > p {
+    
+    border-top: 1px solid rgba(0,0,0, 0.08);
+    padding: 0.75rem 0 1.25rem;
+}
+
+.order-review__total {
+    margin-bottom: 1.5rem;
+}
+
+.total-wrapper {
+    background-color: util.$black;
+    border-radius: 0 0 8px 8px;
+    color: util.$white;
+
+    padding: 1rem 1.25rem;
+}
+
+.total__head_5 {
+    margin-bottom: 0.5rem;
+}
+.total__head_6 {
+}
+
+@media (min-width: util.$tablet) {
+
+    .order-review__summary {
+	margin-bottom: 2.875rem;
+    }
+    
+    .summary-wrapper {
+	display: flex;
+    }
+
+    .items-wrapper {
+	width: 65%;
+    }
+
+	.cartlist-wrapper {
+	    border-radius: 8px 0 0 0;
+	}
+
+	.extra-wrapper {
+	    border-radius: 0 0 0 8px;
+	}
+
+    .total-wrapper {
+	width: 35%;
+	margin: 0;
+	border-radius: 0 8px 8px 0;
+
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+    }
+
+
+}

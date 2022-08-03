@@ -10,7 +10,7 @@ import { appearance } from '../../lib/appearance'
 
 import { useAppContext } from '../../src/context/appContext'
 import { useSession } from 'next-auth/react'
-//
+
 import { Stepper } from '../../src/components/Checkout/Stepper'
 import { CheckoutSummary } from '../../src/components/Checkout/CheckoutSummary'
 import CheckoutForm from '../../src/components/Checkout/CheckoutForm'
@@ -54,7 +54,6 @@ export default function CheckoutPage({ prices }) {
 
   React.useEffect(() => {
 
-      if (userData) {
 
 	let getCustomer = async () => {
 
@@ -74,6 +73,7 @@ export default function CheckoutPage({ prices }) {
 
 	}
 
+      if (userData) {
 
 	let getOrder = async (customer) => {
 
@@ -141,7 +141,7 @@ export default function CheckoutPage({ prices }) {
 		throw new Error(res.status);
 	    }
         }
-          getOrder()
+          getCustomer().then(customer => getOrder(customer))
       }
       
   }, [])
@@ -156,6 +156,8 @@ export default function CheckoutPage({ prices }) {
       },
     ],
   }
+
+    console.log(address.city)
 
   return (
     <div className={styles.page} >
@@ -181,7 +183,7 @@ export default function CheckoutPage({ prices }) {
 		</section>
 
 	      <section className={styles.gridForm}>
-		    <CheckoutForm address={address} order={order} />
+		    <CheckoutForm email={address.email} order={order} />
 		</section>
 	    </div>
 	</main>

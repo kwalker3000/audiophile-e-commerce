@@ -59,6 +59,8 @@
 .label {
   font-size: 0.75rem;
   font-weight: 700;
+  display: flex;
+  justify-content: space-between;
 }
 
 .input,
@@ -99,6 +101,17 @@
 .fieldset {
   padding: 0;
   border: none;
+}
+
+.error-input,
+.error-input:focus {
+  border: 2px solid #cd2c2c;
+}
+
+.error-label {
+  color: #cd2c2c;
+  font-size: 12px;
+  font-weight: 500;
 }
 
 /*# sourceMappingURL=shipping-form.css.map */

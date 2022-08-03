@@ -41,6 +41,8 @@
 	grid-template-rows:
 	    auto 4rem auto 7rem auto 10.5rem auto 10.5rem;
     }
+
+    position: relative
 }
 
 .ftProd {
@@ -116,8 +118,7 @@
 .mainChat {
     position: fixed;
     top: 195px;
-    right: 0;
-    left: 66px;
+    right: 2rem;
     z-index: 3;
 }
 

@@ -14,11 +14,18 @@ export default async function handler(req, res) {
 
     let results = await db.task(async t => {
 
-	await db.none('INSERT INTO orders (user_id, stripe_order, amount, store_id, status) VALUES ($1, $2, $3, $4, $5)', [GUEST_ID, stripeOrderId, total, store, STATUS])
+	try {
+	    await db.none('INSERT INTO orders (user_id, stripe_order, amount, store_id, status) VALUES ($1, $2, $3, $4, $5)', [GUEST_ID, stripeOrderId, (total / 100), store, STATUS])
+	}
+	catch(err) {
+	    console.log(err)
+	}
+
+	let order = await stripe.orders.retrieve(stripeOrderId)
 
 	let storeInfo = await t.one('SELECT * FROM stores WHERE id = $1', store)
 
-	return storeInfo
+	return {storeInfo, order}
 	
     })
 	.catch(err => console.error(err))
@@ -30,3 +37,4 @@ export default async function handler(req, res) {
 
     res.status(200).send(results)
 }
+

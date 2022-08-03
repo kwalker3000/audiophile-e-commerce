@@ -8,10 +8,3 @@ export default async function handler(req, res) {
   res.status(200).json(tokenRequestData)
 }
 
-// order# / name / address / store id / date / amount
-
-// order# / productID / quantity
-
-// customer# / email / address / order#
-
-// email / password / customer#

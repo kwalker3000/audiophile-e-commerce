@@ -1,0 +1,79 @@
+.head_level-2 {
+  font-family: "Manrope", sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin: 0;
+  font-size: 2rem;
+  line-height: 1.125em;
+  letter-spacing: 0.04em;
+  text-transform: capitalize;
+}
+
+.label {
+  font-family: "Manrope", sans-serif;
+  margin: 0;
+  font-size: 0.938rem;
+  font-weight: 500;
+  line-height: 1.667em;
+  opacity: 0.55;
+  opacity: 1;
+  font-weight: 700;
+  width: 100%;
+}
+
+.value {
+  font-family: "Manrope", sans-serif;
+  margin: 0;
+  font-size: 0.938rem;
+  font-weight: 500;
+  line-height: 1.667em;
+  opacity: 0.55;
+}
+
+.delivery-sum {
+  padding: 2rem;
+  overflow: hidden;
+  position: relative;
+}
+
+.delivery-sum__head {
+  margin-bottom: 1.25rem;
+}
+
+.delivery-sum__body > div {
+  display: flex;
+  margin-top: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.delivery-sum__body .value {
+  margin-left: 1rem;
+}
+
+.delivery-sum__body > .bar-1,
+.delivery-sum__body > .bar-2 {
+  margin: 0;
+  opacity: 0.5;
+}
+
+.bar-1 {
+  background-color: #d87d4a;
+  padding-top: 4px;
+  width: 100%;
+  position: absolute;
+  top: 4.75rem;
+  left: 0;
+  z-index: 0;
+}
+
+.bar-2 {
+  background-color: #d87d4a;
+  padding-right: 4px;
+  height: 100%;
+  position: absolute;
+  top: 0.15rem;
+  right: 4.75rem;
+  z-index: 0;
+}
+
+/*# sourceMappingURL=delivery-sum.css.map */

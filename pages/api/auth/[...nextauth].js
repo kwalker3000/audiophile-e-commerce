@@ -18,6 +18,7 @@ export const authOptions = {
       clientSecret: process.env.GITHUB_SECRET,
     }),
   ],
+  secret: process.env.AUTH_SECRET,
   adapter: PostgresAdapter(db),
   callbacks: {
     session: async ({ session, user }) => {

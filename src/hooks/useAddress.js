@@ -39,6 +39,11 @@ export const useAddress = () => {
             ...state,
             [action.payload.key]: action.payload.value,
           }
+        case 'SET VALUE':
+          return {
+            ...state,
+            [action.payload.key]: action.payload.value,
+          }
         default:
           throw new Error(`Unknown action ${action.type}`)
       }
@@ -60,6 +65,13 @@ const replaceAction = (city) => {
     })
 }
 
-    return [state, {inputAction, replaceAction}] 
+    const setAction = (name, value) => {
+	dispatch({
+	    type: 'SET VALUE',
+	    payload: { key: name, value: value}
+	})
+    }
+
+    return [state, {inputAction, replaceAction, setAction}] 
 }
 

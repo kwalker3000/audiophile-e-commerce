@@ -5,7 +5,7 @@
   cursor: pointer;
   padding: 0;
   position: relative;
-  z-index: 1;
+  z-index: 2;
 }
 
 .cart-status {
@@ -48,6 +48,28 @@
 
 .cart__title {
   margin-bottom: 1.5rem;
+}
+
+.head_level-3 {
+  font-family: "Manrope", sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin: 0;
+  font-size: 1.125rem;
+  line-height: 1.333em;
+  letter-spacing: 0.072em;
+  font-size: 0.938rem;
+}
+
+.paragraph {
+  font-family: "Manrope", sans-serif;
+  margin: 0;
+  font-size: 0.938rem;
+  font-weight: 500;
+  line-height: 1.667em;
+  opacity: 0.55;
+  text-transform: uppercase;
+  font-weight: 700;
 }
 
 .list__text {
@@ -168,7 +190,7 @@
   right: 0;
   left: 0;
   top: calc(100% + 1.5rem);
-  z-index: 1;
+  z-index: 2;
 }
 @media (min-width: 481px) {
   .dropdown {

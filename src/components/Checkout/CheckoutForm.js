@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { PaymentElement, useStripe, useElements } from '@stripe/react-stripe-js'
 
-export default function CheckoutForm({ address, order }) {
+export default function CheckoutForm({ email, order }) {
   const stripe = useStripe()
   const elements = useElements()
 
@@ -28,7 +28,7 @@ export default function CheckoutForm({ address, order }) {
             ? 'http://localhost:3000/status'
             : 'https://audiophile-tan.vercel.app/status'
         }`,
-        receipt_email: address.email,
+        receipt_email: email,
       },
     })
 

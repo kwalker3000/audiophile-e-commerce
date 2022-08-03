@@ -19,7 +19,7 @@ export const AppWrapper = ({ children }) => {
   })
   const [cart, setCart] = useState([])
   const [stockWarn, setStockWarn] = useState(false)
-    const [address, {inputAction, replaceAction}] = useAddress();
+    const [address, {inputAction, replaceAction, setAction}] = useAddress();
 
   let setCountries = (list) => {
     let countries = []
@@ -131,9 +131,10 @@ export const AppWrapper = ({ children }) => {
         emptyCart,
         stockWarn,
         resetWarn,
-            address,
+	address,
         inputAction,
         replaceAction,
+	setAction,
         setCountries,
         countryList,
         invoice,

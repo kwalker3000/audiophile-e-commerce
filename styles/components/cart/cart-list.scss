@@ -2,6 +2,16 @@
 @use '../../util/util';
 @use '../../typography/typography' as font;
 
+.head_level-3 {
+    @include font.h6;
+    font-size: 0.938rem;
+}
+
+.paragraph {
+    @include font.body;
+    text-transform:  uppercase;
+    font-weight: 700;
+}
 
 .list__text {
     margin-left: 8%;

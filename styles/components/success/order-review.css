@@ -1,0 +1,204 @@
+.head_level-3 {
+  font-family: "Manrope", sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin: 0;
+  font-size: 1.125rem;
+  line-height: 1.333em;
+  letter-spacing: 0.072em;
+  font-size: 0.938rem;
+}
+
+.paragraph {
+  font-family: "Manrope", sans-serif;
+  margin: 0;
+  font-size: 0.938rem;
+  font-weight: 500;
+  line-height: 1.667em;
+  opacity: 0.55;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+.list__text {
+  margin-left: 8%;
+}
+
+.list__item {
+  margin-bottom: 1.5rem;
+}
+
+.btn-update {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.item-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.misc-wrapper {
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.img-wrapper {
+  position: relative;
+  width: 64px;
+  height: 64px;
+}
+
+.head_level-2 {
+  font-family: "Manrope", sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin: 0;
+  font-size: 1.5rem;
+  line-height: 1.375em;
+  letter-spacing: 0.071em;
+  line-height: 1.167em;
+  letter-spacing: 0.036em;
+}
+
+.head_level-5 {
+  font-family: "Manrope", sans-serif;
+  margin: 0;
+  font-size: 0.938rem;
+  font-weight: 500;
+  line-height: 1.667em;
+  opacity: 0.55;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.head_level-6 {
+  font-family: "Manrope", sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin: 0;
+  font-size: 1.125rem;
+  line-height: 1.333em;
+  letter-spacing: 0.072em;
+  letter-spacing: 0;
+}
+
+.order-review {
+  background-color: #fff;
+  padding: 2rem;
+  border-radius: 8px;
+}
+@media (min-width: 685px) {
+  .order-review {
+    padding: 2.25rem;
+  }
+}
+
+.order-review__svg {
+  margin-bottom: 1.25rem;
+}
+@media (min-width: 685px) {
+  .order-review__svg {
+    margin-bottom: 2.125rem;
+  }
+}
+
+.order-review__head {
+  margin-bottom: 1rem;
+}
+@media (min-width: 685px) {
+  .order-review__head {
+    margin-bottom: 1.5rem;
+  }
+}
+
+.order-review__body {
+  margin-bottom: 1.5rem;
+}
+@media (min-width: 685px) {
+  .order-review__body {
+    margin-bottom: 2.125rem;
+  }
+}
+
+.svg-wrapper {
+  display: flex;
+  justify-content: space-between;
+}
+
+.close-svg {
+  height: 2rem;
+  width: 2rem;
+  margin-right: -1rem;
+  margin-top: -1rem;
+  cursor: pointer;
+}
+
+.cartlist-wrapper {
+  background-color: #f1f1f1;
+  padding: 1rem 1.5rem 0 0.5rem;
+  border-radius: 8px 8px 0 0;
+  height: 4.75rem;
+  overflow: hidden;
+}
+
+.extra-wrapper {
+  background-color: #f1f1f1;
+  text-align: center;
+  padding: 0 1.5rem 0 1.5rem;
+}
+
+.extra-wrapper > p {
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
+  padding: 0.75rem 0 1.25rem;
+}
+
+.order-review__total {
+  margin-bottom: 1.5rem;
+}
+
+.total-wrapper {
+  background-color: #000;
+  border-radius: 0 0 8px 8px;
+  color: #fff;
+  padding: 1rem 1.25rem;
+}
+
+.total__head_5 {
+  margin-bottom: 0.5rem;
+}
+
+@media (min-width: 685px) {
+  .order-review__summary {
+    margin-bottom: 2.875rem;
+  }
+
+  .summary-wrapper {
+    display: flex;
+  }
+
+  .items-wrapper {
+    width: 65%;
+  }
+
+  .cartlist-wrapper {
+    border-radius: 8px 0 0 0;
+  }
+
+  .extra-wrapper {
+    border-radius: 0 0 0 8px;
+  }
+
+  .total-wrapper {
+    width: 35%;
+    margin: 0;
+    border-radius: 0 8px 8px 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+}
+
+/*# sourceMappingURL=order-review.css.map */

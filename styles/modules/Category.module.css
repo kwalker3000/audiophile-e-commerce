@@ -93,8 +93,7 @@
 .mainChat {
   position: fixed;
   top: 195px;
-  right: 0;
-  left: 66px;
+  right: 2rem;
   z-index: 3;
 }
 
