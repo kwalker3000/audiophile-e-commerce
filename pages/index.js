@@ -119,7 +119,7 @@ export async function getServerSideProps(ctx) {
     user.image = user.image === undefined ? null : user.image
 
   const fs = require('fs/promises')
-  const fileName = '/public/assets/static/data.csv'
+    const fileName = path.join(process.cwd(), 'public', 'assets', 'static', 'data.csv')//'public/assets/static/data.csv'
 
   const readFile = async (fileName) => {
     try {
@@ -134,7 +134,7 @@ export async function getServerSideProps(ctx) {
     }
   }
 
-    //console.log(process.cwd())
+    console.log('hello', process.cwd())
     let countryList = await readFile(fileName)
 
   return {
