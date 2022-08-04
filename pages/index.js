@@ -103,11 +103,10 @@ export default function Home({ countryList, user }) {
 }
 
 export async function getServerSideProps(ctx) {
-    // let { authOptions } = require('./api/auth/[...nextauth]');
-    // let { unstable_getServerSession } = require('next-auth/next');
+    let { authOptions } = require('./api/auth/[...nextauth]');
+    let { unstable_getServerSession } = require('next-auth/next');
 
-    // let session = await unstable_getServerSession(ctx.req, ctx.res, authOptions);
-    let session = null
+    let session = await unstable_getServerSession(ctx.req, ctx.res, authOptions);
 
     let user = session === null ? {} : session.user
     user.id = user.id === undefined ? null : user.id
