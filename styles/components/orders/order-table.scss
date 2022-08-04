@@ -1,0 +1,59 @@
+
+@use '../../util/util';
+@use '../../typography/typography' as font;
+
+.head_level-3 {
+    @include font.h6;
+}
+
+.table__cell {
+    @include font.body;
+}
+
+.td-1 {
+    color: util.$dark-orange;
+    opacity: 1;
+    text-decoration: underline;
+}
+
+.order-table {
+    background-color: util.$off-white;
+    border-radius: 8px;
+    padding: 2rem 1rem;
+
+}
+
+.table__head {
+    margin-bottom: 2rem;
+}
+
+.table__head {
+}
+
+.table__row {
+   
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+}
+
+.button {
+    border: none;
+    background-color: inherit;
+    cursor: pointer;
+}
+
+.button:hover,
+.button:focus-visible {
+    color: util.$peach;
+}
+
+@media (min-width: util.$tablet) {
+
+    .order-table {
+	padding: 3rem 2rem;
+    }
+    .table__row {
+	margin-bottom: 1.5rem;
+    }
+}

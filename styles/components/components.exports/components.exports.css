@@ -2314,4 +2314,57 @@
   z-index: 0;
 }
 
+#order-table .head_level-3 {
+  font-family: "Manrope", sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin: 0;
+  font-size: 1.125rem;
+  line-height: 1.333em;
+  letter-spacing: 0.072em;
+}
+#order-table .table__cell {
+  font-family: "Manrope", sans-serif;
+  margin: 0;
+  font-size: 0.938rem;
+  font-weight: 500;
+  line-height: 1.667em;
+  opacity: 0.55;
+}
+#order-table .td-1 {
+  color: #d87d4a;
+  opacity: 1;
+  text-decoration: underline;
+}
+#order-table .order-table {
+  background-color: #fafafa;
+  border-radius: 8px;
+  padding: 2rem 1rem;
+}
+#order-table .table__head {
+  margin-bottom: 2rem;
+}
+#order-table .table__row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+#order-table .button {
+  border: none;
+  background-color: inherit;
+  cursor: pointer;
+}
+#order-table .button:hover,
+#order-table .button:focus-visible {
+  color: #fbaf85;
+}
+@media (min-width: 685px) {
+  #order-table .order-table {
+    padding: 3rem 2rem;
+  }
+  #order-table .table__row {
+    margin-bottom: 1.5rem;
+  }
+}
+
 /*# sourceMappingURL=components.exports.css.map */

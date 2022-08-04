@@ -45,7 +45,7 @@ export const DeliverySum = ({userData, cart}) => {
 		<p className="label">Contact: </p>
 		<p className="value">{contact.email}{contact.phone && <br/> }{contact.phone}</p>
 	      </div>
-              // requires cart but cart is removed
+              {/* requires cart but cart is removed */}
               {/* <div> */}
 	      {/* 	<p className="label">Shipping Weight: </p> */}
 	      {/* 	<p className="value">{getWeight(cart) / 1000} kg</p> */}

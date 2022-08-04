@@ -1,0 +1,63 @@
+.head_level-3 {
+  font-family: "Manrope", sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin: 0;
+  font-size: 1.125rem;
+  line-height: 1.333em;
+  letter-spacing: 0.072em;
+}
+
+.table__cell {
+  font-family: "Manrope", sans-serif;
+  margin: 0;
+  font-size: 0.938rem;
+  font-weight: 500;
+  line-height: 1.667em;
+  opacity: 0.55;
+}
+
+.td-1 {
+  color: #d87d4a;
+  opacity: 1;
+  text-decoration: underline;
+}
+
+.order-table {
+  background-color: #fafafa;
+  border-radius: 8px;
+  padding: 2rem 1rem;
+}
+
+.table__head {
+  margin-bottom: 2rem;
+}
+
+.table__row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.button {
+  border: none;
+  background-color: inherit;
+  cursor: pointer;
+}
+
+.button:hover,
+.button:focus-visible {
+  color: #fbaf85;
+}
+
+@media (min-width: 685px) {
+  .order-table {
+    padding: 3rem 2rem;
+  }
+
+  .table__row {
+    margin-bottom: 1.5rem;
+  }
+}
+
+/*# sourceMappingURL=order-table.css.map */

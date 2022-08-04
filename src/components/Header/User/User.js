@@ -34,7 +34,7 @@ export const User = ({ user, isAccountOpen, toggleAccount }) => {
              <div className="account__dropdown dropdown">
               <div className="dropdown__list list">
                 <div className="dropdown__item item">
-                  {user.id && <Link href="/">
+                  {user.id && <Link href="/orders">
                     <a className="link orders">
                       Orders
                     </a>
