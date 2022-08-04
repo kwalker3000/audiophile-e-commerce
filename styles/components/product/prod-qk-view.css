@@ -8,6 +8,11 @@
   color: #d87d4a;
   margin-left: 0.714em;
 }
+@media (min-width: 1150px) {
+  .overline {
+    margin-left: 0;
+  }
+}
 
 .head_level-2 {
   font-family: "Manrope", sans-serif;

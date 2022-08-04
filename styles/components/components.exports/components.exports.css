@@ -991,6 +991,11 @@
   color: #d87d4a;
   margin-left: 0.714em;
 }
+@media (min-width: 1150px) {
+  #prod-qk-view .overline {
+    margin-left: 0;
+  }
+}
 #prod-qk-view .head_level-2 {
   font-family: "Manrope", sans-serif;
   font-weight: 700;

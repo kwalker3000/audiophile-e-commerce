@@ -6,6 +6,9 @@
     @include font.overline;
     color: util.$dark-orange;
     margin-left: 0.714em;
+    @media (min-width: util.$desktop) {
+	margin-left: 0;
+    }
 }
 
 .head_level-2 {
