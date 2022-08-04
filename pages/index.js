@@ -1,3 +1,6 @@
+
+import { readFileSync } from 'fs'
+import path from 'path'
 import { useEffect, useState } from 'react'
 import { useSession, signIn, signOut } from 'next-auth/react'
 import Head from 'next/head'
@@ -120,7 +123,7 @@ export async function getServerSideProps(ctx) {
 
   const readFile = async (fileName) => {
     try {
-      const data = await fs.readFile(fileName, 'utf8')
+        const data = readFileSync(fileName, 'utf8')//await fs.readFile(fileName, 'utf8')
       let array = await data.split('\r')
       await array.shift()
       let countries = await array.map((country) => country.slice(1))
@@ -131,7 +134,7 @@ export async function getServerSideProps(ctx) {
     }
   }
 
-  let countryList = await readFile(fileName)
+    let countryList = await readFile(fileName)
 
   return {
     props: {
