@@ -37,6 +37,7 @@ export const logOut = () => {
 
 
 export default function Home({ countryList=null, user }) {
+    console.log(countryList)
 
   let { setCountries } = useAppContext()
 
@@ -114,27 +115,27 @@ export async function getServerSideProps(ctx) {
     user.name = user.name === undefined ? null : user.name
     user.image = user.image === undefined ? null : user.image
 
-  // const fs = require('fs/promises')
-  // const fileName = 'public/assets/static/data.csv'
+  const fs = require('fs/promises')
+  const fileName = 'public/assets/static/data.csv'
 
-  // const readFile = async (fileName) => {
-  //   try {
-  //     const data = await fs.readFile(fileName, 'utf8')
-  //     let array = await data.split('\r')
-  //     await array.shift()
-  //     let countries = await array.map((country) => country.slice(1))
+  const readFile = async (fileName) => {
+    try {
+      const data = await fs.readFile(fileName, 'utf8')
+      let array = await data.split('\r')
+      await array.shift()
+      let countries = await array.map((country) => country.slice(1))
 
-  //     return countries
-  //   } catch (err) {
-  //     console.log(err)
-  //   }
-  // }
+      return countries
+    } catch (err) {
+      console.log(err)
+    }
+  }
 
-  //let countryList = await readFile(fileName)
+  let countryList = await readFile(fileName)
 
   return {
     props: {
-//        countryList,
+        countryList,
         user: {
             id: user.id,
             name: user.name,
