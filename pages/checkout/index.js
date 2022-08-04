@@ -157,8 +157,6 @@ export default function CheckoutPage({ prices }) {
     ],
   }
 
-    console.log(address.city)
-
   return (
     <div className={styles.page} >
       <Head>

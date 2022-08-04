@@ -37,7 +37,6 @@ export const ShipEstimate = (
 
   let handleSubmit = (e, address, shopCart = cart) => {
     e.preventDefault()
-      console.log(e)
       if (!checkPost(address.zip)) {
           setIsValidPost(false)
           return
@@ -87,7 +86,6 @@ export const ShipEstimate = (
                 if (match[0] !== value) {
                     return false
                 }
-		console.log(match[0] == value)
             }
             return true
         }
