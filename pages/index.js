@@ -130,7 +130,7 @@ export async function getServerSideProps(ctx) {
   //   }
   // }
 
-  let countryList = await readFile(fileName)
+  //let countryList = await readFile(fileName)
 
   return {
     props: {
