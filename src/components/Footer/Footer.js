@@ -4,9 +4,9 @@ import { PrimaryNav } from '../PrimaryNav'
 import { Logo } from '../Logo'
 import { Social } from './Social'
 
-export const Footer = ({ className }) => {
+export const Footer = () => {
   return (
-    <footer className={`${className} footer`}>
+    <div className={`footer`}>
       <div className="outline-x"></div>
 
       <div className="footer__head">
@@ -36,6 +36,6 @@ export const Footer = ({ className }) => {
           <Social />
         </div>
       </div>
-    </footer>
+    </div>
   )
 }
