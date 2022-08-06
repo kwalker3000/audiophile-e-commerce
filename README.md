@@ -39,7 +39,7 @@ Your users should be able to:
 
 ### Screenshot
 
-![collage of various components seen on the website](./screenshots/screenshots-designo.png)
+![collage of various components seen on the website](./site-preview.png)
 
 ### Links
 
@@ -60,6 +60,8 @@ Besides react and postgres, everything was on the fly learning and reading a lot
 
 
 **Some notes...**
+
+Most of the data is retrieved server side with database and api calls.
 
 There are 2 different database types being used. Not sure this is good practice but I prefer postgres and wanted to implement it into the project. However, MongoDB made the most sense for the product data.
 
