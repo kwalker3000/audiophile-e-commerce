@@ -43,7 +43,7 @@ Your users should be able to:
 
 ### Links
 
-- Solution URL: [Frontend Mentor](https://www.frontendmentor.io/)
+- Solution URL: [Frontend Mentor](https://www.frontendmentor.io/challenges/audiophile-ecommerce-website-C8cuSd_wx/hub/nextjs-with-stripe-next-auth-mongodb-postgres-and-more-_oRVhnG-Du)
 - Live Site URL: [Audiophile](https://audiophile-tan.vercel.app/)
 
 ### My process
