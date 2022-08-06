@@ -1,25 +1,20 @@
-
 import React, { useReducer } from 'react'
 
 export const useCart = () => {
-   
-
-    const reducer = (state, action) => {
-
-        switch (action.type) {
-        case 'ADD TO CART':
-            return addCart(action.payload.item, action.payload.quantity);
-        case 'UPDATE CART ITEM':
-            return updateCart(action.payload.newVal);
-        case 'EMPTY CART':
-            return emptyCart();
-        default:
-            throw new Error(`Unknown action ${action.type}`)
-
-        }
+  const reducer = (state, action) => {
+    switch (action.type) {
+      case 'ADD TO CART':
+        return addCart(action.payload.item, action.payload.quantity)
+      case 'UPDATE CART ITEM':
+        return updateCart(action.payload.newVal)
+      case 'EMPTY CART':
+        return emptyCart()
+      default:
+        throw new Error(`Unknown action ${action.type}`)
     }
+  }
 
-    const [state, dispatch] = useReducer(reducer, initialState);
+  const [state, dispatch] = useReducer(reducer, initialState)
 
   let addCart = (product, size = 1) => {
     let inCart = cart.find((item) => item.id == product._id)
@@ -66,29 +61,25 @@ export const useCart = () => {
     destroyCookie(null, 'shoppingCart', { path: '/' })
   }
 
-    const add = (item, quantity) => {
-        dispatch({
-            type: 'ADD TO CART',
-            payload: {item, quantity}
-        })
-    }
+  const add = (item, quantity) => {
+    dispatch({
+      type: 'ADD TO CART',
+      payload: { item, quantity },
+    })
+  }
 
-    const update = (newVal) => {
-        dispatch({
-            type: 'UPDATE CART',
-            payload: {newVal}
-        })
-    }
+  const update = (newVal) => {
+    dispatch({
+      type: 'UPDATE CART',
+      payload: { newVal },
+    })
+  }
 
+  const empty = () => {
+    dispatch({
+      type: 'EMPTY CART',
+    })
+  }
 
-    const empty = () => {
-        dispatch({
-            type: 'EMPTY CART'
-        })
-    } 
-
-
-    return [state, ]
-
-
+  return [state]
 }

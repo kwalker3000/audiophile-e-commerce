@@ -16,15 +16,14 @@ export default async function handler(req, res) {
     return
   }
 
-    let nearest;
+  let nearest
   let updatedStoresArr = stores.filter((store) => {
-
     let breadth = distance(store.lat, geo.lat, store.lon, geo.lon)
 
-      if (nearest && (breadth < nearest)) {
+    if (nearest && breadth < nearest) {
       return store
     } else if (nearest == undefined) {
-        nearest = breadth
+      nearest = breadth
       return store
     }
   })
@@ -92,7 +91,7 @@ export default async function handler(req, res) {
     .catch(function (error) {
       console.log(error)
     })
-    result === undefined ? result = [] : result = result 
+  result === undefined ? (result = []) : (result = result)
 
   res.send({ result, from })
 }

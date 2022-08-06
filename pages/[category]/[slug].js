@@ -52,16 +52,24 @@ export default function Product({ data, user }) {
       </Head>
 
       <header className={styles.pageHeader}>
-        <Header isCartUpdate={isCartUpdate} renderCart={renderCart} user={user}/>
+        <Header
+          isCartUpdate={isCartUpdate}
+          renderCart={renderCart}
+          user={user}
+        />
       </header>
 
       <main className={`${styles.pageMain} ${styles.main}`}>
-            <div className={`${styles.mainChat}`} >
-	      {isOpenChat && <AblyChatComponent />}
-            </div>
-            <div className={`${styles.chatButton}`} onClick={toggleChat} aria-label={`${isOpenChat ? 'close chat' : 'open chat'}`}>
-              <ChatIcon isOpenChat={isOpenChat}/>
-            </div>
+        <div className={`${styles.mainChat}`}>
+          {isOpenChat && <AblyChatComponent />}
+        </div>
+        <div
+          className={`${styles.chatButton}`}
+          onClick={toggleChat}
+          aria-label={`${isOpenChat ? 'close chat' : 'open chat'}`}
+        >
+          <ChatIcon isOpenChat={isOpenChat} />
+        </div>
 
         <section className={styles.mainNavBack}>
           <NavBack />
@@ -99,15 +107,15 @@ export default function Product({ data, user }) {
 }
 
 export const getServerSideProps = async (ctx) => {
-    let { authOptions } = require('../api/auth/[...nextauth]');
-    let { unstable_getServerSession } = require('next-auth/next');
+  let { authOptions } = require('../api/auth/[...nextauth]')
+  let { unstable_getServerSession } = require('next-auth/next')
 
-    let session = await unstable_getServerSession(ctx.req, ctx.res, authOptions);
+  let session = await unstable_getServerSession(ctx.req, ctx.res, authOptions)
 
-    let user = session === null ? {} : session.user
-    user.id = user.id === undefined ? null : user.id
-    user.name = user.name === undefined ? null : user.name
-    user.image = user.image === undefined ? null : user.image
+  let user = session === null ? {} : session.user
+  user.id = user.id === undefined ? null : user.id
+  user.name = user.name === undefined ? null : user.name
+  user.image = user.image === undefined ? null : user.image
 
   const client = await MongoClient.connect(process.env.MONGODB_URI)
 
@@ -129,11 +137,10 @@ export const getServerSideProps = async (ctx) => {
     props: {
       data,
       user: {
-	id: user.id,
-	name: user.name,
-	img: user.image
-      }
-
+        id: user.id,
+        name: user.name,
+        img: user.image,
+      },
     },
   }
 }

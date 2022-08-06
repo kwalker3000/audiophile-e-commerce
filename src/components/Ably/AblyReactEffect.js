@@ -1,28 +1,29 @@
-
-import Ably from "ably/promises";
+import Ably from 'ably/promises'
 import { useEffect } from 'react'
 
-const ably = new Ably.Realtime.Promise({ authUrl: '/api/create-ably-request' });
-
+const ably = new Ably.Realtime.Promise({ authUrl: '/api/create-ably-request' })
 
 export function useChannel(channelName, callbackOnMessage) {
-    const channel = ably.channels.get(channelName);
+  const channel = ably.channels.get(channelName)
 
-    const onMount = () => {
-        channel.subscribe(msg => { callbackOnMessage(msg); });
+  const onMount = () => {
+    channel.subscribe((msg) => {
+      callbackOnMessage(msg)
+    })
+  }
+
+  const onUnmount = () => {
+    channel.unsubscribe()
+  }
+
+  const useEffectHook = () => {
+    onMount()
+    return () => {
+      onUnmount()
     }
+  }
 
-    const onUnmount = () => {
-        channel.unsubscribe();
-    }
+  useEffect(useEffectHook)
 
-    const useEffectHook = () => {
-        onMount();
-        return () => { onUnmount(); };
-    };
-
-    useEffect(useEffectHook);
-
-    return [channel, ably];
+  return [channel, ably]
 }
-

@@ -6,13 +6,10 @@ import { Img } from '../../components/Img'
 import { Counter } from './Counter'
 
 export const CartList = ({ cart, isCheckout, orderSize, updateOrderSize }) => {
-
   let cartItems = cart.map((item, index) => (
     <div className="list__item item-wrapper" key={item.id}>
       <div className="misc-wrapper">
-        <div
-          className="list__img img-wrapper"
-        >
+        <div className="list__img img-wrapper">
           <Img defaultImg={item.img} descr={item.name} remote={true} />
         </div>
         <div className="list__text text-wrapper">

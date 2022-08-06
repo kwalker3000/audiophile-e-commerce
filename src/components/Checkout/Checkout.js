@@ -5,15 +5,15 @@ import { ShipEstimate } from './Shipping/ShipEstimate'
 
 export const Checkout = ({ cart, cartTotal, getShipValue, shipTotal }) => {
   const [hasEstimate, setHasEstimate] = useState(false)
-    const [storeId, setStoreId] = useState(null)
-	const [geoloc, setGeoloc] = useState(null)
+  const [storeId, setStoreId] = useState(null)
+  const [geoloc, setGeoloc] = useState(null)
 
   let acceptShipRate = () => {
     setHasEstimate(true)
   }
 
-    let getStoreId = (id) => setStoreId(id)
-    let getGeoloc = (loc) => setGeoloc({lon: loc.lon, lat: loc.lat})
+  let getStoreId = (id) => setStoreId(id)
+  let getGeoloc = (loc) => setGeoloc({ lon: loc.lon, lat: loc.lat })
 
   return (
     <div id="checkout">

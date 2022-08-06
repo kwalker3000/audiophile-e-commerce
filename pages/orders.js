@@ -16,7 +16,6 @@ const AblyChatComponent = dynamic(
   { ssr: false }
 )
 export default function Orders({ user, orders }) {
-
   const [isOpenChat, setIsOpenChat] = useState(false)
 
   let toggleChat = () => {
@@ -31,22 +30,25 @@ export default function Orders({ user, orders }) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <header className={styles.pageHeader}>
-        <Header user={user}/>
+        <Header user={user} />
       </header>
       <main className={`${styles.pageMain} ${styles.main}`}>
-            <div className={`${styles.mainChat}`} >
-	      {isOpenChat && <AblyChatComponent />}
-            </div>
-            <div className={`${styles.chatButton}`} onClick={toggleChat} aria-label={`${isOpenChat ? 'close chat' : 'open chat'}`}>
-              <ChatIcon isOpenChat={isOpenChat}/>
-            </div>
-
+        <div className={`${styles.mainChat}`}>
+          {isOpenChat && <AblyChatComponent />}
+        </div>
+        <div
+          className={`${styles.chatButton}`}
+          onClick={toggleChat}
+          aria-label={`${isOpenChat ? 'close chat' : 'open chat'}`}
+        >
+          <ChatIcon isOpenChat={isOpenChat} />
+        </div>
 
         <section className={styles.mainHeadline}>
           <Headline title="orders" />
         </section>
         <section className={`${styles.ProductQkView} ${styles.mainQkView}`}>
-          <OrderTable orders={orders}/>
+          <OrderTable orders={orders} />
         </section>
         {/* <section className={styles.mainMenu}> */}
         {/*   <Menu /> */}
@@ -63,37 +65,38 @@ export default function Orders({ user, orders }) {
 }
 
 export const getServerSideProps = async (ctx) => {
-    let { db } = require('../lib/database')
-    let { authOptions } = require('./api/auth/[...nextauth]');
-    let { unstable_getServerSession } = require('next-auth/next');
+  let { db } = require('../lib/database')
+  let { authOptions } = require('./api/auth/[...nextauth]')
+  let { unstable_getServerSession } = require('next-auth/next')
 
-    let session = await unstable_getServerSession(ctx.req, ctx.res, authOptions);
+  let session = await unstable_getServerSession(ctx.req, ctx.res, authOptions)
 
-    let user = session === null ? {} : session.user
-    user.id = user.id === undefined ? null : user.id
-    user.name = user.name === undefined ? null : user.name
-    user.image = user.image === undefined ? null : user.image
+  let user = session === null ? {} : session.user
+  user.id = user.id === undefined ? null : user.id
+  user.name = user.name === undefined ? null : user.name
+  user.image = user.image === undefined ? null : user.image
 
-    let results;
-    try {
-        results = await db.any('SELECT id, stripe_order, amount, created FROM orders WHERE user_id = $1 ORDER BY created DESC LIMIT 5', user.id)
-    }
-    catch (err) {
-        console.error(err)
-    }
+  let results
+  try {
+    results = await db.any(
+      'SELECT id, stripe_order, amount, created FROM orders WHERE user_id = $1 ORDER BY created DESC LIMIT 5',
+      user.id
+    )
+  } catch (err) {
+    console.error(err)
+  }
 
-    let orders = results
-    orders.forEach(order => order.created = String(order.created))
+  let orders = results
+  orders.forEach((order) => (order.created = String(order.created)))
 
   return {
     props: {
-        orders,
+      orders,
       user: {
-	id: user.id,
-	name: user.name,
-	img: user.image
-      }
-
+        id: user.id,
+        name: user.name,
+        img: user.image,
+      },
     },
   }
 }

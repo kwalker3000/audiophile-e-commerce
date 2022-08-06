@@ -8,14 +8,13 @@ import { Summary } from '../../Cart/Summary'
 import { validateAddress } from '../../../../lib/validateAddress'
 import { getShipRates } from '../../../../lib/getShipRates'
 
-export const ShipEstimate = (
-    {
-	cartTotal,
-	getShipValue,
-	acceptShipRate,
-	getStoreId,
-	getGeoloc
-    }) => {
+export const ShipEstimate = ({
+  cartTotal,
+  getShipValue,
+  acceptShipRate,
+  getStoreId,
+  getGeoloc,
+}) => {
   const [isValid, setIsValid] = useState(true)
   const [hasRates, setHasRates] = useState(false)
   const [rates, setRates] = useState([])
@@ -23,10 +22,9 @@ export const ShipEstimate = (
   const [shippingCost, setShippingCost] = useState(null)
   const [isValidPost, setIsValidPost] = useState(true)
 
-	let { address, inputAction, replaceAction,
-	countryList, cart } =
+  let { address, inputAction, replaceAction, countryList, cart } =
     useAppContext()
-	
+
   let { zip, country } = address
 
   let countries = countryList.map((country, index) => (
@@ -37,10 +35,10 @@ export const ShipEstimate = (
 
   let handleSubmit = (e, address, shopCart = cart) => {
     e.preventDefault()
-      if (!checkPost(address.zip)) {
-          setIsValidPost(false)
-          return
-      }
+    if (!checkPost(address.zip)) {
+      setIsValidPost(false)
+      return
+    }
     if (shippingCost) {
       acceptShipRate()
       return
@@ -53,7 +51,7 @@ export const ShipEstimate = (
           replaceAction('')
           throw new Error('error')
         } else {
-	    getGeoloc(geoCord)
+          getGeoloc(geoCord)
           setIsValid(true)
           let city = geoCord.name
           replaceAction(city)
@@ -62,8 +60,8 @@ export const ShipEstimate = (
       })
       .then((geoCord) => getShipRates(geoCord, address, shopCart))
       .then((response) => {
-	  let { from, result: rates } = response
-	  getStoreId(from.id)
+        let { from, result: rates } = response
+        getStoreId(from.id)
         setRates(rates)
         setHasRates(true)
         setIsLoading(false)
@@ -74,28 +72,28 @@ export const ShipEstimate = (
       })
   }
 
-        let checkPost = (value) => {
-            if (value.length <3 || value.length > 10) {
-                return false
-            }
-            if (value.length > 1) {
-		let match = value.match(/(^\w+[- ]?\w+)/gi)
-                if (match == null) {
-                    return false
-                }
-                if (match[0] !== value) {
-                    return false
-                }
-            }
-            return true
-        }
+  let checkPost = (value) => {
+    if (value.length < 3 || value.length > 10) {
+      return false
+    }
+    if (value.length > 1) {
+      let match = value.match(/(^\w+[- ]?\w+)/gi)
+      if (match == null) {
+        return false
+      }
+      if (match[0] !== value) {
+        return false
+      }
+    }
+    return true
+  }
 
   let handleChange = (e) => {
     inputAction(e)
     setHasRates(false)
     setIsValid(true)
     setShippingCost(null)
-      setIsValidPost(true)
+    setIsValidPost(true)
   }
 
   let getShippingCost = (value) => {
@@ -110,10 +108,7 @@ export const ShipEstimate = (
         <div>
           <label htmlFor="zip" className="form__label label">
             ZIP or Postal Code
-            {!isValidPost &&
-             <span
-               className='error-label'
-             >Wrong format</span>}
+            {!isValidPost && <span className="error-label">Wrong format</span>}
           </label>
           <input
             className={`form__input input ${!isValidPost && 'error-input'}`}
@@ -174,7 +169,11 @@ export const ShipEstimate = (
                 width: '225px',
               }}
             >
-		Unfortunately, we currently cannot deliver to {address.city ? `${address.city}, ${address.country}` : 'this area'}.
+              Unfortunately, we currently cannot deliver to{' '}
+              {address.city
+                ? `${address.city}, ${address.country}`
+                : 'this area'}
+              .
             </p>
           </div>
         ) : (

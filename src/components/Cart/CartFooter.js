@@ -16,11 +16,9 @@ export const CartFooter = ({
   isUpdateCart,
   isCheckout,
   checkoutCart,
-    isEmpty,
+  isEmpty,
 }) => {
-
-
-    let { data } = useSession();
+  let { data } = useSession()
 
   return (
     <>
@@ -42,36 +40,33 @@ export const CartFooter = ({
             onClick={checkoutCart}
             disabled={isEmpty}
           >
-            {(data && data.user) ? "checkout" : "checkout as guest"}
+            {data && data.user ? 'checkout' : 'checkout as guest'}
           </button>
-          {!data && <button
-            className="btn btn-text btn-contrast btn-contrast_active"
-            onClick={() => logIn()}
-            style={
-                {
-                    border: 'none',
-                    marginTop: '1.5rem',
-                    display: `${(data && data.user) ? 'block' : 'flex'}`,
-                    justifyContent: 'center',
-                    alignItems: 'center',
-                }
-            }
-          >
-            <span
-              style={
-                  {
-                      marginRight: `${(data && data.user) ? 0 : '0.5rem'}`,
-                      position: 'relative',
-                      width: '22px',
-                      height: '22px'
-                  }
-              }>
-              {(!data) && <Img
-                defaultImg={githubIcon}
-                descr="github icon"/>}
-            </span> {(data && data.user) ? "checkout as guest" : "checkout with github"}
-          </button>}
-
+          {!data && (
+            <button
+              className="btn btn-text btn-contrast btn-contrast_active"
+              onClick={() => logIn()}
+              style={{
+                border: 'none',
+                marginTop: '1.5rem',
+                display: `${data && data.user ? 'block' : 'flex'}`,
+                justifyContent: 'center',
+                alignItems: 'center',
+              }}
+            >
+              <span
+                style={{
+                  marginRight: `${data && data.user ? 0 : '0.5rem'}`,
+                  position: 'relative',
+                  width: '22px',
+                  height: '22px',
+                }}
+              >
+                {!data && <Img defaultImg={githubIcon} descr="github icon" />}
+              </span>{' '}
+              {data && data.user ? 'checkout as guest' : 'checkout with github'}
+            </button>
+          )}
         </div>
       )}
     </>

@@ -1,4 +1,3 @@
-
 import { readFileSync } from 'fs'
 import path from 'path'
 import { useEffect, useState } from 'react'
@@ -25,17 +24,16 @@ const AblyChatComponent = dynamic(
   { ssr: false }
 )
 export const logIn = () => {
-    signIn();
-    return
+  signIn()
+  return
 }
 
 export const logOut = () => {
-    signOut();
-    return
+  signOut()
+  return
 }
 
-export default function Home({ countryList=null, user }) {
-
+export default function Home({ countryList = null, user }) {
   let { setCountries } = useAppContext()
 
   const [isOpenChat, setIsOpenChat] = useState(false)
@@ -56,67 +54,76 @@ export default function Home({ countryList=null, user }) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-          <header className={styles.pageHeader}>
-            <Header user={user}/>
-          </header>
+      <header className={styles.pageHeader}>
+        <Header user={user} />
+      </header>
 
-          <main className={`${styles.pageMain} ${styles.main}`}>
-            <div className={`${styles.mainChat}`} >
-	      {isOpenChat && <AblyChatComponent />}
-            </div>
-            <div className={`${styles.chatButton}`} onClick={toggleChat} aria-label={`${isOpenChat ? 'close chat' : 'open chat'}`}>
-              <ChatIcon isOpenChat={isOpenChat}/>
-            </div>
+      <main className={`${styles.pageMain} ${styles.main}`}>
+        <div className={`${styles.mainChat}`}>
+          {isOpenChat && <AblyChatComponent />}
+        </div>
+        <div
+          className={`${styles.chatButton}`}
+          onClick={toggleChat}
+          aria-label={`${isOpenChat ? 'close chat' : 'open chat'}`}
+        >
+          <ChatIcon isOpenChat={isOpenChat} />
+        </div>
 
-            <section className={`${styles.mainHero}`}>
-              <Hero />
-            </section>
+        <section className={`${styles.mainHero}`}>
+          <Hero />
+        </section>
 
-            <section className={`${styles.mainProductNav}`}>
-              <Menu />
-            </section>
+        <section className={`${styles.mainProductNav}`}>
+          <Menu />
+        </section>
 
-            <section className={`${styles.mainFtProd} ${styles.ftProd}`}>
-              <div className={`${styles.ftProdA}`}>
-                <FeatureProductA />
-              </div>
-              <div className={`${styles.ftProdB}`}>
-                <FeatureProductB />
-              </div>
-              <div className={`${styles.ftProdC}`}>
-                <FeatureProductC />
-              </div>
-            </section>
+        <section className={`${styles.mainFtProd} ${styles.ftProd}`}>
+          <div className={`${styles.ftProdA}`}>
+            <FeatureProductA />
+          </div>
+          <div className={`${styles.ftProdB}`}>
+            <FeatureProductB />
+          </div>
+          <div className={`${styles.ftProdC}`}>
+            <FeatureProductC />
+          </div>
+        </section>
 
+        <section className={styles.mainAbout}>
+          <About />
+        </section>
+      </main>
 
-            <section className={styles.mainAbout}>
-              <About />
-            </section>
-          </main>
-
-          <footer className={styles.pageFooter}>
-            <Footer />
-          </footer>
+      <footer className={styles.pageFooter}>
+        <Footer />
+      </footer>
     </div>
   )
 }
 
 export async function getServerSideProps(ctx) {
-    let { authOptions } = require('./api/auth/[...nextauth]');
-    let { unstable_getServerSession } = require('next-auth/next');
+  let { authOptions } = require('./api/auth/[...nextauth]')
+  let { unstable_getServerSession } = require('next-auth/next')
 
-    let session = await unstable_getServerSession(ctx.req, ctx.res, authOptions);
+  let session = await unstable_getServerSession(ctx.req, ctx.res, authOptions)
 
-    let user = session === null ? {} : session.user
-    user.id = user.id === undefined ? null : user.id
-    user.name = user.name === undefined ? null : user.name
-    user.image = user.image === undefined ? null : user.image
+  let user = session === null ? {} : session.user
+  user.id = user.id === undefined ? null : user.id
+  user.name = user.name === undefined ? null : user.name
+  user.image = user.image === undefined ? null : user.image
 
-    const fileName = path.join(process.cwd(), 'public', 'assets', 'static', 'data.csv')
+  const fileName = path.join(
+    process.cwd(),
+    'public',
+    'assets',
+    'static',
+    'data.csv'
+  )
 
   const readFile = async (fileName) => {
     try {
-        const data = readFileSync(fileName, 'utf8')
+      const data = readFileSync(fileName, 'utf8')
       let array = await data.split('\r')
       await array.shift()
       let countries = await array.map((country) => country.slice(1))
@@ -127,17 +134,16 @@ export async function getServerSideProps(ctx) {
     }
   }
 
-    let countryList = await readFile(fileName)
+  let countryList = await readFile(fileName)
 
   return {
     props: {
-        countryList,
-        user: {
-            id: user.id,
-            name: user.name,
-            img: user.image
-        }
+      countryList,
+      user: {
+        id: user.id,
+        name: user.name,
+        img: user.image,
+      },
     },
   }
-
 }

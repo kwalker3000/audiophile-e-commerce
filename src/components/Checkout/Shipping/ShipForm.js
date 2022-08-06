@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react'
 
 import { useSession } from 'next-auth/react'
@@ -9,21 +8,20 @@ import { Summary } from '../../Cart/Summary'
 import { useRouter } from 'next/router'
 
 import { initiateOrder } from '../../../../lib/initiateOrder'
-import { nameCheck, emailCheck, phoneCheck, regionCheck, lineCheck } from '../../../../lib/formCheck'
+import {
+  nameCheck,
+  emailCheck,
+  phoneCheck,
+  regionCheck,
+  lineCheck,
+} from '../../../../lib/formCheck'
 
 import { parseCookies, setCookie, destroyCookie } from 'nookies'
 
-export const ShipForm = (
-    {
-	cart,
-	cartTotal,
-	shipTotal,
-	storeId,
-	geoloc
-    }) => {
-    const router = useRouter();
-    let { address, countryList, inputAction } = useAppContext();
-    let { data } = useSession();
+export const ShipForm = ({ cart, cartTotal, shipTotal, storeId, geoloc }) => {
+  const router = useRouter()
+  let { address, countryList, inputAction } = useAppContext()
+  let { data } = useSession()
 
   let { name, email, phone, line1, line2, zip, city, country, region } = address
 
@@ -35,62 +33,61 @@ export const ShipForm = (
 
   let handleSubmit = (e) => {
     e.preventDefault()
-      if (!(isValidName &&
-           isValidEmail &&
-           isValidPhone &&
-           isValidLine &&
-            isValidRegion)) {
-          return
-      }
+    if (
+      !(
+        isValidName &&
+        isValidEmail &&
+        isValidPhone &&
+        isValidLine &&
+        isValidRegion
+      )
+    ) {
+      return
+    }
 
-      if (data) {
-	  initiateOrder(storeId, data.user.id, geoloc)
+    if (data) {
+      initiateOrder(storeId, data.user.id, geoloc)
+    } else {
+      let guest = {
+        store: storeId,
+        coord: {
+          lon: geoloc.lon,
+          lat: geoloc.lat,
+        },
       }
-      else {
-
-	  let guest = {
-	      store: storeId,
-	      coord: {
-		  lon: geoloc.lon,
-		  lat: geoloc.lat
-	      }
-	      
-	  }
-	  guest = JSON.stringify(guest)
-	  setCookie(null, 'guest', guest, {
-	      maxAge: 24 * 60 * 80,
-	      path: '/',
-	  })
-      }
+      guest = JSON.stringify(guest)
+      setCookie(null, 'guest', guest, {
+        maxAge: 24 * 60 * 80,
+        path: '/',
+      })
+    }
 
     router.push('/checkout')
   }
 
-        let validatePhone = (phone) => {
-           let isValid = phoneCheck(phone)
-            setIsValidPhone(isValid)
-        }
-        let validateEmail = (email) => {
-           let isValid = emailCheck(email)
-            setIsValidEmail(isValid)
-        }
+  let validatePhone = (phone) => {
+    let isValid = phoneCheck(phone)
+    setIsValidPhone(isValid)
+  }
+  let validateEmail = (email) => {
+    let isValid = emailCheck(email)
+    setIsValidEmail(isValid)
+  }
 
-
-        useEffect(() => {
-            setIsValidName(true)
-            setIsValidLine(true)
-            setIsValidRegion(true)
-            if ((name.length > 0 && nameCheck(name))) {
-                setIsValidName(false)
-            }
-            if ((line1.length > 0 && lineCheck(line1))) {
-                setIsValidLine(false)
-            }
-            if ((region.length > 0 && regionCheck(region))) {
-                setIsValidRegion(false)
-            }
-            
-        }, [address])
+  useEffect(() => {
+    setIsValidName(true)
+    setIsValidLine(true)
+    setIsValidRegion(true)
+    if (name.length > 0 && nameCheck(name)) {
+      setIsValidName(false)
+    }
+    if (line1.length > 0 && lineCheck(line1)) {
+      setIsValidLine(false)
+    }
+    if (region.length > 0 && regionCheck(region)) {
+      setIsValidRegion(false)
+    }
+  }, [address])
 
   return (
     <div id="ship-form">
@@ -98,10 +95,7 @@ export const ShipForm = (
         <div>
           <label htmlFor="name" className="form__label label">
             Name
-	    {!isValidName &&
-             <span
-               className='error-label'
-             >Wrong format</span>}
+            {!isValidName && <span className="error-label">Wrong format</span>}
           </label>
           <input
             className={`form__input input ${!isValidName && 'error-input'}`}
@@ -118,10 +112,7 @@ export const ShipForm = (
         <div>
           <label htmlFor="email" className="form__label label">
             Email
-            {!isValidEmail &&
-             <span
-               className='error-label'
-             >Wrong format</span>}
+            {!isValidEmail && <span className="error-label">Wrong format</span>}
           </label>
           <input
             className={`form__input input ${!isValidEmail && 'error-input'}`}
@@ -139,10 +130,7 @@ export const ShipForm = (
         <div>
           <label htmlFor="phone" className="form__label label">
             Phone Number
-            {!isValidPhone &&
-             <span
-               className='error-label'
-             >Wrong format</span>}
+            {!isValidPhone && <span className="error-label">Wrong format</span>}
           </label>
           <input
             className={`form__input input ${!isValidPhone && 'error-input'}`}
@@ -159,10 +147,7 @@ export const ShipForm = (
         <div>
           <label htmlFor="address" className="form__label label">
             Your Address
-            {!isValidLine &&
-             <span
-               className='error-label'
-             >Wrong format</span>}
+            {!isValidLine && <span className="error-label">Wrong format</span>}
           </label>
           <input
             className={`form__input input ${!isValidLine && 'error-input'}`}
@@ -202,10 +187,9 @@ export const ShipForm = (
         <div>
           <label htmlFor="state" className="form__label label">
             State or Region
-            {!isValidRegion &&
-             <span
-               className='error-label'
-             >Wrong format</span>}
+            {!isValidRegion && (
+              <span className="error-label">Wrong format</span>
+            )}
           </label>
           <input
             className={`form__input input ${!isValidRegion && 'error-input'}`}

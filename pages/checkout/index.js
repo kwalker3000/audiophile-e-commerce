@@ -18,7 +18,7 @@ import { Footer } from '../../src/components/Footer/Footer'
 import { CheckoutHeader } from '../../src/components/Checkout/CheckoutHeader'
 
 import { updateOrder } from '../../lib/updateOrder'
-import { parseCookies, setCookie, destroyCookie} from 'nookies'
+import { parseCookies, setCookie, destroyCookie } from 'nookies'
 
 const stripePromise = loadStripe(
   process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY,
@@ -32,7 +32,7 @@ export default function CheckoutPage({ prices }) {
   const [clientSecret, setClientSecret] = React.useState('')
   const [order, setOrder] = React.useState()
 
-    let { data: userData } = useSession();
+  let { data: userData } = useSession()
   let { data } = prices
   let { cart, address, invoice } = useAppContext()
   let cartCheckout = []
@@ -53,97 +53,79 @@ export default function CheckoutPage({ prices }) {
   })
 
   React.useEffect(() => {
+    let getCustomer = async () => {
+      let res = await fetch('/api/create-customer', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ address }),
+      })
 
-
-	let getCustomer = async () => {
-
-	    let res = await fetch('/api/create-customer', {
-		method: 'POST',
-		headers: { 'Content-Type': 'application/json' },
-		body: JSON.stringify({ address }),
-	    })
-
-	    if (res.ok) {
-		let data = await res.json();
-		return data.customer.id;
-	    }
-	    else {
-		throw new Error(res.status);
-	    }
-
-	}
-
-      if (userData) {
-
-	let getOrder = async (customer) => {
-
-	    let res = await fetch('/api/create-order', {
-	    method: 'POST',
-	    headers: { 'Content-Type': 'application/json' },
-		body: JSON.stringify(
-		    {
-			items: cartCheckout,
-			address,
-			invoice,
-			customer
-		    }),
-	    })
-
-	    if (res.ok) {
-		let data = await res.json();
-		updateOrder(userData.user.id, data.order)
-		setOrder(data.order);
-		setClientSecret(data.clientSecret);
-	    }
-	    else {
-		throw new Error(res.status);
-	    }
-
-	}
-
-	getCustomer().then(customer => getOrder(customer))
-
+      if (res.ok) {
+        let data = await res.json()
+        return data.customer.id
+      } else {
+        throw new Error(res.status)
       }
+    }
 
-      else {
-	let getOrder = async (customer = null) => {
-            
-          let res = await fetch('/api/create-order', {
-	    method: 'POST',
-	    headers: { 'Content-Type': 'application/json' },
-		body: JSON.stringify(
-		    {
-			items: cartCheckout,
-			address,
-			invoice,
-			customer
-		    }),
-	    })
+    if (userData) {
+      let getOrder = async (customer) => {
+        let res = await fetch('/api/create-order', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            items: cartCheckout,
+            address,
+            invoice,
+            customer,
+          }),
+        })
 
-	    if (res.ok) {
-
-		let data = await res.json();
-		setOrder(data.order);
-		setClientSecret(data.clientSecret);
-
-		const cookies = parseCookies()
-		let { guest } = cookies
-                guest = JSON.parse(guest)
-                guest['stripeOrderId'] = data.order.id 
-                guest['total'] = data.order.amount_total
-                guest = JSON.stringify(guest)
-                setCookie(null, 'guest', guest, {
-                    maxAge: 24 * 60 * 80,
-                    path: '/',
-                })
-	    }
-	    else {
-		throw new Error(res.status);
-	    }
+        if (res.ok) {
+          let data = await res.json()
+          updateOrder(userData.user.id, data.order)
+          setOrder(data.order)
+          setClientSecret(data.clientSecret)
+        } else {
+          throw new Error(res.status)
         }
-          getCustomer().then(customer => getOrder(customer))
       }
-      
+
+      getCustomer().then((customer) => getOrder(customer))
+    } else {
+      let getOrder = async (customer = null) => {
+        let res = await fetch('/api/create-order', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            items: cartCheckout,
+            address,
+            invoice,
+            customer,
+          }),
+        })
+
+        if (res.ok) {
+          let data = await res.json()
+          setOrder(data.order)
+          setClientSecret(data.clientSecret)
+
+          const cookies = parseCookies()
+          let { guest } = cookies
+          guest = JSON.parse(guest)
+          guest['stripeOrderId'] = data.order.id
+          guest['total'] = data.order.amount_total
+          guest = JSON.stringify(guest)
+          setCookie(null, 'guest', guest, {
+            maxAge: 24 * 60 * 80,
+            path: '/',
+          })
+        } else {
+          throw new Error(res.status)
+        }
+      }
+      getCustomer().then((customer) => getOrder(customer))
+    }
   }, [])
 
   const options = {
@@ -158,7 +140,7 @@ export default function CheckoutPage({ prices }) {
   }
 
   return (
-    <div className={styles.page} >
+    <div className={styles.page}>
       <Head>
         <title>Checkout | Audiophile</title>
         <meta name="description" content="Generated by create next app" />
@@ -170,21 +152,21 @@ export default function CheckoutPage({ prices }) {
           <header className={styles.pageHeader}>
             <CheckoutHeader />
           </header>
-	  <main className={styles.main}>
+          <main className={styles.main}>
             <div className={`${styles.mainGrid} ${styles.grid}`}>
-		<section className={styles.gridStepper}>
-		    <Stepper />
-		</section>
+              <section className={styles.gridStepper}>
+                <Stepper />
+              </section>
 
-		<section className={styles.gridSummary}>
-		    <CheckoutSummary cart={cart} order={order} />
-		</section>
+              <section className={styles.gridSummary}>
+                <CheckoutSummary cart={cart} order={order} />
+              </section>
 
-	      <section className={styles.gridForm}>
-		    <CheckoutForm email={address.email} order={order} />
-		</section>
-	    </div>
-	</main>
+              <section className={styles.gridForm}>
+                <CheckoutForm email={address.email} order={order} />
+              </section>
+            </div>
+          </main>
           <footer className={styles.pageFooter}>
             <Footer />
           </footer>
@@ -195,15 +177,15 @@ export default function CheckoutPage({ prices }) {
 }
 
 export async function getServerSideProps(ctx) {
-    let { authOptions } = require('../api/auth/[...nextauth]');
-    let { unstable_getServerSession } = require('next-auth/next');
+  let { authOptions } = require('../api/auth/[...nextauth]')
+  let { unstable_getServerSession } = require('next-auth/next')
 
-    let session = await unstable_getServerSession(ctx.req, ctx.res, authOptions);
+  let session = await unstable_getServerSession(ctx.req, ctx.res, authOptions)
 
-    let user = session === null ? {} : session.user
-    user.id = user.id === undefined ? null : user.id
-    user.name = user.name === undefined ? null : user.name
-    user.image = user.image === undefined ? null : user.image
+  let user = session === null ? {} : session.user
+  user.id = user.id === undefined ? null : user.id
+  user.name = user.name === undefined ? null : user.name
+  user.image = user.image === undefined ? null : user.image
 
   const stripe = new Stripe(process.env.STRIPE_SECRET_KEY)
 

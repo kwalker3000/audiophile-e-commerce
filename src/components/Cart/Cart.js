@@ -8,8 +8,8 @@ import { CartList } from './CartList'
 import { CartFooter } from './CartFooter'
 import { Checkout } from '../Checkout/Checkout'
 
-export const Cart = ({ toggleCart, isCartOpen, renderCart, }) => {
-    let { cart, updateCart, emptyCart, invoice, updateInvoice } = useAppContext()
+export const Cart = ({ toggleCart, isCartOpen, renderCart }) => {
+  let { cart, updateCart, emptyCart, invoice, updateInvoice } = useAppContext()
 
   const [isUpdateCart, setIsUpdateCart] = useState(false)
   const [orderSize, setOrderSize] = useState([])
@@ -68,7 +68,11 @@ export const Cart = ({ toggleCart, isCartOpen, renderCart, }) => {
 
   return (
     <div id="cart">
-	<CartIcon handleDropDown={handleDropDown} isEmpty={isEmpty} isCartOpen={isCartOpen}/>
+      <CartIcon
+        handleDropDown={handleDropDown}
+        isEmpty={isEmpty}
+        isCartOpen={isCartOpen}
+      />
 
       {isCartOpen && (
         <div className="cart__dropdown dropdown">

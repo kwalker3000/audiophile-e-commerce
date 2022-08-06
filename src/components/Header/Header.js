@@ -36,9 +36,7 @@ export const Header = ({ isCartUpdate, renderCart, user }) => {
   return (
     <>
       <div className="header">
-        <div
-          className="header__logo"
-        >
+        <div className="header__logo">
           <Logo />
         </div>
         <div className="header-mob__nav">
@@ -48,8 +46,7 @@ export const Header = ({ isCartUpdate, renderCart, user }) => {
           <PrimaryNav />
         </div>
         <div className="header__container">
-          <div className="header__user"
-          >
+          <div className="header__user">
             <User
               user={user}
               isAccountOpen={isAccountOpen}
@@ -64,7 +61,7 @@ export const Header = ({ isCartUpdate, renderCart, user }) => {
       <Overlay
         isMenuOpen={isMenuOpen}
         isCartOpen={isCartOpen}
-	isAccountOpen={isAccountOpen}
+        isAccountOpen={isAccountOpen}
       />
     </>
   )

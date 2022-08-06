@@ -32,8 +32,10 @@ export const FeatureProductA = () => {
             Upgrade to premium speakers that are phenomenally built to deliver
             truly remarkable sound.
           </p>
-          <div className="ft-prod-a__btn"
-              style={{position: 'relative', zIndex: '1'}}>
+          <div
+            className="ft-prod-a__btn"
+            style={{ position: 'relative', zIndex: '1' }}
+          >
             <LinkBtn path="/speakers/zx9-speaker" theme="contrast" />
           </div>
         </div>

@@ -19,7 +19,7 @@ export const AppWrapper = ({ children }) => {
   })
   const [cart, setCart] = useState([])
   const [stockWarn, setStockWarn] = useState(false)
-    const [address, {inputAction, replaceAction, setAction}] = useAddress();
+  const [address, { inputAction, replaceAction, setAction }] = useAddress()
 
   let setCountries = (list) => {
     let countries = []
@@ -83,9 +83,12 @@ export const AppWrapper = ({ children }) => {
   }
 
   let updateCart = (pendingCount) => {
-      setCart((prevCart) => prevCart.map((item, index) => {
-        return { ...item, quantity: item.quantity + pendingCount[index] }
-      }).filter((item,index) => item.quantity !== 0)
+    setCart((prevCart) =>
+      prevCart
+        .map((item, index) => {
+          return { ...item, quantity: item.quantity + pendingCount[index] }
+        })
+        .filter((item, index) => item.quantity !== 0)
     )
     destroyCookie(null, 'shoppingCart', { path: '/' })
   }
@@ -118,8 +121,6 @@ export const AppWrapper = ({ children }) => {
     if (countryArr && countryList.length == 0) {
       setCountryList(countryArr || countryList)
     }
-
-      
   }, [cart])
 
   return (
@@ -131,10 +132,10 @@ export const AppWrapper = ({ children }) => {
         emptyCart,
         stockWarn,
         resetWarn,
-	address,
+        address,
         inputAction,
         replaceAction,
-	setAction,
+        setAction,
         setCountries,
         countryList,
         invoice,
