@@ -42,7 +42,7 @@ export default function AblyChatComponent() {
 
     const messages = receivedMessages.map((message, index) => {
         const author = message.connectionId === ably.connection.id
-              ? "me" : "customer care";
+              ? "me" : "other";
         return (
 	    <>
             <span

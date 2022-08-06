@@ -55,4 +55,3 @@ export default function useScrollRestoration(router) {
   }, [router])
 }
 
-// https://gist.github.com/claus/992a5596d6532ac91b24abe24e10ae81#file-usescrollrestoration-js
