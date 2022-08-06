@@ -1,4 +1,4 @@
-# Frontend Mentor - AudioPhile e-commerce website
+# Frontend Mentor - Audiophile e-commerce website
 
 This is a solution to the [Audiophile e-commerce website challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/audiophile-ecommerce-website-C8cuSd_wx). Frontend Mentor challenges help you improve your coding skills by building realistic projects.
 
@@ -43,7 +43,7 @@ Your users should be able to:
 
 ### Links
 
-- Solution URL: [Frontend Mentor](https://www.frontendmentor.io/solutions/responsive-multi-page-site-using-bem-less-css-grid-and-more-rkMJFRamc)
+- Solution URL: [Frontend Mentor](https://www.frontendmentor.io/)
 - Live Site URL: [Audiophile](https://audiophile-tan.vercel.app/)
 
 ### My process
