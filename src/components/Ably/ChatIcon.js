@@ -7,10 +7,11 @@ export const ChatIcon = ({ isOpenChat }) => {
     return (
 
         <button
-          className=" chat-button">
+            className=" chat-button"
+            aria-label={`${!isOpenChat ? 'open chat' : 'close chat'}`}
+	>
           <span
             className={`${!isOpenChat ? 'chat-open' : 'chat-close'}`}
-            aria-label={`${!isOpenChat ? 'open chat' : 'close chat'}`}
           >
             { !isOpenChat ?
 <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" x="0px" y="0px"

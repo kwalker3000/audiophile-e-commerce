@@ -24,6 +24,7 @@ export const User = ({ user, isAccountOpen, toggleAccount }) => {
             <button
               className='btn_reset user__icon icon-wrapper'
               onClick={toggleAccount}
+		aria-label="access account"
             >
               <span className={`${user.id ? 'avatar' : 'user-icon'}`}>
 		<UserAvatar user={user}/>
