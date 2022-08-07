@@ -39,7 +39,9 @@ Your users should be able to:
 
 ### Screenshot
 
-![collage of various components seen on the website](./site-preview.png)
+
+
+<img alt="collage of various components seen on the website" src="./site-preview.png" width=600>
 
 ### Links
 
