@@ -97,7 +97,7 @@ I added an ably chat service at the end thinking it would be like a typical cust
 
 Yikes. A lot.
 
-I will have to come back later. Hard to fit within a reasonable length.
+I think the most important thing I learned is to be confident in the principles.
 
 ### Continued development
 
