@@ -29,6 +29,8 @@
     justify-content: center;
 
     width: 100%;
+    @include util.extension;
+    background-color: #181818;
 }
 
     .hero__content {

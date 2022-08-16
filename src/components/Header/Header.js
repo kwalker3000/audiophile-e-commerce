@@ -34,7 +34,7 @@ export const Header = ({ isCartUpdate, renderCart, user }) => {
   }, [isCartUpdate])
 
   return (
-    <>
+    <div id="header">
       <div className="header">
         <div className="header__logo">
           <Logo />
@@ -63,6 +63,6 @@ export const Header = ({ isCartUpdate, renderCart, user }) => {
         isCartOpen={isCartOpen}
         isAccountOpen={isAccountOpen}
       />
-    </>
+    </div>
   )
 }

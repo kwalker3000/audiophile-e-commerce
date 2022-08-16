@@ -49,11 +49,15 @@ body {
 }
 
 .header {
-  background-color: #000;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
   padding: 2.1rem 0 1.75rem;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   align-items: flex-end;
+}
+
+#header {
+  background-color: #181818;
   padding-left: 100vw;
   padding-right: 100vw;
   margin-left: -100vw;
@@ -636,6 +640,11 @@ body {
   align-items: center;
   justify-content: center;
   width: 100%;
+  padding-left: 100vw;
+  padding-right: 100vw;
+  margin-left: -100vw;
+  margin-right: -100vw;
+  background-color: #181818;
 }
 #hero .hero__content {
   position: absolute;
@@ -727,10 +736,13 @@ body {
   color: #fff;
 }
 #headline .headline {
-  border-top: 1px solid rgba(255, 255, 255, 0.104);
-  background-color: #000;
+  background-color: #181818;
   text-align: center;
   padding: 2rem 0;
+  padding-left: 100vw;
+  padding-right: 100vw;
+  margin-left: -100vw;
+  margin-right: -100vw;
 }
 @media (min-width: 685px) {
   #headline .headline {

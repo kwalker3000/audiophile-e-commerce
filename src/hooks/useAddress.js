@@ -2,27 +2,16 @@ import React, { useReducer } from 'react'
 
 export const useAddress = () => {
   let initialState = {
-    name: 'Kevin',
-    email: 'mail@mail.com',
-    phone: '',
-    line1: '22 Street Dr',
-    line2: '',
-    zip: '63304',
-    city: '',
-    country: 'US',
-    region: 'MO',
-  }
-  // let initialState = {
-  //       name: '',
-  //       email: '',
-  //       phone: '',
-  //       line1: '',
-  //       line2: '',
-  //       zip: '',
-  //       city: '',
-  //       country: '',
-  //       region: '',
-  //     }
+        name: '',
+        email: '',
+        phone: '',
+        line1: '',
+        line2: '',
+        zip: '',
+        city: '',
+        country: '',
+        region: '',
+      }
 
   const reducer = (state, action) => {
     switch (action.type) {

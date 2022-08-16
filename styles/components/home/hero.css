@@ -48,6 +48,11 @@
   align-items: center;
   justify-content: center;
   width: 100%;
+  padding-left: 100vw;
+  padding-right: 100vw;
+  margin-left: -100vw;
+  margin-right: -100vw;
+  background-color: #181818;
 }
 
 .hero__content {

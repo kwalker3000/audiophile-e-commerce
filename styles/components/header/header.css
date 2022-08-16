@@ -1,9 +1,13 @@
 .header {
-  background-color: #000;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
   padding: 2.1rem 0 1.75rem;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   align-items: flex-end;
+}
+
+#header {
+  background-color: #181818;
   padding-left: 100vw;
   padding-right: 100vw;
   margin-left: -100vw;

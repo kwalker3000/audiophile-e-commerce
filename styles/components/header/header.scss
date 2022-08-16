@@ -2,13 +2,19 @@
 @use '../../util/util';
 
 .header {
-    background-color: util.$black;
+    //background-color: #181818;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
     padding: 2.1rem 0 util.$btm-header-spacing; 
 
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     align-items: flex-end;
 
+}
+
+#header {
+    
+    background-color: #181818;
     @include util.extension;
 }
 
