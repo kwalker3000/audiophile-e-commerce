@@ -371,7 +371,7 @@
 #cart .image-wrapper_cart {
   margin-bottom: 2px;
   border: none;
-  background-color: #000;
+  background-color: #181818;
   cursor: pointer;
   padding: 0;
   position: relative;
@@ -594,7 +594,7 @@
   padding-right: 100vw;
   margin-left: -100vw;
   margin-right: -100vw;
-  background-color: #181818;
+  background-color: #1a1a1a;
 }
 #hero .hero__content {
   position: absolute;
