@@ -69,7 +69,7 @@ There are 2 different database types being used. Not sure this is good practice 
 
 Postgres was used for authentication purposes and customer order logs. While MongoDB was used for all product data.
 
-I added an ably chat service at the end thinking it would be like a typical customer service chat widget. like the ones you normally see on websites nowadays. I quickly realized that what I implemented was not this and more for public chat rooms. However, I have to decided to leave it in for two reasons. One, I may later create a support forum where this could be used. And two, to give people inspiration and ideas for incorporating features in their own builds 
+I added an Ably chat service at the end thinking it would be private chat widget. However, I quickly realized communication is broadcasted across all connections. I decided to leave it in for two reasons. One, I may later create a support forum where this could be used. And two, to give people inspiration and ideas for incorporating features in their own builds 
 
 ### Built with
 
