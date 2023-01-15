@@ -1,10 +1,10 @@
-# Frontend Mentor - Audiophile e-commerce website
+# Audiophile E-Commerce Website
 
 This is a solution to the [Audiophile e-commerce website challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/audiophile-ecommerce-website-C8cuSd_wx). Frontend Mentor challenges help you improve your coding skills by building realistic projects.
 
 ## Table of contents
 
-- [Frontend Mentor - Audiophile e-commerce website](#frontend-mentor---audiophile-ecommerce-website)
+- [Audiophile e-commerce website](#Audiophile-ecommerce-website)
   - [Table of contents](#table-of-contents)
   - [Overview](#overview)
     - [The challenge](#the-challenge)
@@ -37,7 +37,7 @@ Your users should be able to:
  - Bonus: Keep track of what's in the cart, even after refreshing the browser (localStorage could be used for this if you're not building out a full-stack app)
 
 
-### Screenshot
+### Screenshots
 
 
 <img alt="hero section" src="./public/assets/screenshots/hero.png" width=600>
