@@ -40,8 +40,10 @@ Your users should be able to:
 ### Screenshot
 
 
+<img alt="hero section" src="./public/assets/screenshots/hero.png" width=600>
+<img alt="product details" src="./public/assets/screenshots/product-details.png" width=600>
+<img alt="checkout process" src="./public/assets/screenshots/checkout-process.png" width=600>
 
-<img alt="collage of various components seen on the website" src="./site-preview.png" width=600>
 
 ### Links
 
@@ -95,9 +97,11 @@ I added an Ably chat service at the end thinking it would be private chat widget
 
 ### What I learned
 
-Yikes. A lot.
-
-I think the most important thing I learned is to be confident in the principles.
+- Gained more experience handling complex api calls
+- How to work with multiple databases
+- How set up an authentication service
+- How to connect a payment service
+- How to utilize react features, such as the useContext api
 
 ### Continued development
 
